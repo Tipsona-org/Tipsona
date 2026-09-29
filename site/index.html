@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tipsona · Sell e-books, courses and templates from one link</title>
+<meta name="description" content="Tipsona gives creators, educators and coaches a storefront for digital products. Share one link. Every sale is paid and delivered automatically.">
+<meta name="theme-color" content="#FBF8F4">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tipsona · Know something? Sell it.">
+<meta property="og:description" content="A storefront for your e-books, courses, templates and presets. Payments and delivery handled for you.">
+<meta property="og:image" content="assets/img/hero-ada.webp">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<!-- @fonts -->
+<link rel="preload" href="assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jakarta-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- /@fonts -->
+<link rel="preload" as="image" href="assets/img/hero-ada.webp" fetchpriority="high">
+<link rel="stylesheet" href="assets/css/tipsona.css">
+<script>
+  /* Motion gate: hide intro elements only when motion is allowed, and
+     reveal everything after 3s if the animation scripts never arrive. */
+  (function (d) {
+    var r = d.documentElement; r.classList.add('js');
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      r.classList.add('motion');
+      setTimeout(function () { if (!r.classList.contains('motion-ready')) r.classList.remove('motion'); }, 3000);
+    }
+  })(document);
+</script>
+<script defer src="assets/vendor/gsap.min.js"></script>
+<script defer src="assets/vendor/ScrollTrigger.min.js"></script>
+<script defer src="assets/vendor/SplitText.min.js"></script>
+<script defer src="assets/vendor/lenis.min.js"></script>
+<script defer src="assets/js/tipsona.js"></script>
+</head>
+<body>
+<script src="assets/js/icons.js"></script>
+
+<!-- Tipsona logo (brand asset) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo" viewBox="0 0 337 84">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.6004 76.8989C49.4219 69.4877 48.7383 47.64 30.2699 41.4144C26.5835 40.1722 22.3413 39.7191 18.1979 40.4026C12.2709 41.3808 10.0648 43.7904 8.10832 44.4346C4.00624 45.7853 0.376484 42.1056 0.0443242 38.6976C-0.427035 33.8679 2.93872 32.88 6.44464 31.3344C13.9777 28.0128 22.2846 27.9015 30.1422 30.9207C35.2849 32.8973 37.6436 35.0631 40.8548 38.0199C50.0507 46.4861 52.85 63.984 44.5192 76.583C42.7729 79.224 42.2872 78.9974 42.2459 79.0205C42.2286 79.0291 42.1451 79.0608 42.1278 79.0733C41.0785 79.8067 40.8577 81.575 38.5585 83.1043C39.4993 75.024 36.9217 70.2048 31.5889 67.3766C27.4542 65.185 26.1457 66.2246 21.8699 66.1536C15.8709 66.0538 16.2856 55.2778 29.3598 59.3741C33.0366 60.5261 34.3854 61.9987 36.4475 64.0301C40.8971 68.4125 41.4222 74.9386 39.507 81.575C40.347 79.2403 41.3992 78.1257 41.8715 74.7053C42.9198 67.1069 39.2219 59.9021 33.746 55.7424C29.7649 52.7184 24.8478 52.4986 19.2817 53.616C8.12367 55.8567 10.4498 48.1728 11.6555 46.7818C14.1131 43.9479 22.1569 43.2691 26.4299 44.0919C35.6708 45.8727 42.915 52.752 44.9041 62.0189C46.3432 68.7245 44.7611 72.0969 42.938 77.6093L43.6033 76.8979L43.6004 76.8989Z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M40.1176 44.1043H45.1585C45.0107 43.6791 44.859 43.2538 44.7016 42.8295C41.8206 35.0659 36.9745 24.5098 40.0916 15.745C40.9998 13.1905 43.082 10.5553 44.8628 9.24294C48.0376 6.90535 49.6667 7.62535 54.1076 7.60135C57.6203 7.58311 66.4993 7.72711 74.2983 7.75783V0.500235L9.94863 0.538635V7.59175L37.1732 7.60327C35.7006 10.5639 31.0619 13.8663 31.5678 24.1344C31.7761 28.3623 32.7505 32.7792 33.9937 37.2615C35.6564 37.656 37.1704 38.6237 38.1592 40.0877C38.8446 41.1024 38.8667 41.6218 39.0462 41.976C39.242 42.3629 39.5924 42.6327 39.988 43.7127C40.035 43.8423 40.0782 43.9728 40.1176 44.1043Z"/>
+    <path d="M82.9107 7.37377C82.9107 3.23726 86.5076 0 90.3743 0C93.9713 0 96.4892 2.6078 96.4892 5.93499C96.4892 10.2513 92.8023 13.3987 89.0255 13.3987C85.4285 13.3987 82.9107 10.701 82.9107 7.37377ZM82.3711 66.0942H72.0298L81.3819 22.3012H91.7232L82.3711 66.0942Z"/>
+    <path d="M122.979 30.4843C115.875 30.4843 109.85 37.0487 109.85 46.9404C109.85 54.0444 113.807 58.001 119.742 58.001C126.036 58.001 132.96 52.066 132.96 41.2751C132.96 34.2611 129.004 30.4843 122.979 30.4843ZM113.627 27.0671C116.414 23.4702 121.45 21.2221 126.666 21.2221C137.996 21.2221 143.482 29.4951 143.482 39.9263C143.482 55.4831 133.95 67.2632 120.551 67.2632C114.256 67.2632 109.041 64.2957 106.703 60.1592L101.847 83.1798H91.5953L102.926 29.8548C103.825 25.7183 103.915 22.6609 103.915 22.3012H113.986C113.986 22.8407 113.897 25.3586 113.627 27.0671Z"/>
+    <path d="M147.173 52.5157L156.166 50.8071C156.166 55.3932 158.863 59.26 164.169 59.26C168.395 59.26 170.374 56.7421 170.374 54.2242C170.374 52.4257 169.295 50.7172 166.687 49.5482L161.112 47.1202C155.177 44.5124 152.479 40.4658 152.479 35.3402C152.479 27.7865 158.863 20.9523 168.845 20.9523C181.255 20.9523 184.582 29.2253 184.852 33.9913L175.769 35.8797C175.589 33.182 174.061 29.0455 168.305 29.0455C164.619 29.0455 162.37 31.2936 162.37 33.9913C162.37 36.1495 163.539 37.4983 165.428 38.3076L171.183 40.8255C177.568 43.6132 180.625 48.1094 180.625 53.325C180.625 59.6197 175.589 67.443 164.079 67.443C150.411 67.443 147.173 57.7312 147.173 52.5157Z"/>
+    <path d="M212.491 30.3044C205.476 30.3044 199.362 36.7789 199.362 46.7605C199.362 53.6847 203.408 58.0909 209.343 58.0909C215.818 58.0909 222.472 52.4257 222.472 41.5449C222.472 34.6208 218.695 30.3943 212.491 30.3044ZM232.993 41.1852C232.993 55.663 222.832 67.443 208.804 67.443C196.484 67.443 188.93 58.3607 188.93 47.1202C188.93 31.8331 199.721 20.9523 213.21 20.9523C225.799 20.9523 232.993 29.9447 232.993 41.1852Z"/>
+    <path d="M275.872 66.0942H265.53L271.106 40.1961C271.285 39.2069 271.465 38.2177 271.465 37.4084C271.465 33.0021 268.857 30.3044 264.091 30.3044C258.156 30.3044 254.739 35.3402 253.57 40.6457L248.085 66.0942H237.744L245.387 29.8548C246.286 25.7183 246.376 22.6609 246.376 22.3012H256.448C256.448 22.8407 256.358 25.1787 255.998 26.8873C259.146 22.6609 264.091 21.0422 268.947 21.0422C277.13 21.0422 282.166 26.6175 282.166 34.6208C282.166 36.0595 281.986 37.948 281.627 39.4767L275.872 66.0942Z"/>
+    <path d="M312.861 30.3044C304.408 30.3044 299.911 39.3867 299.911 47.3001C299.911 53.6847 303.239 58.001 309.264 58.001C316.278 58.001 322.033 50.897 322.033 40.4658C322.033 34.5308 318.885 30.3044 312.861 30.3044ZM326.349 22.3012H336.511L329.407 55.663C328.867 58.3607 328.507 61.0584 328.507 63.936C328.507 64.3856 328.507 65.105 328.597 66.0942H318.885C318.796 65.2849 318.796 64.8352 318.796 64.2957C318.796 63.2166 318.796 62.6771 318.975 60.6987C316.457 63.936 312.411 66.9035 306.926 66.9035C295.775 66.9035 289.48 58.5406 289.48 47.5698C289.48 33.0021 299.012 21.1322 312.051 21.1322C319.875 21.1322 323.741 24.7291 325.18 27.5168L326.349 22.3012Z"/>
+  </symbol>
+  <symbol id="logo-mark" viewBox="-4.4 0 83.1 83.1">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M43.6004 76.8989C49.4219 69.4877 48.7383 47.64 30.2699 41.4144C26.5835 40.1722 22.3413 39.7191 18.1979 40.4026C12.2709 41.3808 10.0648 43.7904 8.10832 44.4346C4.00624 45.7853 0.376484 42.1056 0.0443242 38.6976C-0.427035 33.8679 2.93872 32.88 6.44464 31.3344C13.9777 28.0128 22.2846 27.9015 30.1422 30.9207C35.2849 32.8973 37.6436 35.0631 40.8548 38.0199C50.0507 46.4861 52.85 63.984 44.5192 76.583C42.7729 79.224 42.2872 78.9974 42.2459 79.0205C42.2286 79.0291 42.1451 79.0608 42.1278 79.0733C41.0785 79.8067 40.8577 81.575 38.5585 83.1043C39.4993 75.024 36.9217 70.2048 31.5889 67.3766C27.4542 65.185 26.1457 66.2246 21.8699 66.1536C15.8709 66.0538 16.2856 55.2778 29.3598 59.3741C33.0366 60.5261 34.3854 61.9987 36.4475 64.0301C40.8971 68.4125 41.4222 74.9386 39.507 81.575C40.347 79.2403 41.3992 78.1257 41.8715 74.7053C42.9198 67.1069 39.2219 59.9021 33.746 55.7424C29.7649 52.7184 24.8478 52.4986 19.2817 53.616C8.12367 55.8567 10.4498 48.1728 11.6555 46.7818C14.1131 43.9479 22.1569 43.2691 26.4299 44.0919C35.6708 45.8727 42.915 52.752 44.9041 62.0189C46.3432 68.7245 44.7611 72.0969 42.938 77.6093L43.6033 76.8979L43.6004 76.8989Z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M40.1176 44.1043H45.1585C45.0107 43.6791 44.859 43.2538 44.7016 42.8295C41.8206 35.0659 36.9745 24.5098 40.0916 15.745C40.9998 13.1905 43.082 10.5553 44.8628 9.24294C48.0376 6.90535 49.6667 7.62535 54.1076 7.60135C57.6203 7.58311 66.4993 7.72711 74.2983 7.75783V0.500235L9.94863 0.538635V7.59175L37.1732 7.60327C35.7006 10.5639 31.0619 13.8663 31.5678 24.1344C31.7761 28.3623 32.7505 32.7792 33.9937 37.2615C35.6564 37.656 37.1704 38.6237 38.1592 40.0877C38.8446 41.1024 38.8667 41.6218 39.0462 41.976C39.242 42.3629 39.5924 42.6327 39.988 43.7127C40.035 43.8423 40.0782 43.9728 40.1176 44.1043Z"/>
+  </symbol>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ─────────────────────────── Navigation ─────────────────────────── -->
+<header class="nav" data-nav>
+  <div class="nav__bar">
+    <a class="brand" href="#top" aria-label="Tipsona home">
+      <svg class="logo" viewBox="0 0 337 84" aria-hidden="true"><use href="#logo"/></svg>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <ul>
+        <li><a href="#product"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Product</a></li>
+        <li><a href="#how"><span class="tip tip--star c-sun" aria-hidden="true"></span>How it works</a></li>
+        <li><a href="#creators"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Creators</a></li>
+        <li><a href="#pricing"><span class="tip tip--pill c-mint" aria-hidden="true"></span>Pricing</a></li>
+        <li><a href="#faq"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__login" href="#">Log in</a>
+      <a class="btn btn--ink btn--sm" href="#claim">Start selling<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+        <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>
+        <span class="sr-only">Open menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <ul>
+    <li><a class="mm-link" href="#product">Product <span class="tip tip--square c-lilac" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="#how">How it works <span class="tip tip--star c-sun" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="#creators">Creators <span class="tip tip--circle c-flame" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="#pricing">Pricing <span class="tip tip--pill c-mint" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="#faq">FAQ <span class="tip tip--diamond c-blush" aria-hidden="true"></span></a></li>
+  </ul>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--flame btn--block" href="#claim">Start selling for free<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <a class="btn btn--ghost btn--block" href="#">Log in</a>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ─────────────────────────── Hero ─────────────────────────── -->
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="container hero__grid">
+    <a class="hero__badge" href="#claim" data-intro>
+      <span class="pill pill--flame">Early access</span>
+      Claim your tipsona.com/@name
+      <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+    </a>
+
+    <h1 class="hero__title" id="hero-title">
+      <span class="ln"><span class="ln__in">Know something?</span></span>
+      <span class="ln"><span class="ln__in"><span class="hl"><span class="hl__bg" aria-hidden="true"></span>Sell it.</span></span></span>
+    </h1>
+
+    <div class="hero__copy">
+      <p class="hero__lede" data-intro>Tipsona gives you a storefront for your e-books, courses, templates and presets. Share one link. Every sale is paid and delivered automatically.</p>
+
+      <form class="claim" id="claim" data-claim novalidate data-intro>
+        <label class="sr-only" for="claim-name">Choose your storefront name</label>
+        <div class="claim__field">
+          <span class="claim__prefix" aria-hidden="true">tipsona.com/@</span>
+          <input class="claim__input" id="claim-name" name="username" type="text" inputmode="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="30" placeholder="yourname" aria-describedby="claim-hint">
+          <button class="btn btn--flame" type="submit">Claim your link<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+        </div>
+        <p class="claim__hint" id="claim-hint" aria-live="polite">Free forever on the starter plan. No card needed.</p>
+      </form>
+
+      <ul class="hero__proof" data-intro>
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Live in under 10 minutes</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Instant delivery</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Payouts to your bank</li>
+      </ul>
+    </div>
+
+    <div class="hero__stage" data-hero-stage>
+      <span class="tip tip--star c-sun stage__shape stage__shape--a" data-float aria-hidden="true"></span>
+      <span class="tip tip--circle c-lilac stage__shape stage__shape--b" data-float aria-hidden="true"></span>
+      <span class="tip tip--pill c-mint stage__shape stage__shape--c" data-float aria-hidden="true"></span>
+      <span class="tip tip--diamond c-blush stage__shape stage__shape--d" data-float aria-hidden="true"></span>
+
+      <figure class="stage__portrait" data-intro>
+        <img src="assets/img/hero-ada.webp" width="1100" height="1375" alt="Adaeze, a finance educator, standing with her arms crossed in front of an orange wall" fetchpriority="high">
+      </figure>
+
+      <!-- Example storefront -->
+      <div class="phone stage__phone" data-intro role="img" aria-label="Example storefront for Adaeze Okoro at tipsona.com/@adaeze, selling a budget planner, an e-book and a video course">
+        <div class="phone__screen" aria-hidden="true">
+          <div class="phone__island"></div>
+          <div class="store" data-theme="modern">
+            <div class="phone__status"><span>9:41</span><span><svg class="i"><use href="#i-signal"/></svg><svg class="i"><use href="#i-battery"/></svg></span></div>
+            <div class="store__url"><svg class="i"><use href="#i-lock"/></svg>tipsona.com/@adaeze</div>
+            <div class="store__cover">
+              <span class="tip tip--star c-sun" style="--s:9cqw;left:10%;top:18%"></span>
+              <span class="tip tip--circle c-cream" style="--s:5cqw;left:28%;top:58%"></span>
+              <span class="tip tip--pill c-ink" style="--s:5cqw;right:12%;top:26%"></span>
+              <span class="tip tip--diamond c-blush" style="--s:6cqw;right:30%;top:60%"></span>
+            </div>
+            <div class="store__head">
+              <img class="store__avatar" src="assets/img/av-sade.webp" width="160" height="160" alt="">
+              <p class="store__name">Adaeze Okoro</p>
+              <p class="store__bio">Finance educator. Budget, save and invest in naira.</p>
+            </div>
+            <div class="store__tabs"><span>All</span><span>Templates</span><span>E-books</span><span>Courses</span></div>
+            <div class="store__list">
+              <div class="prod"><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-template"/></svg></span><span class="prod__meta"><span class="prod__title">Naira Budget Planner 2026</span><span class="prod__type">Template · PDF</span></span><span class="prod__price">₦7,500</span></div>
+              <div class="prod"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-book"/></svg></span><span class="prod__meta"><span class="prod__title">Side-Hustle Starter Kit</span><span class="prod__type">E-book · 84 pages</span></span><span class="prod__price">₦12,000</span></div>
+              <div class="prod"><span class="prod__thumb cover-forest"><svg class="i" style="--acc:var(--forest-3)"><use href="#i-video"/></svg></span><span class="prod__meta"><span class="prod__title">Money Habits Masterclass</span><span class="prod__type">Video · 6 lessons</span></span><span class="prod__price">₦25,000</span></div>
+            </div>
+            <div class="store__buy">Buy now · ₦7,500</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-card fc-sale" data-intro data-sale-card aria-hidden="true">
+        <span class="icon-tile"><svg class="i"><use href="#i-naira"/></svg></span>
+        <span><b>Payment received</b><span class="amt" data-sale-amt>₦7,500</span> <span data-sale-prod>· Budget Planner</span></span>
+      </div>
+      <div class="float-card fc-delivered" data-intro aria-hidden="true">
+        <span class="icon-tile"><svg class="i"><use href="#i-bolt"/></svg></span>
+        <span><b>Delivered in 1.2s</b><span data-sale-mail>chioma.e@gmail.com</span></span>
+      </div>
+      <div class="float-card fc-week" data-intro aria-hidden="true">
+        <div class="fc-week__top"><span>This week</span><span class="pill pill--success"><svg class="i i--sm"><use href="#i-trend"/></svg>24%</span></div>
+        <span class="fc-week__val">₦278,500</span>
+        <svg viewBox="0 0 200 38" preserveAspectRatio="none">
+          <defs><linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF5D02" stop-opacity=".28"/><stop offset="1" stop-color="#FF5D02" stop-opacity="0"/></linearGradient></defs>
+          <path class="spark-area" d="M0 31.9 L33.3 23.1 L66.7 27.2 L100 14.9 L133.3 19.7 L166.7 4 L200 13.2 L200 38 L0 38 Z"/>
+          <path class="spark-line" d="M0 31.9 L33.3 23.1 L66.7 27.2 L100 14.9 L133.3 19.7 L166.7 4 L200 13.2" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Ticker ─────────────────────────── -->
+<section class="ticker" aria-label="Things you can sell on Tipsona">
+  <div class="ticker__track" data-marquee>
+    <ul class="ticker__list">
+      <li>E-books</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-sun"></span></li>
+      <li>Online courses</li><li class="sep" aria-hidden="true"><span class="tip tip--circle c-flame"></span></li>
+      <li>Templates</li><li class="sep" aria-hidden="true"><span class="tip tip--square c-lilac"></span></li>
+      <li>Lightroom presets</li><li class="sep" aria-hidden="true"><span class="tip tip--diamond c-blush"></span></li>
+      <li>Past questions</li><li class="sep" aria-hidden="true"><span class="tip tip--pill c-mint"></span></li>
+      <li>Workbooks</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-sun"></span></li>
+      <li>Audio packs</li><li class="sep" aria-hidden="true"><span class="tip tip--circle c-flame"></span></li>
+      <li>Meal plans</li><li class="sep" aria-hidden="true"><span class="tip tip--square c-lilac"></span></li>
+      <li>SOP templates</li><li class="sep" aria-hidden="true"><span class="tip tip--diamond c-blush"></span></li>
+      <li>LUTs</li><li class="sep" aria-hidden="true"><span class="tip tip--pill c-mint"></span></li>
+    </ul>
+    <ul class="ticker__list" aria-hidden="true">
+      <li>E-books</li><li class="sep"><span class="tip tip--star c-sun"></span></li>
+      <li>Online courses</li><li class="sep"><span class="tip tip--circle c-flame"></span></li>
+      <li>Templates</li><li class="sep"><span class="tip tip--square c-lilac"></span></li>
+      <li>Lightroom presets</li><li class="sep"><span class="tip tip--diamond c-blush"></span></li>
+      <li>Past questions</li><li class="sep"><span class="tip tip--pill c-mint"></span></li>
+      <li>Workbooks</li><li class="sep"><span class="tip tip--star c-sun"></span></li>
+      <li>Audio packs</li><li class="sep"><span class="tip tip--circle c-flame"></span></li>
+      <li>Meal plans</li><li class="sep"><span class="tip tip--square c-lilac"></span></li>
+      <li>SOP templates</li><li class="sep"><span class="tip tip--diamond c-blush"></span></li>
+      <li>LUTs</li><li class="sep"><span class="tip tip--pill c-mint"></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── The old way vs the Tipsona way ─────────────────────────── -->
+<section class="swap on-dark" id="product" aria-labelledby="swap-title" data-swap>
+  <div class="container swap__grid">
+    <div class="swap__copy">
+      <div class="swap__before" data-swap-before>
+        <p class="tab-label"><span class="tip tip--circle c-flame" aria-hidden="true"></span>The old way</p>
+        <h2 class="h2" id="swap-title" style="margin-top:22px" data-split>Selling shouldn't feel like a second job.</h2>
+        <p class="lede" style="margin-top:22px">You made something worth buying. Then your evenings go to confirming transfers, sending files one by one and replying “I didn’t get it”.</p>
+      </div>
+      <div class="swap__after" data-swap-after>
+        <p class="tab-label"><span class="tip tip--star c-sun" aria-hidden="true"></span>The Tipsona way</p>
+        <p class="h3">Customers pay. Files arrive. You get the alert. <em>In 31 seconds.</em></p>
+        <div><a class="btn btn--flame" href="#how">See how it works<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-down"/></svg></a></div>
+      </div>
+    </div>
+
+    <div class="swap__stage">
+      <div class="chat" data-chat role="img" aria-label="An example chat where a customer waits more than twelve hours to receive a ₦7,500 budget planner after paying by bank transfer">
+        <div class="chat__head" aria-hidden="true">
+          <img src="assets/img/av-amara.webp" width="160" height="160" alt="">
+          <div><b>Chioma E.</b><span>Customer · last seen 21:47</span></div>
+        </div>
+        <div class="msg msg--them" aria-hidden="true">Hi! Is the budget planner still available?<time>09:12</time></div>
+        <div class="msg msg--me" aria-hidden="true">Yes o! It’s ₦7,500. Send to 0123 456 789 and share your receipt.<time>09:48</time></div>
+        <div class="msg msg--them" aria-hidden="true">Sent! 🙏<span class="msg__file"><svg class="i"><use href="#i-paperclip"/></svg>transfer-receipt.jpg</span><time>10:05</time></div>
+        <div class="msg msg--me" aria-hidden="true">Sorry, I was in class. Let me confirm with my bank…<time>12:31</time></div>
+        <div class="msg msg--them" aria-hidden="true">Hello?? Did you see it?<time>14:02</time></div>
+        <div class="msg msg--me" aria-hidden="true">Seen! Sending it now<span class="msg__file"><svg class="i"><use href="#i-paperclip"/></svg>budget-planner.pdf</span><time>14:10</time></div>
+        <div class="msg msg--them msg--angry" aria-hidden="true">The file won’t open on my phone 😩<time>21:47</time></div>
+        <p class="swap__clock" aria-hidden="true"><svg class="i"><use href="#i-clock"/></svg><b>12 hrs 35 min</b> for one ₦7,500 sale</p>
+      </div>
+
+      <article class="order-card" data-order aria-label="The same sale on Tipsona: order TPS-24817 paid and delivered in 31 seconds">
+        <div class="order-card__top">
+          <span class="order-card__id">Order #TPS-24817</span>
+          <span class="pill pill--success pill--dot">Paid · Delivered</span>
+        </div>
+        <div class="order-card__prod">
+          <span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-template"/></svg></span>
+          <div><b>Naira Budget Planner 2026</b><span>Chioma E. · chioma.e@gmail.com</span></div>
+          <span class="price">₦7,500</span>
+        </div>
+        <ol class="tl">
+          <li class="tl-row"><time>21:14:02</time><span class="dot"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span>Checkout started <small>· guest</small></span></li>
+          <li class="tl-row"><time>21:14:31</time><span class="dot"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span>Payment verified <small>· Paystack</small></span></li>
+          <li class="tl-row"><time>21:14:32</time><span class="dot"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span>File delivered <small>· secure link</small></span></li>
+          <li class="tl-row"><time>21:14:33</time><span class="dot"><svg class="i" aria-hidden="true"><use href="#i-check"/></svg></span><span>Receipt emailed <small>· to buyer</small></span></li>
+        </ol>
+        <div class="order-card__foot"><span>Added to your balance</span><b>₦7,012.50</b></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── How it works ─────────────────────────── -->
+<section class="section steps" id="how" aria-labelledby="how-title">
+  <div class="container">
+    <header class="section-head section-head--split">
+      <div style="display:grid;gap:22px">
+        <p class="tab-label"><span class="tip tip--star c-sun" aria-hidden="true"></span>How it works</p>
+        <h2 class="h2" id="how-title" data-split>From idea to first sale in minutes.</h2>
+      </div>
+      <p class="lede">Three steps, no website, no payment setup. If you can post on Instagram, you can open a Tipsona store tonight.</p>
+    </header>
+
+    <div class="steps__rail" aria-hidden="true"><i data-rail></i></div>
+    <ol class="steps__list">
+      <li class="step" data-step="claim" data-reveal>
+        <div class="step__art" aria-hidden="true">
+          <div class="art-claim">
+            <div class="art-url"><span class="base">tipsona.com/@</span><span class="typed" data-typed="adaeze">adaeze</span><span class="caret"></span><span class="ok" data-ok><svg class="i"><use href="#i-check-circle"/></svg></span></div>
+            <div class="art-mini-store" data-pop>
+              <img class="av" src="assets/img/av-sade.webp" width="160" height="160" alt="">
+              <div class="lines"><i></i><i></i><i></i></div>
+              <span class="tip tip--arch c-flame"></span>
+            </div>
+          </div>
+        </div>
+        <p class="step__num"><span class="tip tip--arch c-forest" aria-hidden="true"></span>Step 01</p>
+        <h3>Claim your link</h3>
+        <p>Pick a username, add your photo and bio. Your storefront is live at tipsona.com/@you straight away.</p>
+      </li>
+      <li class="step" data-step="upload" data-reveal>
+        <div class="step__art" aria-hidden="true">
+          <div class="art-upload">
+            <div class="art-drop">
+              <div class="art-file" data-drop><span class="icon-tile"><svg class="i"><use href="#i-file"/></svg></span><div><b>naira-budget-planner.pdf</b><span>4.2 MB · PDF</span></div></div>
+              <div class="art-bar"><i data-bar></i></div>
+            </div>
+            <div class="art-price"><span>Price</span><b>₦7,500</b><span class="pill pill--success pill--dot" data-pop>Published</span></div>
+          </div>
+        </div>
+        <p class="step__num"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Step 02</p>
+        <h3>Add your product</h3>
+        <p>Upload a PDF, video, template or ZIP file. Set your price in naira and hit publish.</p>
+      </li>
+      <li class="step" data-step="paid" data-reveal>
+        <div class="step__art" aria-hidden="true">
+          <div class="art-paid">
+            <div class="art-socials"><span><svg class="i"><use href="#i-instagram"/></svg></span><span><svg class="i"><use href="#i-tiktok"/></svg></span><span><svg class="i"><use href="#i-chat"/></svg></span><span><svg class="i"><use href="#i-xsocial"/></svg></span></div>
+            <div class="art-note" data-note><span class="icon-tile"><svg class="i"><use href="#i-naira"/></svg></span><div><b>₦7,500</b> <span>Budget Planner</span></div><time>21:14</time></div>
+            <div class="art-note" data-note><span class="icon-tile"><svg class="i"><use href="#i-naira"/></svg></span><div><b>₦12,000</b> <span>Starter Kit</span></div><time>21:40</time></div>
+            <div class="art-note" data-note><span class="icon-tile"><svg class="i"><use href="#i-naira"/></svg></span><div><b>₦25,000</b> <span>Masterclass</span></div><time>22:03</time></div>
+            <div class="art-total"><span>Tonight</span><b data-count="44500" data-prefix="₦">₦44,500</b></div>
+          </div>
+        </div>
+        <p class="step__num"><span class="tip tip--pill c-mint" aria-hidden="true"></span>Step 03</p>
+        <h3>Share it and get paid</h3>
+        <p>Post your link on Instagram, TikTok or WhatsApp. Buyers pay by card or bank transfer and get their files instantly.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Who it's for ─────────────────────────── -->
+<section class="section personas" id="creators" aria-labelledby="personas-title" data-personas>
+  <div class="container personas__grid">
+    <div class="personas__intro">
+      <p class="tab-label"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Who it’s for</p>
+      <h2 class="sr-only" id="personas-title">Built for people who know things</h2>
+      <p class="lede">Built for people who know things. Pick yours and see what they sell.</p>
+      <div class="personas__list" role="tablist" aria-label="Creator types">
+        <button class="persona-tab" role="tab" id="pt-0" aria-selected="true" aria-controls="pp-0" tabindex="0"><sup>01</sup>Creators<span class="tip tip--circle c-flame" aria-hidden="true"></span></button>
+        <button class="persona-tab" role="tab" id="pt-1" aria-selected="false" aria-controls="pp-1" tabindex="-1"><sup>02</sup>Educators<span class="tip tip--star c-sun" aria-hidden="true"></span></button>
+        <button class="persona-tab" role="tab" id="pt-2" aria-selected="false" aria-controls="pp-2" tabindex="-1"><sup>03</sup>Coaches<span class="tip tip--diamond c-blush" aria-hidden="true"></span></button>
+        <button class="persona-tab" role="tab" id="pt-3" aria-selected="false" aria-controls="pp-3" tabindex="-1"><sup>04</sup>Consultants<span class="tip tip--square c-lilac" aria-hidden="true"></span></button>
+        <button class="persona-tab" role="tab" id="pt-4" aria-selected="false" aria-controls="pp-4" tabindex="-1"><sup>05</sup>Trainers<span class="tip tip--pill c-mint" aria-hidden="true"></span></button>
+        <button class="persona-tab" role="tab" id="pt-5" aria-selected="false" aria-controls="pp-5" tabindex="-1"><sup>06</sup>Entrepreneurs<span class="tip tip--arch c-forest" aria-hidden="true"></span></button>
+      </div>
+    </div>
+
+    <div class="personas__panels">
+      <div class="persona is-active" id="pp-0" role="tabpanel" aria-labelledby="pt-0">
+        <figure class="persona__photo"><img src="assets/img/video-creators.webp" width="900" height="1125" loading="lazy" alt="Two video creators setting up a camera on a tripod outdoors"></figure>
+        <div class="persona__card">
+          <p class="persona__kicker"><span>Example store</span><span>@framesbyotieno</span></p>
+          <p class="persona__what">LUTs, presets and stock footage</p>
+          <ul class="mini-list">
+            <li><span class="prod__thumb cover-flame"><svg class="i" style="--acc:var(--sun)" aria-hidden="true"><use href="#i-video"/></svg></span>Lagos Golden Hour LUTs<b>₦9,000</b></li>
+            <li><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-palette"/></svg></span>Street Portrait Presets<b>₦6,500</b></li>
+            <li><span class="prod__thumb cover-ink"><svg class="i" style="--acc:#3A312A" aria-hidden="true"><use href="#i-video"/></svg></span>Afrobeats B-roll Pack<b>₦15,000</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="persona" id="pp-1" role="tabpanel" aria-labelledby="pt-1" hidden>
+        <figure class="persona__photo"><img src="assets/img/educator.webp" width="900" height="1125" loading="lazy" alt="A smiling teacher leaning against a wall covered in handwritten notes"></figure>
+        <div class="persona__card">
+          <p class="persona__kicker"><span>Example store</span><span>@missamara.teaches</span></p>
+          <p class="persona__what">Lesson notes, past questions and study guides</p>
+          <ul class="mini-list">
+            <li><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-file"/></svg></span>WAEC Physics Past Questions<b>₦3,000</b></li>
+            <li><span class="prod__thumb cover-forest"><svg class="i" style="--acc:var(--forest-3)" aria-hidden="true"><use href="#i-video"/></svg></span>JAMB Maths Crash Course<b>₦8,000</b></li>
+            <li><span class="prod__thumb cover-mint"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-book"/></svg></span>SS2 Chemistry Lesson Notes<b>₦2,500</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="persona" id="pp-2" role="tabpanel" aria-labelledby="pt-2" hidden>
+        <figure class="persona__photo"><img src="assets/img/coach.webp" width="900" height="1125" loading="lazy" alt="A career coach in a pinstripe blazer against a warm wooden wall"></figure>
+        <div class="persona__card">
+          <p class="persona__kicker"><span>Example store</span><span>@coachkemi</span></p>
+          <p class="persona__what">Workbooks, frameworks and programs</p>
+          <ul class="mini-list">
+            <li><span class="prod__thumb cover-blush"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-book"/></svg></span>90-Day Career Reset Workbook<b>₦12,000</b></li>
+            <li><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-file"/></svg></span>Salary Negotiation Scripts<b>₦6,000</b></li>
+            <li><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-video"/></svg></span>New Manager Program<b>₦35,000</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="persona" id="pp-3" role="tabpanel" aria-labelledby="pt-3" hidden>
+        <figure class="persona__photo"><img src="assets/img/consultant.webp" width="900" height="1125" loading="lazy" alt="A consultant smiling while working on a laptop in a bright office"></figure>
+        <div class="persona__card">
+          <p class="persona__kicker"><span>Example store</span><span>@ifeoma.hr</span></p>
+          <p class="persona__what">SOPs, checklists and proposal templates</p>
+          <ul class="mini-list">
+            <li><span class="prod__thumb cover-mint"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-template"/></svg></span>HR Policy Starter Pack<b>₦35,000</b></li>
+            <li><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-file"/></svg></span>Small Business Audit Checklist<b>₦9,500</b></li>
+            <li><span class="prod__thumb cover-flame"><svg class="i" style="--acc:var(--sun)" aria-hidden="true"><use href="#i-template"/></svg></span>Winning Proposal Template<b>₦15,000</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="persona" id="pp-4" role="tabpanel" aria-labelledby="pt-4" hidden>
+        <figure class="persona__photo"><img src="assets/img/trainer.webp" width="900" height="1125" loading="lazy" alt="Two fitness trainers flexing and laughing in bright sportswear"></figure>
+        <div class="persona__card">
+          <p class="persona__kicker"><span>Example store</span><span>@fitwithtoke</span></p>
+          <p class="persona__what">Training plans, meal plans and video programs</p>
+          <ul class="mini-list">
+            <li><span class="prod__thumb cover-flame"><svg class="i" style="--acc:var(--sun)" aria-hidden="true"><use href="#i-video"/></svg></span>12-Week Home Workout Plan<b>₦10,000</b></li>
+            <li><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-file"/></svg></span>Jollof-Friendly Meal Plan<b>₦5,000</b></li>
+            <li><span class="prod__thumb cover-ink"><svg class="i" style="--acc:#3A312A" aria-hidden="true"><use href="#i-video"/></svg></span>Core Strength Video Series<b>₦18,000</b></li>
+          </ul>
+        </div>
+      </div>
+      <div class="persona" id="pp-5" role="tabpanel" aria-labelledby="pt-5" hidden>
+        <figure class="persona__photo"><img src="assets/img/entrepreneur.webp" width="900" height="1125" loading="lazy" alt="A digital entrepreneur working on a laptop at a desk"></figure>
+        <div class="persona__card">
+          <p class="persona__kicker"><span>Example store</span><span>@builtbybisi</span></p>
+          <p class="persona__what">Toolkits, templates and guides</p>
+          <ul class="mini-list">
+            <li><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-template"/></svg></span>Freelancer Notion OS<b>₦15,000</b></li>
+            <li><span class="prod__thumb cover-blush"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-template"/></svg></span>Pitch Deck Template Pack<b>₦20,000</b></li>
+            <li><span class="prod__thumb cover-mint"><svg class="i" style="--acc:var(--paper)" aria-hidden="true"><use href="#i-mail"/></svg></span>Cold Email Swipe File<b>₦7,000</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Features ─────────────────────────── -->
+<section class="section features" aria-labelledby="features-title">
+  <div class="container">
+    <header class="section-head section-head--split">
+      <div style="display:grid;gap:22px">
+        <p class="tab-label"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Everything included</p>
+        <h2 class="h2" id="features-title" data-split>One home for your whole business.</h2>
+      </div>
+      <p class="lede">Storefront, checkout, delivery, analytics and payouts. Built to work together from your first product to your thousandth sale.</p>
+    </header>
+
+    <div class="bento">
+      <!-- Storefront themes -->
+      <article class="tile tile--forest tile--store on-dark" data-reveal>
+        <span class="icon-tile" style="background:rgba(255,246,236,.08);border-color:var(--forest-line);color:var(--cream);--acc:var(--forest-3)"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg></span>
+        <h3>A storefront that looks like you</h3>
+        <p>Pick a theme and a colour, then add your photo, bio and social links. No design skills needed.</p>
+        <div class="tile__ui themer" data-themer>
+          <div class="themer__controls">
+            <span class="swatch-label" id="theme-label">Theme</span>
+            <div class="seg" role="group" aria-labelledby="theme-label">
+              <button type="button" data-theme-btn="classic" aria-pressed="false">Classic</button>
+              <button type="button" data-theme-btn="modern" aria-pressed="true">Modern</button>
+              <button type="button" data-theme-btn="minimal" aria-pressed="false">Minimal</button>
+              <button type="button" data-theme-btn="bold" aria-pressed="false">Bold</button>
+            </div>
+            <span class="swatch-label" id="accent-label">Accent colour</span>
+            <div class="swatches" role="group" aria-labelledby="accent-label">
+              <button type="button" style="--sw:#FF5D02" data-accent="#FF5D02" data-accent-ink="#17120E" aria-pressed="true"><span class="sr-only">Flame</span></button>
+              <button type="button" style="--sw:#CBB8FF" data-accent="#CBB8FF" data-accent-ink="#17120E" aria-pressed="false"><span class="sr-only">Lilac</span></button>
+              <button type="button" style="--sw:#FFC83D" data-accent="#FFC83D" data-accent-ink="#17120E" aria-pressed="false"><span class="sr-only">Sun</span></button>
+              <button type="button" style="--sw:#BDEBD3" data-accent="#BDEBD3" data-accent-ink="#0E3B2D" aria-pressed="false"><span class="sr-only">Mint</span></button>
+              <button type="button" style="--sw:#FFC9D6" data-accent="#FFC9D6" data-accent-ink="#17120E" aria-pressed="false"><span class="sr-only">Blush</span></button>
+            </div>
+          </div>
+          <div class="phone" role="img" aria-label="Preview of a storefront in the selected theme and colour">
+            <div class="phone__screen" aria-hidden="true">
+              <div class="phone__island"></div>
+              <div class="store" data-theme="modern" data-themed-store>
+                <div class="phone__status"><span>9:41</span><span><svg class="i"><use href="#i-signal"/></svg><svg class="i"><use href="#i-battery"/></svg></span></div>
+                <div class="store__url"><svg class="i"><use href="#i-lock"/></svg>tipsona.com/@missamara</div>
+                <div class="store__cover">
+                  <span class="tip tip--star c-cream" style="--s:8cqw;left:12%;top:22%"></span>
+                  <span class="tip tip--circle c-ink" style="--s:5cqw;right:16%;top:30%"></span>
+                  <span class="tip tip--square c-cream" style="--s:5cqw;left:40%;top:62%"></span>
+                </div>
+                <div class="store__head">
+                  <img class="store__avatar" src="assets/img/av-zara.webp" width="160" height="160" alt="">
+                  <p class="store__name">Amara Uwase</p>
+                  <p class="store__bio">Physics and maths tutor. Notes that make exams make sense.</p>
+                </div>
+                <div class="store__tabs"><span>All</span><span>Past questions</span><span>Courses</span></div>
+                <div class="store__list">
+                  <div class="prod"><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-file"/></svg></span><span class="prod__meta"><span class="prod__title">WAEC Physics Past Questions</span><span class="prod__type">PDF · 212 pages</span></span><span class="prod__price">₦3,000</span></div>
+                  <div class="prod"><span class="prod__thumb cover-forest"><svg class="i" style="--acc:var(--forest-3)"><use href="#i-video"/></svg></span><span class="prod__meta"><span class="prod__title">JAMB Maths Crash Course</span><span class="prod__type">Video · 9 lessons</span></span><span class="prod__price">₦8,000</span></div>
+                </div>
+                <div class="store__buy">Buy now · ₦3,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Checkout -->
+      <article class="tile tile--checkout" data-reveal>
+        <span class="icon-tile acc-tint"><svg class="i" aria-hidden="true"><use href="#i-card"/></svg></span>
+        <h3>Checkout in one step</h3>
+        <p>Guest checkout with just a name and email. Payments are processed securely by Paystack.</p>
+        <div class="tile__ui">
+          <div class="checkout-ui" aria-hidden="true">
+            <div class="checkout-ui__row"><span style="display:flex;align-items:center;gap:10px"><span class="prod__thumb cover-sun" style="width:36px;height:36px;border-radius:9px"><svg class="i" style="--acc:var(--paper);width:18px;height:18px"><use href="#i-template"/></svg></span>Naira Budget Planner 2026</span><b>₦7,500</b></div>
+            <div class="fake-input"><svg class="i"><use href="#i-users"/></svg>Chioma Eze</div>
+            <div class="fake-input"><svg class="i"><use href="#i-mail"/></svg>chioma.e@gmail.com</div>
+            <span class="btn btn--ink btn--block" style="min-height:46px">Pay ₦7,500<svg class="i i-go"><use href="#i-arrow-right"/></svg></span>
+            <div class="trust-row"><span><svg class="i"><use href="#i-check"/></svg>Secure payment</span><span><svg class="i"><use href="#i-check"/></svg>Instant delivery</span><span><svg class="i"><use href="#i-check"/></svg>SSL protected</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Delivery -->
+      <article class="tile tile--delivery" data-reveal>
+        <span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg></span>
+        <h3>Delivered the moment they pay</h3>
+        <p>Buyers get instant access, an email with their files and a copy in their library. You never send a file by hand.</p>
+        <div class="tile__ui" aria-hidden="true">
+          <div class="delivery-ui">
+            <div class="node"><span class="icon-tile acc-flame" style="background:var(--mint-tint);border:0"><svg class="i"><use href="#i-naira"/></svg></span>Paid</div>
+            <div class="wire"><span class="packet" data-packet><svg class="i"><use href="#i-file"/></svg></span></div>
+            <div class="node"><span class="icon-tile acc-lilac" style="background:var(--lilac-tint);border:0"><svg class="i"><use href="#i-library"/></svg></span>Library</div>
+          </div>
+          <div class="link-expiry"><span>Private download link</span><span>expires in <b data-countdown="599">09:59</b></span></div>
+        </div>
+      </article>
+
+      <!-- Analytics -->
+      <article class="tile tile--lilac tile--analytics" data-reveal>
+        <span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span>
+        <h3>See what’s selling</h3>
+        <p>Revenue, orders, conversion and top products, updated as sales come in.</p>
+        <div class="tile__ui" aria-hidden="true">
+          <div class="bars" data-bars>
+            <span style="--h:34%"></span><span style="--h:55%"></span><span style="--h:45%"></span><span style="--h:74%"></span><span style="--h:63%"></span><span class="is-top" style="--h:100%" data-v="₦62,000"></span><span style="--h:78%"></span>
+          </div>
+          <div class="bars-x"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+        </div>
+      </article>
+
+      <!-- Payouts -->
+      <article class="tile tile--mint tile--payout" data-reveal>
+        <span class="icon-tile acc-mint"><svg class="i" aria-hidden="true"><use href="#i-wallet"/></svg></span>
+        <h3>Withdraw to your bank</h3>
+        <p>Track available and pending balance, then request a payout in a few taps.</p>
+        <div class="tile__ui payout-ui" aria-hidden="true">
+          <span class="swatch-label" style="color:var(--muted)">Available balance</span>
+          <span class="payout-ui__bal num" data-count="184500" data-prefix="₦">₦184,500</span>
+          <div class="payout-ui__row"><span><svg class="i"><use href="#i-clock"/></svg>Pending</span><b>₦32,000</b></div>
+          <div class="payout-ui__row"><span><svg class="i"><use href="#i-bank"/></svg>Payout to •••• 4821</span><span class="pill pill--success">Completed</span></div>
+        </div>
+      </article>
+
+      <!-- Library -->
+      <article class="tile tile--library" data-reveal>
+        <span class="icon-tile acc-blush"><svg class="i" aria-hidden="true"><use href="#i-library"/></svg></span>
+        <h3>A library buyers come back to</h3>
+        <p>Every purchase, receipt and download in one place for your customers.</p>
+        <div class="tile__ui library-ui" aria-hidden="true">
+          <div class="lib-item"><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-template"/></svg></span><div><b>Naira Budget Planner</b><span>Bought 12 Mar</span></div><span class="dl"><svg class="i"><use href="#i-download"/></svg></span></div>
+          <div class="lib-item"><span class="prod__thumb cover-forest"><svg class="i" style="--acc:var(--forest-3)"><use href="#i-video"/></svg></span><div><b>Money Habits Masterclass</b><span>6 lessons · watch now</span></div><span class="dl"><svg class="i"><use href="#i-arrow-right"/></svg></span></div>
+        </div>
+      </article>
+
+      <!-- SEO -->
+      <article class="tile tile--sun tile--seo" data-reveal>
+        <span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-search"/></svg></span>
+        <h3>Found on Google, shared everywhere</h3>
+        <p>Every storefront and product page is ready for search and looks sharp when shared on WhatsApp or X.</p>
+        <div class="tile__ui" aria-hidden="true">
+          <div class="serp">
+            <div class="serp__url"><span class="serp__fav"><svg class="logo-mark" viewBox="-4.4 0 83.1 83.1" style="width:13px;height:13px;fill:#17120E"><use href="#logo-mark"/></svg></span><span>tipsona.com › @adaeze › naira-budget-planner-2026</span></div>
+            <p class="serp__title">Naira Budget Planner 2026 by Adaeze Okoro</p>
+            <p class="serp__desc">Plan every naira of your salary in 20 minutes a month. Notion and printable PDF, delivered instantly after payment.</p>
+            <div class="serp__rich"><span>₦7,500</span><span>In stock</span><span>Digital download</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Email -->
+      <article class="tile tile--blush tile--email" data-reveal>
+        <span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg></span>
+        <h3>Receipts that send themselves</h3>
+        <p>Order confirmations, receipts and sale alerts go out automatically.</p>
+        <div class="tile__ui mail-ui" aria-hidden="true">
+          <div class="mail-ui__from"><span class="icon-tile icon-tile--sm" style="background:var(--flame);border:0;color:var(--ink)"><svg class="logo-mark" viewBox="-4.4 0 83.1 83.1" style="width:18px;height:18px;fill:currentColor"><use href="#logo-mark"/></svg></span><div><b>Tipsona</b> <span>· receipts@tipsona.com</span></div></div>
+          <p class="mail-ui__subj">Your download is ready: Naira Budget Planner 2026</p>
+          <div class="receipt-lines"><div><span>Order</span><span>#TPS-24817</span></div><div><span>Paid</span><span>₦7,500.00</span></div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Dashboard ─────────────────────────── -->
+<section class="section showcase on-dark" aria-labelledby="showcase-title">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="tab-label"><span class="tip tip--star c-sun" aria-hidden="true"></span>Your dashboard</p>
+      <h2 class="h2" id="showcase-title" data-split>“How is my business doing today?” Answered at a glance.</h2>
+      <p class="lede">Your sales, balance and best sellers on one screen, from the moment you log in.</p>
+    </header>
+
+    <div class="dash-wrap" data-dash-wrap tabindex="0" role="region" aria-label="Dashboard preview">
+      <div class="dash" data-dash role="img" aria-label="Example seller dashboard: today’s revenue ₦48,500, available balance ₦184,500, 5 orders today and a 4.8% conversion rate, with a weekly revenue chart peaking on Saturday at ₦62,000, recent orders and top products">
+        <div class="dash__chrome" aria-hidden="true"><span class="dash__dots"><i></i><i></i><i></i></span><span class="dash__addr">tipsona.com/dashboard</span></div>
+        <div class="dash__body" aria-hidden="true">
+          <aside class="dash__side">
+            <span class="brand"><svg class="logo" viewBox="0 0 337 84" style="height:20px"><use href="#logo"/></svg></span>
+            <span class="dash__nav is-on"><svg class="i"><use href="#i-home"/></svg>Home</span>
+            <span class="dash__nav"><svg class="i"><use href="#i-box"/></svg>Products</span>
+            <span class="dash__nav"><svg class="i"><use href="#i-bag"/></svg>Orders</span>
+            <span class="dash__nav"><svg class="i"><use href="#i-users"/></svg>Customers</span>
+            <span class="dash__nav"><svg class="i"><use href="#i-chart"/></svg>Analytics</span>
+            <span class="dash__nav"><svg class="i"><use href="#i-wallet"/></svg>Payouts</span>
+            <span class="dash__nav"><svg class="i"><use href="#i-store"/></svg>Storefront</span>
+            <span class="dash__nav"><svg class="i"><use href="#i-sliders"/></svg>Settings</span>
+            <div class="upgrade"><b>Go Pro</b><span style="font-size:12px;color:var(--ink-2)">Unlimited products and lower fees.</span><span class="btn btn--flame" style="min-height:34px;font-size:12px;padding:0 12px">Upgrade</span></div>
+          </aside>
+          <div class="dash__main">
+            <div class="dash__top">
+              <p class="dash__hello">Good evening, Adaeze<span>Sunday, 29 March · <span class="dash__live" style="display:inline-flex"><i></i>Live</span></span></p>
+              <div class="dash__range"><span>Today</span><span class="is-on">Week</span><span>Month</span><span>Year</span></div>
+            </div>
+            <div class="kpis">
+              <div class="kpi kpi--flame"><span class="kpi__label">Today’s revenue<span class="icon-tile"><svg class="i"><use href="#i-naira"/></svg></span></span><span class="kpi__val" data-count="48500" data-prefix="₦">₦48,500</span><span class="kpi__delta"><svg class="i"><use href="#i-trend"/></svg>18% vs last Sunday</span></div>
+              <div class="kpi"><span class="kpi__label">Available balance<span class="icon-tile"><svg class="i"><use href="#i-wallet"/></svg></span></span><span class="kpi__val" data-count="184500" data-prefix="₦">₦184,500</span><span class="kpi__delta" style="color:var(--muted)">₦32,000 pending</span></div>
+              <div class="kpi"><span class="kpi__label">Orders today<span class="icon-tile"><svg class="i"><use href="#i-bag"/></svg></span></span><span class="kpi__val" data-count="5">5</span><span class="kpi__delta"><svg class="i"><use href="#i-trend"/></svg>2 more than usual</span></div>
+              <div class="kpi"><span class="kpi__label">Conversion rate<span class="icon-tile"><svg class="i"><use href="#i-chart"/></svg></span></span><span class="kpi__val" data-count="4.8" data-decimals="1" data-suffix="%">4.8%</span><span class="kpi__delta"><svg class="i"><use href="#i-trend"/></svg>0.6 pts this week</span></div>
+            </div>
+            <div class="dash__row">
+              <div class="panel">
+                <div class="panel__head"><span class="panel__title">Revenue this week</span><span class="panel__meta">₦278,500 total</span></div>
+                <svg class="chart" viewBox="0 0 560 190" data-chart>
+                  <defs><linearGradient id="dashFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF5D02" stop-opacity=".22"/><stop offset="1" stop-color="#FF5D02" stop-opacity="0"/></linearGradient></defs>
+                  <line class="grid-line" x1="40" y1="20" x2="560" y2="20"/><line class="grid-line" x1="40" y1="70" x2="560" y2="70"/><line class="grid-line" x1="40" y1="120" x2="560" y2="120"/><line class="grid-line" x1="40" y1="170" x2="560" y2="170"/>
+                  <text class="axis" x="0" y="24">₦75k</text><text class="axis" x="0" y="74">₦50k</text><text class="axis" x="0" y="124">₦25k</text><text class="axis" x="0" y="174">₦0</text>
+                  <path class="area" d="M60 128 C95 120,120 102,139 102 C160 102,190 114,218 114 C250 114,270 78,297 78 C325 78,350 92,376 92 C405 92,430 46,455 46 C480 46,505 73,534 73 L534 170 L60 170 Z"/>
+                  <path class="line" data-line d="M60 128 C95 120,120 102,139 102 C160 102,190 114,218 114 C250 114,270 78,297 78 C325 78,350 92,376 92 C405 92,430 46,455 46 C480 46,505 73,534 73"/>
+                  <circle class="pt" cx="60" cy="128" r="4"/><circle class="pt" cx="139" cy="102" r="4"/><circle class="pt" cx="218" cy="114" r="4"/><circle class="pt" cx="297" cy="78" r="4"/><circle class="pt" cx="376" cy="92" r="4"/><circle class="pt" cx="455" cy="46" r="4"/><circle class="pt-last" cx="534" cy="73" r="6"/>
+                  <g data-chart-tip><rect class="tip-bg" x="418" y="12" width="74" height="24" rx="7"/><text class="tip-txt" x="455" y="28" text-anchor="middle">₦62,000</text></g>
+                  <text class="axis" x="60" y="188" text-anchor="middle">Mon</text><text class="axis" x="139" y="188" text-anchor="middle">Tue</text><text class="axis" x="218" y="188" text-anchor="middle">Wed</text><text class="axis" x="297" y="188" text-anchor="middle">Thu</text><text class="axis" x="376" y="188" text-anchor="middle">Fri</text><text class="axis" x="455" y="188" text-anchor="middle">Sat</text><text class="axis" x="534" y="188" text-anchor="middle">Sun</text>
+                </svg>
+                <div class="chart-stats"><div><span>Store visits</span><b>646</b></div><div><span>Orders</span><b>31</b></div><div><span>Downloads</span><b>58</b></div></div>
+              </div>
+              <div class="panel">
+                <div class="panel__head"><span class="panel__title">Balance</span><span class="panel__meta">Cleared funds</span></div>
+                <div class="balance"><small>Available to withdraw</small><b>₦184,500</b><span class="btn btn--flame">Withdraw to •••• 4821</span></div>
+                <div class="panel__head" style="margin-top:4px"><span class="panel__title">Top products</span><span class="panel__meta">All time</span></div>
+                <ul class="top-prod">
+                  <li><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-template"/></svg></span><span><b>Naira Budget Planner</b><small>214 sales</small></span><span class="val">₦1.6M</span><span class="meter"><i style="--w:100%" data-meter></i></span></li>
+                  <li><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-book"/></svg></span><span><b>Side-Hustle Starter Kit</b><small>96 sales</small></span><span class="val">₦1.15M</span><span class="meter"><i style="--w:72%" data-meter></i></span></li>
+                  <li><span class="prod__thumb cover-forest"><svg class="i" style="--acc:var(--forest-3)"><use href="#i-video"/></svg></span><span><b>Money Habits Masterclass</b><small>41 sales</small></span><span class="val">₦1.03M</span><span class="meter"><i style="--w:64%" data-meter></i></span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel__head"><span class="panel__title">Recent orders</span><span class="panel__meta">Today</span></div>
+              <table class="orders">
+                <thead><tr><th>Order</th><th>Customer</th><th>Product</th><th>Status</th><th>Amount</th></tr></thead>
+                <tbody>
+                  <tr><td class="mono">#TPS-24818</td><td><span class="who"><img src="assets/img/av-musa.webp" width="160" height="160" alt="" loading="lazy">Musa B.</span></td><td>Naira Budget Planner</td><td><span class="pill pill--warning pill--dot">Pending</span></td><td class="amt">₦7,500</td></tr>
+                  <tr><td class="mono">#TPS-24817</td><td><span class="who"><img src="assets/img/av-amara.webp" width="160" height="160" alt="" loading="lazy">Chioma E.</span></td><td>Naira Budget Planner</td><td><span class="pill pill--success pill--dot">Paid</span></td><td class="amt">₦7,500</td></tr>
+                  <tr><td class="mono">#TPS-24816</td><td><span class="who"><img src="assets/img/av-tobi.webp" width="160" height="160" alt="" loading="lazy">Tunde A.</span></td><td>Money Habits Masterclass</td><td><span class="pill pill--success pill--dot">Paid</span></td><td class="amt">₦25,000</td></tr>
+                  <tr><td class="mono">#TPS-24815</td><td><span class="who"><img src="assets/img/av-zara.webp" width="160" height="160" alt="" loading="lazy">Wanjiru K.</span></td><td>Side-Hustle Starter Kit</td><td><span class="pill pill--success pill--dot">Paid</span></td><td class="amt">₦12,000</td></tr>
+                  <tr><td class="mono">#TPS-24814</td><td><span class="who"><img src="assets/img/av-kofi.webp" width="160" height="160" alt="" loading="lazy">Kofi M.</span></td><td>Savings Challenge Tracker</td><td><span class="pill pill--success pill--dot">Paid</span></td><td class="amt">₦4,000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="dash-hint" aria-hidden="true"><svg class="i"><use href="#i-arrow-right"/></svg>Swipe to explore the dashboard</p>
+    <ul class="showcase__notes">
+      <li data-reveal><span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg></span><h3>Sale alerts, instantly</h3><p>Know the second someone buys, with the product, amount and buyer.</p></li>
+      <li data-reveal><span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span><h3>Best sellers at a glance</h3><p>See which products earn the most and where your buyers come from.</p></li>
+      <li data-reveal><span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-bank"/></svg></span><h3>Payouts in a few taps</h3><p>Withdraw cleared earnings to your verified bank account whenever you like.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Trust ─────────────────────────── -->
+<section class="section trust" aria-labelledby="trust-title">
+  <div class="container">
+    <div class="trust__lock" aria-hidden="true" data-lock>
+      <span class="tip tip--arch c-ink" style="--s:58%;left:21%;top:0;background:transparent;border:clamp(8px,1vw,12px) solid var(--ink);border-bottom:0"></span>
+      <span class="tip tip--square c-flame" style="--s:100%;left:0;top:38%;height:62%;border-radius:22%"></span>
+      <span class="tip tip--diamond c-ink" style="--s:24%;left:38%;top:58%"></span>
+    </div>
+    <h2 class="trust__statement" id="trust-title" data-words>Every payment verified. Every file protected. Every naira accounted for.</h2>
+    <p class="trust__meta" aria-hidden="true"><span><span class="tip tip--diamond c-ink" style="--s:9px"></span>Payments by Paystack</span><span><span class="tip tip--diamond c-ink" style="--s:9px"></span>Encrypted in transit</span><span><span class="tip tip--diamond c-ink" style="--s:9px"></span>Verified payouts</span></p>
+    <ul class="trust__grid">
+      <li data-reveal><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><h3>Verified payments</h3><p>Buyers get access only after the payment is confirmed. No screenshots, no guesswork.</p></li>
+      <li data-reveal><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg></span><h3>Protected downloads</h3><p>Files are delivered through private links that expire after a few minutes, so they can’t be passed around.</p></li>
+      <li data-reveal><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-receipt"/></svg></span><h3>Clear records</h3><p>Every order gets a receipt, and every naira in your balance has a matching transaction.</p></li>
+      <li data-reveal><span class="icon-tile acc-mint"><svg class="i" aria-hidden="true"><use href="#i-bank"/></svg></span><h3>Safe payouts</h3><p>Withdrawals only go to a bank account you’ve verified, after a quick identity check.</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Pricing ─────────────────────────── -->
+<section class="section pricing" id="pricing" aria-labelledby="pricing-title">
+  <div class="container">
+    <header class="section-head section-head--center">
+      <p class="tab-label"><span class="tip tip--pill c-mint" aria-hidden="true"></span>Pricing</p>
+      <h2 class="h2" id="pricing-title" data-split>Start free. Upgrade when you grow.</h2>
+      <div class="billing" role="radiogroup" aria-label="Billing period" data-billing>
+        <button type="button" role="radio" aria-checked="true" data-period="month">Monthly</button>
+        <button type="button" role="radio" aria-checked="false" data-period="year" tabindex="-1">Yearly <span class="save">2 months free</span></button>
+      </div>
+    </header>
+
+    <div class="plans">
+      <article class="plan" data-reveal>
+        <div class="plan__head">
+          <p class="plan__name"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Free</p>
+          <p class="plan__for">For first-time creators, students and side projects.</p>
+        </div>
+        <div>
+          <p class="plan__price"><span class="plan__amt">₦0</span><span class="plan__per">forever</span></p>
+          <p class="plan__note">No card needed</p>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Your own storefront</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Up to 10 products</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Instant, automatic delivery</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Basic analytics and SEO</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Standard transaction fee</li>
+        </ul>
+        <a class="btn btn--ghost btn--block plan__cta" href="#claim">Start for free</a>
+      </article>
+
+      <article class="plan plan--featured on-dark" data-reveal>
+        <span class="pill pill--flame plan__flag">Best for growing creators</span>
+        <div class="plan__head">
+          <p class="plan__name"><span class="tip tip--star c-sun" aria-hidden="true"></span>Pro</p>
+          <p class="plan__for">For coaches, educators and full-time creators.</p>
+        </div>
+        <div>
+          <p class="plan__price"><span class="plan__amt" data-price-month="₦5,000" data-price-year="₦50,000">₦5,000</span><span class="plan__per" data-per>/month</span></p>
+          <p class="plan__note" data-note-month="Billed monthly · cancel anytime" data-note-year="Billed yearly · you save ₦10,000">Billed monthly · cancel anytime</p>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Everything in Free</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Unlimited products</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Advanced analytics</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Coupons and discounts</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Lower transaction fees</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Priority support</li>
+        </ul>
+        <a class="btn btn--flame btn--block plan__cta" href="#claim">Start with Pro<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </article>
+
+      <article class="plan" data-reveal>
+        <div class="plan__head">
+          <p class="plan__name"><span class="tip tip--arch c-forest" aria-hidden="true"></span>Business</p>
+          <p class="plan__for">For agencies, schools and training companies.</p>
+        </div>
+        <div>
+          <p class="plan__price"><span class="plan__amt" data-price-month="₦15,000" data-price-year="₦150,000">₦15,000</span><span class="plan__per" data-per>/month</span></p>
+          <p class="plan__note" data-note-month="Billed monthly · cancel anytime" data-note-year="Billed yearly · you save ₦30,000">Billed monthly · cancel anytime</p>
+        </div>
+        <ul>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Everything in Pro</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Team members</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Full custom branding</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Advanced reporting</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Dedicated support</li>
+          <li class="soon"><svg class="i" aria-hidden="true"><use href="#i-clock"/></svg>Custom domain, coming soon</li>
+        </ul>
+        <a class="btn btn--ink btn--block plan__cta" href="#claim">Start with Business</a>
+      </article>
+    </div>
+
+    <div class="pricing__foot">
+      <div class="receipt" data-reveal>
+        <p class="receipt__title"><span>Where a ₦10,000 sale goes</span><span>Example</span></p>
+        <p class="receipt__row"><span>Product price</span><span>₦10,000.00</span></p>
+        <p class="receipt__row"><span>Tipsona fee (5%)</span><span>−₦500.00</span></p>
+        <p class="receipt__row"><span>Payment processing</span><span>−₦150.00</span></p>
+        <p class="receipt__row receipt__total"><span>You keep</span><b>₦9,350.00</b></p>
+        <p class="receipt__note">Illustrative figures on the Free plan. Fees are shown before every payout.</p>
+      </div>
+      <div style="display:grid;gap:16px;justify-items:start">
+        <p class="h4" style="max-width:22ch">No hidden charges. You see the fee on every order before you withdraw.</p>
+        <a class="link-arrow" href="pricing.html">Compare every feature<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── FAQ ─────────────────────────── -->
+<section class="section faq" id="faq" aria-labelledby="faq-title">
+  <div class="container faq__grid">
+    <div class="faq__intro">
+      <p class="tab-label"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>FAQ</p>
+      <h2 class="h2" id="faq-title" data-split>Questions, answered.</h2>
+      <p class="lede">Can’t find what you need? Write to us and a real person will reply.</p>
+      <div class="copy-chip"><span>hello@tipsona.com</span><button type="button" data-copy="hello@tipsona.com"><svg class="i" aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button></div>
+    </div>
+    <div class="faq__list" data-faq>
+      <details class="qa"><summary>What can I sell on Tipsona?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>Anything digital a buyer can download: e-books, PDFs, templates, ZIP files, images, audio and video. Physical products aren’t supported.</p></div></details>
+      <details class="qa"><summary>How do my customers receive their files?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>As soon as a payment is confirmed, buyers get instant access on the confirmation page, an email with their download link and a permanent copy in their Tipsona library. You never send a file by hand.</p></div></details>
+      <details class="qa"><summary>How and when do I get paid?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>Payments are processed by Paystack and added to your Tipsona balance. Once your identity and bank account are verified, you can request a withdrawal from your dashboard at any time.</p></div></details>
+      <details class="qa"><summary>Do I need a website or technical skills?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>No. Your storefront lives at tipsona.com/@yourname and works on every phone. If you can post on Instagram, you can set up Tipsona.</p></div></details>
+      <details class="qa"><summary>Can people buy without creating an account?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>Yes. Guest checkout only asks for a name and email address. Buyers can create an account later to keep all their purchases in one library.</p></div></details>
+      <details class="qa"><summary>How do you stop people from sharing my files?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>Downloads never reveal where your file is stored. Each buyer gets a private link that expires after a few minutes, and a fresh one is created when they return to their library.</p></div></details>
+      <details class="qa"><summary>Is Tipsona free to use?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>Yes. The Free plan lets you publish up to 10 products with no monthly fee. Upgrade when you want unlimited products, lower fees or advanced analytics.</p></div></details>
+      <details class="qa"><summary>Can I use my own domain name?<span class="qa__icon" aria-hidden="true"><svg class="i"><use href="#i-plus"/></svg></span></summary><div class="qa__body"><p>Custom domains are coming soon for Pro and Business plans. Until then, your storefront lives at tipsona.com/@yourname.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Final CTA ─────────────────────────── -->
+<section class="section cta" aria-labelledby="cta-title" style="padding-top:0">
+  <div class="container">
+    <div class="cta__panel" data-reveal>
+      <span class="tip tip--star c-sun bg-shape" style="--s:clamp(90px,12vw,170px);right:-3%;top:-6%" data-float aria-hidden="true"></span>
+      <span class="tip tip--circle c-blush bg-shape" style="--s:clamp(40px,5vw,70px);left:-1.5%;bottom:-3%" data-float aria-hidden="true"></span>
+      <div class="cta__copy">
+        <h2 class="cta__title" id="cta-title" data-split>Your first sale could happen tonight.</h2>
+        <p>Set up your storefront in minutes. It’s free until you’re ready to grow.</p>
+        <form class="claim claim--on-flame" data-claim novalidate>
+          <label class="sr-only" for="claim-name-2">Choose your storefront name</label>
+          <div class="claim__field">
+            <span class="claim__prefix" aria-hidden="true">tipsona.com/@</span>
+            <input class="claim__input" id="claim-name-2" name="username" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="30" placeholder="yourname" aria-describedby="claim-hint-2">
+            <button class="btn btn--ink" type="submit">Claim it<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+          </div>
+          <p class="claim__hint" id="claim-hint-2" aria-live="polite">Lowercase letters, numbers, dots and underscores.</p>
+        </form>
+      </div>
+      <div class="cta__phones" aria-hidden="true">
+        <!-- checkout -->
+        <div class="phone"><div class="phone__screen"><div class="phone__island"></div>
+          <div class="phone__status"><span>9:41</span><span><svg class="i"><use href="#i-signal"/></svg><svg class="i"><use href="#i-battery"/></svg></span></div>
+          <div class="checkout-screen">
+            <h4>Checkout</h4>
+            <div class="cs-prod"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-book"/></svg></span><div><b>Side-Hustle Starter Kit</b><span>by Adaeze Okoro</span></div></div>
+            <div class="cs-field is-filled">Tunde Adebayo</div>
+            <div class="cs-field is-filled">tunde.a@gmail.com</div>
+            <div class="cs-total"><span>Total</span><span>₦12,000</span></div>
+            <div class="cs-pay"><svg class="i" style="width:4cqw;height:4cqw"><use href="#i-lock"/></svg>Pay ₦12,000</div>
+            <div class="cs-trust"><span>Secured by Paystack</span></div>
+          </div>
+        </div></div>
+        <!-- success -->
+        <div class="phone"><div class="phone__screen"><div class="phone__island"></div>
+          <div class="phone__status"><span>9:41</span><span><svg class="i"><use href="#i-signal"/></svg><svg class="i"><use href="#i-battery"/></svg></span></div>
+          <div class="checkout-screen">
+            <div class="cs-success"><span class="ring"><svg class="i"><use href="#i-check"/></svg></span><h4>Payment successful</h4><span style="font-size:3.4cqw;color:var(--muted)">Your files are ready. We’ve also emailed you a receipt.</span></div>
+            <div class="ls-item"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-book"/></svg></span><div><b>Side-Hustle Starter Kit</b><span>PDF · 84 pages</span></div><span class="dl"><svg class="i"><use href="#i-download"/></svg></span></div>
+            <div class="cs-pay" style="background:var(--flame);color:var(--ink)">Open my library</div>
+            <div class="cs-trust"><span>Order #TPS-24816</span></div>
+          </div>
+        </div></div>
+        <!-- library -->
+        <div class="phone"><div class="phone__screen"><div class="phone__island"></div>
+          <div class="phone__status"><span>9:41</span><span><svg class="i"><use href="#i-signal"/></svg><svg class="i"><use href="#i-battery"/></svg></span></div>
+          <div class="library-screen">
+            <h4>My library</h4>
+            <div class="ls-item"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-book"/></svg></span><div><b>Side-Hustle Starter Kit</b><span>Adaeze Okoro</span></div><span class="dl"><svg class="i"><use href="#i-download"/></svg></span></div>
+            <div class="ls-item"><span class="prod__thumb cover-flame"><svg class="i" style="--acc:var(--sun)"><use href="#i-video"/></svg></span><div><b>Lagos Golden Hour LUTs</b><span>Frames by Otieno</span></div><span class="dl"><svg class="i"><use href="#i-download"/></svg></span></div>
+            <div class="ls-item"><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-file"/></svg></span><div><b>WAEC Physics Past Questions</b><span>Amara Uwase</span></div><span class="dl"><svg class="i"><use href="#i-download"/></svg></span></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─────────────────────────── Footer ─────────────────────────── -->
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer__top">
+      <p class="footer__pitch">The simplest way for creators, educators and coaches across Africa to sell what they know.</p>
+      <div class="footer__contact">
+        <a class="footer__mail" href="mailto:hello@tipsona.com">hello@tipsona.com</a>
+        <div class="footer__social">
+          <a href="#" aria-label="Tipsona on Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+          <a href="#" aria-label="Tipsona on TikTok"><svg class="i" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+          <a href="#" aria-label="Tipsona on X"><svg class="i" aria-hidden="true"><use href="#i-xsocial"/></svg></a>
+          <a href="#" aria-label="Tipsona on LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          <a href="#" aria-label="Tipsona on YouTube"><svg class="i" aria-hidden="true"><use href="#i-youtube"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__cols">
+      <div><h3><span class="tip tip--square c-lilac" aria-hidden="true"></span>Product</h3><ul><li><a href="#product">Storefronts</a></li><li><a href="#product">Checkout and delivery</a></li><li><a href="#product">Analytics</a></li><li><a href="#product">Payouts</a></li><li><a href="pricing.html">Pricing</a></li></ul></div>
+      <div><h3><span class="tip tip--circle c-flame" aria-hidden="true"></span>Creators</h3><ul><li><a href="#creators">Educators</a></li><li><a href="#creators">Coaches</a></li><li><a href="#creators">Consultants</a></li><li><a href="#creators">Trainers</a></li><li><a href="#creators">Digital entrepreneurs</a></li></ul></div>
+      <div><h3><span class="tip tip--star c-sun" aria-hidden="true"></span>Help</h3><ul><li><a href="#faq">FAQ</a></li><li><a href="#">Help centre</a></li><li><a href="#">Seller guide</a></li><li><a href="#">Buyer support</a></li></ul></div>
+      <div><h3><span class="tip tip--arch c-mint" aria-hidden="true"></span>Company</h3><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog<span class="soon">Soon</span></a></li><li><a href="design-system.html">Brand and design</a></li></ul></div>
+    </div>
+    <div class="footer__word" data-footer-word aria-hidden="true">
+      <span class="sticker sticker--sun sticker--a" data-sticker><span class="tip tip--star c-ink"></span>Instant delivery</span>
+      <span class="sticker sticker--flame sticker--b" data-sticker><span class="tip tip--pill c-ink"></span>Paid in naira</span>
+      <span class="sticker sticker--lilac sticker--c" data-sticker><span class="tip tip--circle c-ink"></span>Made for African creators</span>
+      <span class="sticker sticker--mint sticker--d" data-sticker><span class="tip tip--arch c-forest"></span>Free to start</span>
+      <svg class="footer__logo" viewBox="0 0 337 84" role="img" aria-label="Tipsona">
+        <use href="#logo"/>
+      </svg>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Tipsona. All rights reserved.</span>
+      <nav aria-label="Legal"><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Refund policy</a><a href="#">Cookies</a></nav>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" data-toast data-show="false">
+  <span class="icon-tile"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span>
+  <span data-toast-msg></span>
+</div>
+
+</body>
+</html>
