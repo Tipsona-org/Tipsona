@@ -117,21 +117,18 @@
   }
 
   /* ── Claim your link ────────────────────────────────────────────── */
-  var RESERVED = ['admin', 'api', 'app', 'about', 'account', 'blog', 'buyer', 'careers', 'category', 'checkout', 'dashboard', 'help', 'library', 'login', 'logout', 'orders', 'pricing', 'privacy', 'search', 'seller', 'settings', 'signup', 'store', 'support', 'terms', 'tipsona', 'www'];
-  var TAKEN = ['adaeze', 'amara', 'chioma', 'tunde', 'kemi', 'glory'];
+  /* Username rules from the Tipstore PRD: lowercase, 3–30 characters, no
+     spaces or special symbols, no reserved words. Availability is only
+     known at sign-up, so this check never claims a name is free. */
+  var RESERVED = ['admin', 'support', 'login', 'api', 'pricing', 'blog', 'help', 'dashboard', 'library'];
   var ICON = function (name) { return '<svg class="i" aria-hidden="true"><use href="#i-' + name + '"/></svg>'; };
 
-  function suggest(v) {
-    var ends = ['.creates', '.hq', 'reads', '.studio', 'teaches'];
-    return v.replace(/[._]+$/, '') + ends[v.length % ends.length];
-  }
   function checkName(v) {
     if (!v) return { state: 'idle' };
     if (v.length < 3) return { state: 'error', msg: 'Too short. Use at least 3 characters.' };
     if (v.length > 30) return { state: 'error', msg: 'Too long. Use 30 characters or fewer.' };
-    if (/^[._]|[._]$/.test(v)) return { state: 'error', msg: 'Start and end with a letter or number.' };
-    if (RESERVED.indexOf(v) > -1 || TAKEN.indexOf(v) > -1) return { state: 'error', msg: '@' + v + ' is taken. Try <b>@' + suggest(v) + '</b>.' };
-    return { state: 'ok', msg: '<b>tipsona.com/@' + v + '</b> is available.' };
+    if (RESERVED.indexOf(v) > -1) return { state: 'error', msg: '“' + v + '” is a reserved word. Try another name.' };
+    return { state: 'ok', msg: '<b>tipstore.com/' + v + '</b> fits the username rules.' };
   }
   function initClaim(form) {
     var input = $('input', form);
@@ -146,7 +143,7 @@
       hint.innerHTML = ICON(res.state === 'ok' ? 'check-circle' : 'x') + '<span>' + res.msg + '</span>';
     }
     input.addEventListener('input', function () {
-      var clean = input.value.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9._]/g, '');
+      var clean = input.value.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
       if (clean !== input.value) input.value = clean;
       render(checkName(clean));
     });
@@ -155,7 +152,7 @@
       var v = input.value;
       var res = checkName(v);
       if (!v) {
-        render({ state: 'error', msg: 'Type the name you want after tipsona.com/@' });
+        render({ state: 'error', msg: 'Type the name you want after tipstore.com/' });
         input.focus();
       } else {
         render(res);
@@ -164,8 +161,8 @@
         if (field.animate && !reduceMotion) field.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-8px)' }, { transform: 'translateX(7px)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(0)' }], { duration: 380, easing: 'ease-out' });
         return;
       }
-      button.innerHTML = 'Claimed' + ICON('check');
-      toast('@' + v + ' is yours to claim. Next step: create your free account.');
+      button.innerHTML = 'Looks good' + ICON('check');
+      toast('tipstore.com/' + v + ' fits the rules. Availability is confirmed when you sign up.');
       setTimeout(function () { button.innerHTML = buttonHTML; }, 3200);
     });
   }
@@ -437,7 +434,9 @@
       .fromTo('.stage__phone .prod', { x: 24, autoAlpha: 0 }, { x: 0, autoAlpha: 1, stagger: 0.08, duration: 0.7 }, 1.05)
       .fromTo('.stage__shape', { scale: 0, rotation: -120, x: 0, y: 0 }, { scale: 1, rotation: 0, x: 0, y: 0, stagger: 0.09, duration: 1, ease: 'back.out(2)' }, 0.95)
       .fromTo('.hero .float-card', { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, stagger: 0.16, duration: 0.85, ease: 'back.out(1.9)' }, 1.15)
-      .fromTo('.fc-week svg', { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.2, ease: 'power2.inOut' }, 1.5);
+      .fromTo('.hero .avatars img', { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, stagger: 0.08, duration: 0.8, ease: 'back.out(2.2)' }, 0.75)
+      .fromTo('.hero__sticker', { scale: 0, autoAlpha: 0, rotation: -30 }, { scale: 1, autoAlpha: 1, rotation: 0, duration: 0.9, ease: 'back.out(2.4)' }, 1.0)
+      .fromTo('.stage__example', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.4);
   }
 
   function splitHeadings(gsap, Split) {
@@ -521,7 +520,6 @@
     mm.add('(min-width: 900px) and (min-height: 700px)', function () {
       sec.classList.add('is-scene');
       var msgs = $$('.msg', sec);
-      var clock = $('.swap__clock', sec);
       var head = $('.chat__head', sec);
       var chat = $('[data-chat]', sec);
       var order = $('[data-order]', sec);
@@ -529,7 +527,6 @@
       var before = $('[data-swap-before]', sec);
       var after = $('[data-swap-after]', sec);
       gsap.set(msgs, { autoAlpha: 0, y: 18, scale: 0.96 });
-      gsap.set(clock, { autoAlpha: 0, y: 10 });
       gsap.set(order, { autoAlpha: 0, scale: 0.82, y: 50 });
       gsap.set(rows, { autoAlpha: 0, x: -16 });
       gsap.set(after, { autoAlpha: 0, y: 34 });
@@ -539,7 +536,6 @@
         scrollTrigger: { trigger: sec, start: 'top top', end: function () { return '+=' + Math.round(window.innerHeight * 1.9); }, pin: true, scrub: 0.8, anticipatePin: 1 }
       });
       msgs.forEach(function (m, i) { tl.to(m, { autoAlpha: 1, y: 0, scale: 1, duration: 0.5 }, i * 0.42); });
-      tl.to(clock, { autoAlpha: 1, y: 0, duration: 0.4 });
       tl.to(msgs[msgs.length - 1], { x: 6, duration: 0.08, repeat: 5, yoyo: true, ease: 'none' });
       tl.to({}, { duration: 0.35 });
       tl.to(msgs, {
@@ -549,7 +545,7 @@
         rotation: function () { return gsap.utils.random(-28, 28); },
         duration: 0.65, stagger: { each: 0.035, from: 'random' }, ease: 'power3.in'
       });
-      tl.to([clock, head], { autoAlpha: 0, duration: 0.3 }, '<');
+      tl.to(head, { autoAlpha: 0, duration: 0.3 }, '<');
       tl.to(chat, { autoAlpha: 0, scale: 0.94, duration: 0.45 }, '>-0.25');
       tl.to(before, { autoAlpha: 0, y: -34, duration: 0.5 }, '<');
       tl.to(order, { autoAlpha: 1, scale: 1, y: 0, duration: 0.8, ease: 'back.out(1.5)' }, '>-0.15');
@@ -720,7 +716,6 @@
       var st = { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true };
       gsap.to('.stage__portrait', { yPercent: -7, ease: 'none', scrollTrigger: st });
       gsap.to('.stage__phone', { yPercent: -16, ease: 'none', scrollTrigger: st });
-      gsap.to('.fc-week', { yPercent: -60, ease: 'none', scrollTrigger: st });
     }
   }
 
@@ -730,10 +725,9 @@
     var mailCard = $('.fc-delivered');
     var amt = $('[data-sale-amt]'), prod = $('[data-sale-prod]'), mail = $('[data-sale-mail]');
     var sales = [
-      ['₦7,500', '· Budget Planner', 'chioma.e@gmail.com'],
-      ['₦25,000', '· Masterclass', 'tunde.a@gmail.com'],
-      ['₦12,000', '· Starter Kit', 'wanjiru.k@gmail.com'],
-      ['₦4,000', '· Savings Tracker', 'kofi.m@gmail.com']
+      ['₦7,500', '· Budget Planner', 'Access link emailed'],
+      ['₦12,000', '· Side-Hustle Guide', 'Saved to their library'],
+      ['₦25,000', '· Money Habits', 'Receipt sent']
     ];
     var i = 0, timer = null;
     function next() {

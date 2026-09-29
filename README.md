@@ -1,35 +1,37 @@
-# Tipsona website
+# Tipsona websites
 
-Marketing website for **Tipsona**, the storefront for creators, educators, coaches, consultants, trainers and digital entrepreneurs who sell digital products.
+Marketing pages for **Tipsona** and its products. The site is not the product: it explains each product and links to it.
 
-Three pages, plain HTML/CSS/JS, no build step:
+| Page | Built file | Source | What it shows |
+| --- | --- | --- | --- |
+| Tipsona home | `site/index.html` | `src/pages/index.html` | The Tipsona hub: products, about, contact |
+| Tipstore landing | `site/tipstore/index.html` | `src/pages/tipstore/index.html` | Tipstore, the digital commerce platform: how it works, who it's for, features, dashboard, trust, plans, FAQ |
+| Tipstore pricing | `site/tipstore/pricing.html` | `src/pages/tipstore/pricing.html` | Plans, feature comparison, fee example, billing FAQ |
+| Brand and design system | `site/design-system.html` | `src/pages/design-system.html` | Logo, colour, contrast, type, tip shapes, icons, components, motion and UX rules |
 
-| Page | File | What it shows |
-| --- | --- | --- |
-| Home | `site/index.html` | Hero with live "claim your link", the old way vs the Tipsona way, how it works, who it's for, features, dashboard, trust, pricing, FAQ |
-| Pricing | `site/pricing.html` | Plans, full feature comparison, fee example, billing FAQ |
-| Brand and design system | `site/design-system.html` | Logo, colour, contrast, type, tip shapes, icons, components, motion and UX rules |
+All Tipstore copy comes from the Tipstore PRD. Anything not in the PRD is shown as a visible placeholder.
 
-## Preview locally
+## Build and preview
 
 ```bash
-cd site
-python3 -m http.server 4173
-# open http://localhost:4173
+python3 scripts/build-pages.py        # src/ → site/
+cd site && python3 -m http.server 4173 # open http://localhost:4173
 ```
+
+`build-pages.py` wraps each page in `src/pages` with the shared partials in `src/partials` (head, logo, nav, footer). The persona panels and plan cards are generated from data in the script. Edit `src/`, not the built HTML.
+
+To add a product page, add `src/pages/<product>/index.html` with a front-matter comment (see the Tipstore page), a nav partial if it needs its own, and a card in the products section of `src/pages/index.html`.
 
 ## Deploy
 
-- **Netlify:** connect this repo and it will publish the `site/` folder (see `netlify.toml`). No build command.
-- **Any static host** (Vercel, Cloudflare Pages, GitHub Pages): publish the `site/` folder as-is.
-- **Self-contained copy** (inline CSS/JS, CDN libraries): `node scripts/build-artifact.mjs` writes `dist/artifact/`.
+Netlify publishes the `site/` folder (see `netlify.toml`). No build command runs there, so build locally and commit `site/`.
 
 ## How it's built
 
-- `site/assets/css/tipsona.css`: design tokens at the top (`:root`), then components and sections in page order.
-- `site/assets/js/icons.js`: the custom icon set (one SVG sprite, used as `<svg class="i"><use href="#i-store"/></svg>`).
-- `site/assets/js/tipsona.js`: interactions (menu, claim form, tabs, pricing toggle, FAQ) and motion (GSAP + ScrollTrigger + SplitText, Lenis smooth scrolling on desktop). The page is complete without JavaScript, and all motion is skipped for people who prefer reduced motion.
-- `site/assets/fonts/`: self-hosted, subsetted Bricolage Grotesque, Plus Jakarta Sans and Fragment Mono (all include ₦ and ₵).
+- `site/assets/css/tipsona.css`: design tokens at the top (`:root`), then components and sections.
+- `site/assets/js/icons.js`: the custom icon sprite (`<svg class="i"><use href="#i-store"/></svg>`).
+- `site/assets/js/tipsona.js`: interactions (menu, username check, tabs, FAQ) and motion (GSAP + ScrollTrigger + SplitText, Lenis smooth scrolling). Pages work without JavaScript, and motion is off for people who prefer reduced motion.
+- `site/assets/fonts/`: self-hosted, subsetted Inter Tight and Fragment Mono (both include ₦ and ₵).
 - `site/assets/vendor/`: pinned GSAP 3.15.0 and Lenis 1.3.26.
 - `site/assets/img/`: WebP photos from Unsplash (see `CREDITS.md`).
 
@@ -37,8 +39,10 @@ See `DESIGN.md` for the design system rules.
 
 ## Placeholders to confirm before launch
 
-- **Plan prices** (₦0 / ₦5,000 / ₦15,000 per month) and the 5% fee in the receipt example are placeholders. The PRD leaves exact prices and fees open.
-- **Example stores and people** (Adaeze Okoro, @missamara.teaches, customer names, sales figures) are fictional mockup data.
-- **Links** to Log in, Help centre, legal pages and social profiles point to `#` until those pages exist.
-- **hello@tipsona.com** is assumed as the contact address.
-- There are no testimonials or customer counts on purpose. Add real ones once you have them.
+- **Tipsona company description and story** on the home page.
+- **Future product slots** on the home page.
+- **Pro and Business prices** (shown as "Price TBC"). The PRD leaves prices and exact fees open.
+- **Fee example** (₦10,000 − ₦500 − ₦150 = ₦9,350) is the PRD's illustrative example.
+- **hello@tipsona.com** contact address.
+- **Example storefronts, people, products and figures** in mockups are fictional and labelled as examples.
+- **Links** to Log in, Help Center, Terms, Privacy and social profiles point to `#`.

@@ -24,3 +24,9 @@
   for = "/assets/img/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
+
+# The old single-product URL moved under /tipstore/.
+[[redirects]]
+  from = "/pricing.html"
+  to = "/tipstore/pricing.html"
+  status = 301

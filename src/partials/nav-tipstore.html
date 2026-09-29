@@ -1,0 +1,41 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" data-nav>
+  <div class="nav__bar">
+    <a class="brand" href="{{home}}#top" aria-label="Tipstore by Tipsona, home">
+      <svg class="logo" viewBox="0 0 337 84" aria-hidden="true"><use href="#logo"/></svg>
+      <span class="brand__product">Tipstore</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <ul>
+        <li><a href="{{home}}#product"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Product</a></li>
+        <li><a href="{{home}}#how"><span class="tip tip--star c-sun" aria-hidden="true"></span>How it works</a></li>
+        <li><a href="{{home}}#creators"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Who it’s for</a></li>
+        <li><a href="{{pricing}}"{{pricing_current}}><span class="tip tip--pill c-mint" aria-hidden="true"></span>Pricing</a></li>
+        <li><a href="{{home}}#faq"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__login" href="#">Log in</a>
+      <a class="btn btn--ink btn--sm" href="{{home}}#claim">Start selling<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+        <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>
+        <span class="sr-only">Open menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <ul>
+    <li><a class="mm-link" href="{{home}}#product">Product <span class="tip tip--square c-lilac" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="{{home}}#how">How it works <span class="tip tip--star c-sun" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="{{home}}#creators">Who it’s for <span class="tip tip--circle c-flame" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="{{pricing}}">Pricing <span class="tip tip--pill c-mint" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="{{home}}#faq">FAQ <span class="tip tip--diamond c-blush" aria-hidden="true"></span></a></li>
+  </ul>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--flame btn--block" href="{{home}}#claim">Start selling<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <a class="btn btn--ghost btn--block" href="#">Log in</a>
+  </div>
+</div>
