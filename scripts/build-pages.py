@@ -119,55 +119,43 @@ def plans_html():
 
 
 
-# ── Tipsona ecosystem: facts from the investor pitch document ─────────────
-# (id, name, layer, one-liner, roadmap phase, tip shape, icon, own page)
+# ── Tipsona products (facts from the Tipsona pitch document, written for creators)
+# (id, name, what you do with it, one-liner, available first?, tip shape, icon, own page)
+# Products outside the first launch wave are labelled "Coming soon".
 PRODUCTS = [
-    ("tipstore", "TipStore", "Commerce", "Digital products and creator commerce.", 1, "tip--arch c-flame", "store", "tipstore/"),
-    ("tipper", "Tipper", "Brand work", "UGC creator marketplace connecting brands and creators.", 1, "tip--circle c-lilac", "briefcase", "tipper/"),
-    ("tipstar", "TipStar", "Recurring income", "Memberships, donations and exclusive content.", 1, "tip--star c-sun", "heart", None),
-    ("tipfix", "TipFix", "Trust and utility", "Problem-solving utility layer for the everyday friction of operating a digital business.", 2, "tip--diamond c-blush", "wrench", "tipfix/"),
-    ("tiplaunch", "TipLaunch", "Funding", "Crowdfunding and community-backed capital.", 3, "tip--pill c-mint", "rocket", None),
-    ("tipmarket", "TipMarket", "Discovery", "Discovery marketplace for creators, products and projects.", 3, "tip--square c-lilac", "compass", None),
-    ("tipads", "TipAds", "Distribution", "Creator advertising and brand distribution network.", 4, "tip--tri c-flame", "megaphone", None),
-    ("tipai", "TipAI", "Intelligence", "AI operating assistant for creator businesses.", 5, "tip--star c-lilac", "spark", None),
-    ("tipinsights", "TipInsights", "Intelligence", "Creator business intelligence and analytics.", 5, "tip--square c-sun", "chart", None),
+    ("tipstore", "TipStore", "Sell", "Sell digital products from your own storefront.", True, "tip--arch c-flame", "store", "tipstore/"),
+    ("tipper", "Tipper", "Work with brands", "Get matched with brands for paid UGC work, with escrow-protected payouts.", True, "tip--circle c-lilac", "briefcase", "tipper/"),
+    ("tipstar", "TipStar", "Earn every month", "Memberships, donations and exclusive content for your fans.", True, "tip--star c-sun", "heart", None),
+    ("tipfix", "TipFix", "Fix problems", "Payouts, contracts, escrow and the small problems of running a digital business.", False, "tip--diamond c-blush", "wrench", "tipfix/"),
+    ("tiplaunch", "TipLaunch", "Raise funds", "Crowdfunding and community-backed capital for your projects.", False, "tip--pill c-mint", "rocket", None),
+    ("tipmarket", "TipMarket", "Get discovered", "A marketplace where audiences discover creators, products and projects.", False, "tip--square c-lilac", "compass", None),
+    ("tipads", "TipAds", "Earn from ads", "Brand distribution through sponsored content, placements and campaigns.", False, "tip--tri c-flame", "megaphone", None),
+    ("tipai", "TipAI", "Get help", "An AI assistant that understands your Tipsona business and helps you run it.", False, "tip--star c-lilac", "spark", None),
+    ("tipinsights", "TipInsights", "See what works", "One picture of your audience, content, sales, memberships and brand deals.", False, "tip--square c-sun", "chart", None),
 ]
-PHASES = [(1, "Wedge"), (2, "Trust and utility"), (3, "Liquidity"), (4, "Distribution"), (5, "Intelligence")]
 ACC = {"c-flame": "acc-flame", "c-lilac": "acc-lilac", "c-sun": "acc-sun", "c-blush": "acc-blush", "c-mint": "acc-mint"}
 
 
-def eco_grid(on_ecosystem_page):
+def eco_grid(on_products_page):
     cards = []
-    for pid, name, layer, line, phase, shape, icon, page in PRODUCTS:
-        if on_ecosystem_page:
+    for pid, name, verb, line, first, shape, icon, page in PRODUCTS:
+        if on_products_page:
             href, go = f"#{pid}", "Details"
         elif page:
             href, go = "{{root}}" + page, f"Visit {name}"
         else:
-            href, go = "{{root}}ecosystem.html#" + pid, "Read more"
+            href, go = "{{root}}products.html#" + pid, "Learn more"
         acc = ACC[shape.split()[1]]
         feat = " eco-card--page" if page else ""
+        soon = "" if first else '<span class="eco-card__phase">Coming soon</span>'
         cards.append(f'''      <a class="eco-card{feat}" href="{href}" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile {acc}"><svg class="i" aria-hidden="true"><use href="#i-{icon}"/></svg></span><span class="eco-card__phase">Phase {phase}</span></span>
+        <span class="eco-card__top"><span class="icon-tile {acc}"><svg class="i" aria-hidden="true"><use href="#i-{icon}"/></svg></span>{soon}</span>
         <span class="eco-card__name">{name}</span>
-        <span class="eco-card__layer"><span class="tip {shape}" aria-hidden="true"></span>{layer}</span>
+        <span class="eco-card__layer"><span class="tip {shape}" aria-hidden="true"></span>{verb}</span>
         <span class="eco-card__line">{line}</span>
         <span class="eco-card__go">{go}<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
       </a>''')
     return '    <div class="eco-grid">\n' + "\n".join(cards) + "\n    </div>"
-
-
-def roadmap_html():
-    cols = []
-    for n, label in PHASES:
-        chips = "".join(f'<li><span class="tip {sh}" aria-hidden="true"></span>{nm}</li>'
-                        for _, nm, _, _, ph, sh, _, _ in PRODUCTS if ph == n)
-        cols.append(f'''      <li class="phase" data-reveal>
-        <p class="phase__num">Phase {n}</p>
-        <p class="phase__name">{label}</p>
-        <ul class="phase__products">{chips}</ul>
-      </li>''')
-    return '    <ol class="roadmap">\n' + "\n".join(cols) + "\n    </ol>"
 
 
 # ── Product nav: "links: Label|href; Label|href" in the front matter ───────
@@ -206,7 +194,6 @@ def build(page):
     tokens = {
         "personas": personas_html(),
         "ecosystem_grid": eco_grid(meta.get("grid") == "anchors"),
-        "roadmap": roadmap_html(),
         "plans": plans_html(),
         "title": meta["title"],
         "description": meta["description"],

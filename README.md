@@ -4,15 +4,15 @@ Marketing pages for **Tipsona** and its products. The site is not the product: i
 
 | Page | Built file | Source | What it shows |
 | --- | --- | --- | --- |
-| Tipsona home | `site/index.html` | `src/pages/index.html` | The operating system for Africa’s creator economy: thesis, problem, the nine products, flywheel, roadmap, vision |
-| Ecosystem | `site/ecosystem.html` | `src/pages/ecosystem.html` | Every product in detail, plus the roadmap |
+| Tipsona home | `site/index.html` | `src/pages/index.html` | For creators: why Tipsona, the problems it solves, all products, ways to earn, sign-up CTA |
+| Products | `site/products.html` | `src/pages/products.html` | Every product in detail |
 | TipStore landing | `site/tipstore/index.html` | `src/pages/tipstore/index.html` | TipStore, the commerce layer: how it works, who it's for, features, dashboard, trust, plans, FAQ |
 | TipStore pricing | `site/tipstore/pricing.html` | `src/pages/tipstore/pricing.html` | Plans, feature comparison, fee example, billing FAQ |
-| Tipper | `site/tipper/index.html` | `src/pages/tipper/index.html` | The UGC marketplace: problems, workflow, trust, pricing |
-| TipFix | `site/tipfix/index.html` | `src/pages/tipfix/index.html` | The proposed utility layer: payouts, legal desk, escrow, small problems |
+| Tipper | `site/tipper/index.html` | `src/pages/tipper/index.html` | Paid UGC brand work for creators: why, workflow, trust |
+| TipFix | `site/tipfix/index.html` | `src/pages/tipfix/index.html` | Coming soon: payouts, legal desk, escrow, small problems |
 | Brand and design system | `site/design-system.html` | `src/pages/design-system.html` | Logo, colour, contrast, type, tip shapes, icons, components, motion and UX rules |
 
-TipStore copy comes from the TipStore PRD. Tipsona, Tipper, TipFix and the other products come from the Tipsona investor pitch document (2026). Investor-only material (business model, market size, moat, investment case) is left off the public site. Anything in neither document is shown as a visible placeholder.
+TipStore copy comes from the TipStore PRD. Tipsona, Tipper, TipFix and the other products come from the Tipsona investor pitch document (2026). The site is for creators, so investor material (flywheel, roadmap, business model, market size, moat, research sources, brand-side pricing) is left off. Products outside the first launch wave (TipStore, Tipper, TipStar) are labelled "Coming soon". Anything in neither document is shown as a visible placeholder.
 
 The product list, phases and one-liners live in `PRODUCTS` in `scripts/build-pages.py`, so the home and ecosystem grids and the roadmap stay in sync.
 
@@ -44,8 +44,7 @@ See `DESIGN.md` for the design system rules.
 
 ## Placeholders to confirm before launch
 
-- **Tipper pricing** (20% fee, ₦5,000 SME tier, enterprise from ₦500,000/month) is from the pitch and marked as planned.
-- **Research sources** on the TipFix page are listed as in the pitch; the pitch says they should be validated independently.
+- **"Coming soon" labels** assume TipStore, Tipper and TipStar launch first, as in the pitch's roadmap.
 - **Pro and Business prices** (shown as "Price TBC"). The PRD leaves prices and exact fees open.
 - **Fee example** (₦10,000 − ₦500 − ₦150 = ₦9,350) is the PRD's illustrative example.
 - **hello@tipsona.com** contact address.
