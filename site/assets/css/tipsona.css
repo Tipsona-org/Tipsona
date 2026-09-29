@@ -1215,6 +1215,10 @@ ul[role="list"], ol[role="list"], .plain { list-style: none; padding: 0; }
   padding-left: 12px; border-left: 1.5px solid var(--line-strong);
   font-weight: 600; font-size: 1.0625rem; letter-spacing: -.02em; line-height: 1.2; color: var(--ink);
 }
+.brand__home { display: block; padding: 4px 2px; border-radius: 8px; }
+a.brand__product { text-decoration: none; }
+.brand__home:hover .logo { opacity: .8; }
+a.brand__product:hover { color: var(--ember); }
 .btn--xs { min-height: 40px; padding: 0 16px; font-size: .9375rem; }
 
 /* Centred hero */
