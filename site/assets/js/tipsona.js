@@ -117,7 +117,7 @@
   }
 
   /* ── Claim your link ────────────────────────────────────────────── */
-  /* Username rules from the Tipstore PRD: lowercase, 3–30 characters, no
+  /* Username rules from the TipStore PRD: lowercase, 3–30 characters, no
      spaces or special symbols, no reserved words. Availability is only
      known at sign-up, so this check never claims a name is free. */
   var RESERVED = ['admin', 'support', 'login', 'api', 'pricing', 'blog', 'help', 'dashboard', 'library'];
@@ -403,6 +403,7 @@
       dashboardScene(gsap, ST);
       trustScene(gsap, ST, Split);
       ctaScene(gsap, ST);
+      flowScene(gsap);
       footerScene(gsap, ST);
       floaters(gsap, ST);
       saleLoop(gsap, ST);
@@ -689,6 +690,14 @@
     }
     var lock = $('[data-lock]');
     if (lock) gsap.from($$('.tip', lock), { scale: 0, rotation: -60, stagger: 0.12, duration: 0.9, ease: 'back.out(2)', scrollTrigger: { trigger: lock, start: 'top 85%', once: true } });
+  }
+
+  /* Numbered flows (Tipper, TipFix escrow): the rail fills as you scroll. */
+  function flowScene(gsap) {
+    $$('[data-flow]').forEach(function (flow) {
+      var fill = $('[data-flow-fill]', flow);
+      if (fill) gsap.fromTo(fill, { scaleY: 0 }, { scaleY: 1, ease: 'none', scrollTrigger: { trigger: flow, start: 'top 70%', end: 'bottom 60%', scrub: true } });
+    });
   }
 
   function ctaScene(gsap, ST) {

@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tipsona</title>
-<meta name="description" content="Tipsona is the home of Tipstore, a digital commerce platform for creators, educators, coaches, consultants, trainers and digital entrepreneurs.">
+<title>Tipsona · The operating system for Africa’s creator economy</title>
+<meta name="description" content="Tipsona is the infrastructure powering Africa’s digital creator economy, giving creators the tools to build, monetize, finance, discover and grow sustainable digital businesses from one ecosystem.">
 <meta name="theme-color" content="#FBF8F4">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Tipsona">
-<meta property="og:description" content="Tipsona is the home of Tipstore, a digital commerce platform for creators, educators, coaches, consultants, trainers and digital entrepreneurs.">
+<meta property="og:title" content="Tipsona · The operating system for Africa’s creator economy">
+<meta property="og:description" content="Tipsona is the infrastructure powering Africa’s digital creator economy, giving creators the tools to build, monetize, finance, discover and grow sustainable digital businesses from one ecosystem.">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <!-- @fonts -->
 <link rel="preload" href="assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -61,13 +61,15 @@
     </a>
     <nav class="nav__links" aria-label="Main">
       <ul>
-        <li><a href="#products"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Products</a></li>
-        <li><a href="#about"><span class="tip tip--circle c-flame" aria-hidden="true"></span>About</a></li>
+        <li><a href="#ecosystem"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Ecosystem</a></li>
+        <li><a href="#flywheel"><span class="tip tip--star c-sun" aria-hidden="true"></span>Flywheel</a></li>
+        <li><a href="#roadmap"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Roadmap</a></li>
+        <li><a href="tipstore/"><span class="tip tip--pill c-mint" aria-hidden="true"></span>TipStore</a></li>
         <li><a href="#contact"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Contact</a></li>
       </ul>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--ink btn--sm" href="tipstore/">Explore Tipstore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a class="btn btn--ink btn--sm" href="ecosystem.html">Explore the ecosystem<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
         <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>
         <span class="sr-only">Open menu</span>
@@ -78,107 +80,291 @@
 
 <div class="mobile-menu" id="mobile-menu" hidden>
   <ul>
-    <li><a class="mm-link" href="#products">Products <span class="tip tip--square c-lilac" aria-hidden="true"></span></a></li>
-    <li><a class="mm-link" href="#about">About <span class="tip tip--circle c-flame" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="#ecosystem">Ecosystem <span class="tip tip--square c-lilac" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="#flywheel">Flywheel <span class="tip tip--star c-sun" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="#roadmap">Roadmap <span class="tip tip--circle c-flame" aria-hidden="true"></span></a></li>
+    <li><a class="mm-link" href="tipstore/">TipStore <span class="tip tip--pill c-mint" aria-hidden="true"></span></a></li>
     <li><a class="mm-link" href="#contact">Contact <span class="tip tip--diamond c-blush" aria-hidden="true"></span></a></li>
   </ul>
   <div class="mobile-menu__foot">
-    <a class="btn btn--flame btn--block" href="tipstore/">Explore Tipstore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <a class="btn btn--flame btn--block" href="ecosystem.html">Explore the ecosystem<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
   </div>
 </div>
 
 
 <main id="main">
 
-<!-- ─────────────────────────── Hub hero ─────────────────────────── -->
+<!-- ─────────────────────────── Hero ─────────────────────────── -->
 <section class="page-hero hub-hero" id="top" aria-labelledby="hub-title">
-  <div class="container">
-    <p class="tab-label" data-intro><span class="tip tip--arch c-flame" aria-hidden="true"></span>Tipsona</p>
-    <h1 class="hub-hero__title" id="hub-title">
-      <span class="ln"><span class="ln__in">The home of</span></span>
-      <span class="ln"><span class="ln__in"><span class="hl"><span class="hl__bg" aria-hidden="true"></span>Tipsona</span> products.</span></span>
-    </h1>
-    <div class="hub-hero__foot">
-      <p class="lede" data-intro><span class="ph-tag">Placeholder</span> A short description of Tipsona, the company, goes here: who we are and what we build.</p>
-      <a class="btn btn--flame" href="#products" data-intro>See our products<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+  <div class="container hub-hero__grid">
+    <div class="hub-hero__copy">
+      <p class="tab-label" data-intro><span class="tip tip--arch c-flame" aria-hidden="true"></span>Tipsona</p>
+      <h1 class="hub-hero__title" id="hub-title">
+        <span class="ln"><span class="ln__in">The operating system</span></span>
+        <span class="ln"><span class="ln__in">for Africa’s</span></span>
+        <span class="ln"><span class="ln__in"><span class="hl"><span class="hl__bg" aria-hidden="true"></span>creator economy.</span></span></span>
+      </h1>
+      <p class="lede" data-intro>Tipsona is the infrastructure powering Africa’s digital creator economy. It gives creators the tools to build, monetize, finance, discover and grow sustainable digital businesses from one ecosystem.</p>
+      <div class="hub-hero__ctas" data-intro>
+        <a class="btn btn--flame" href="#ecosystem">Explore the ecosystem<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-down"/></svg></a>
+        <a class="btn btn--ghost" href="tipstore/">Visit TipStore</a>
+      </div>
     </div>
-  </div>
-  <div class="hub-hero__shapes" aria-hidden="true">
-    <span class="tip tip--circle c-flame" data-float></span>
-    <span class="tip tip--star c-sun" data-float></span>
-    <span class="tip tip--square c-lilac" data-float></span>
-    <span class="tip tip--arch c-night" data-float></span>
-    <span class="tip tip--pill c-mint" data-float></span>
-    <span class="tip tip--diamond c-blush" data-float></span>
+
+    <div class="orbit" data-intro role="img" aria-label="The nine Tipsona products arranged in a ring around the Tipsona mark">
+      <div class="orbit__rings" aria-hidden="true"><i></i><i></i></div>
+      <div class="orbit__core" aria-hidden="true"><svg class="logo-mark" viewBox="-4.4 0 83.1 83.1"><use href="#logo-mark"/></svg></div>
+      <ul class="orbit__ring" aria-hidden="true">
+        <li style="--i:0"><span class="orbit__chip"><span class="tip tip--arch c-flame"></span>TipStore</span></li>
+        <li style="--i:1"><span class="orbit__chip"><span class="tip tip--circle c-lilac"></span>Tipper</span></li>
+        <li style="--i:2"><span class="orbit__chip"><span class="tip tip--star c-sun"></span>TipStar</span></li>
+        <li style="--i:3"><span class="orbit__chip"><span class="tip tip--diamond c-blush"></span>TipFix</span></li>
+        <li style="--i:4"><span class="orbit__chip"><span class="tip tip--pill c-mint"></span>TipLaunch</span></li>
+        <li style="--i:5"><span class="orbit__chip"><span class="tip tip--square c-lilac"></span>TipMarket</span></li>
+        <li style="--i:6"><span class="orbit__chip"><span class="tip tip--tri c-flame"></span>TipAds</span></li>
+        <li style="--i:7"><span class="orbit__chip"><span class="tip tip--star c-lilac"></span>TipAI</span></li>
+        <li style="--i:8"><span class="orbit__chip"><span class="tip tip--square c-sun"></span>TipInsights</span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
-<!-- ─────────────────────────── Products ─────────────────────────── -->
-<section class="section products" id="products" aria-labelledby="products-title">
+<!-- ─────────────────────────── Ticker ─────────────────────────── -->
+<section class="ticker" aria-label="The Tipsona products">
+  <div class="ticker__track" data-marquee>
+    <ul class="ticker__list">
+      <li>TipStore</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>Tipper</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>TipStar</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>TipLaunch</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>TipMarket</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>TipAds</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>TipAI</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>TipInsights</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+      <li>TipFix</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
+    </ul>
+    <ul class="ticker__list" aria-hidden="true">
+      <li>TipStore</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>Tipper</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>TipStar</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>TipLaunch</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>TipMarket</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>TipAds</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>TipAI</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>TipInsights</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+      <li>TipFix</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Thesis ─────────────────────────── -->
+<section class="section thesis on-dark" aria-labelledby="thesis-title">
+  <div class="container">
+    <p class="tab-label"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Why Tipsona</p>
+    <h2 class="thesis__statement" id="thesis-title" data-words>Africa does not need another creator app. It needs creator infrastructure.</h2>
+    <div class="thesis__grid">
+      <p class="lede">Tipsona is building a Creator Business Ecosystem: a connected operating layer that brings creator commerce, memberships, UGC brand work, crowdfunding, discovery, advertising, AI, analytics and everyday business utilities into one platform.</p>
+      <ul class="thesis__list">
+        <li data-reveal><span class="tip tip--circle c-flame" aria-hidden="true"></span>One creator identity.</li>
+        <li data-reveal><span class="tip tip--arch c-cream" aria-hidden="true"></span>One ecosystem.</li>
+        <li data-reveal><span class="tip tip--pill c-mint" aria-hidden="true"></span>Multiple monetization rails.</li>
+        <li data-reveal><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Localized African infrastructure.</li>
+        <li data-reveal><span class="tip tip--star c-sun" aria-hidden="true"></span>A compounding network of creators, brands, content, transactions and intelligence.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Problem ─────────────────────────── -->
+<section class="section problem" aria-labelledby="problem-title">
   <div class="container">
     <header class="section-head section-head--split">
       <div style="display:grid;gap:22px">
-        <p class="tab-label"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Products</p>
-        <h2 class="h2" id="products-title" data-split>Our products.</h2>
+        <p class="tab-label"><span class="tip tip--square c-lilac" aria-hidden="true"></span>The problem</p>
+        <h2 class="h2" id="problem-title" data-split>The creator journey is fragmented.</h2>
       </div>
-      <p class="lede">Each product has its own page with everything you need to know.</p>
+      <p class="lede">Creators, brands and buyers each work around the gaps with separate tools, DMs and workarounds.</p>
     </header>
-
-    <a class="product-card on-dark" href="tipstore/" data-reveal>
-      <div class="product-card__copy">
-        <p class="product-card__name"><span class="pill pill--flame">Tipstore</span><span class="mono">tipstore.com</span></p>
-        <h3 class="product-card__title">Sell digital products from your own storefront.</h3>
-        <p>Tipstore is a digital commerce platform for creators, educators, coaches, consultants, trainers and digital entrepreneurs. Build a storefront, sell digital products, receive payments and deliver purchased content automatically.</p>
-        <ul class="product-card__facts">
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Storefront at tipstore.com/yourname</li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Payments by Paystack</li>
-          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Instant delivery after payment</li>
-        </ul>
-        <span class="btn btn--cream">Visit Tipstore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </div>
-      <div class="product-card__art" aria-hidden="true">
-        <img src="assets/img/hero-ada.webp" width="1100" height="1375" alt="" loading="lazy">
-        <div class="float-card"><span class="icon-tile" style="background:var(--mint);border:0"><svg class="i"><use href="#i-naira"/></svg></span><span><b>Payment verified</b>Example sale</span></div>
-      </div>
-    </a>
-
-    <div class="product-slots">
-      <div class="product-slot" data-reveal>
-        <span class="tip tip--star c-sun" aria-hidden="true"></span>
-        <p class="product-slot__name">Next product</p>
-        <p><span class="ph-tag">Placeholder</span> Reserved for a future Tipsona product.</p>
-      </div>
-      <div class="product-slot" data-reveal>
-        <span class="tip tip--diamond c-blush" aria-hidden="true"></span>
-        <p class="product-slot__name">Next product</p>
-        <p><span class="ph-tag">Placeholder</span> Reserved for a future Tipsona product.</p>
-      </div>
-    </div>
+    <ol class="numbered">
+      <li data-reveal><span class="numbered__n">01</span><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-link"/></svg></span><p>Creators stitch together separate tools for storefronts, memberships, brand deals, payments, analytics and contracts.</p></li>
+      <li data-reveal><span class="numbered__n">02</span><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg></span><p>Brands struggle to discover, vet, brief and manage creators at scale.</p></li>
+      <li data-reveal><span class="numbered__n">03</span><span class="icon-tile acc-blush"><svg class="i" aria-hidden="true"><use href="#i-shield"/></svg></span><p>Trust, logistics, escrow and cross-border payouts remain fragmented.</p></li>
+      <li data-reveal><span class="numbered__n">04</span><span class="icon-tile acc-mint"><svg class="i" aria-hidden="true"><use href="#i-naira"/></svg></span><p>Many African creators have audiences but limited access to direct platform monetization.</p></li>
+      <li data-reveal><span class="numbered__n">05</span><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span><p>Data is scattered, making it difficult to understand what actually drives revenue.</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- ─────────────────────────── About ─────────────────────────── -->
-<section class="section about on-dark" id="about" aria-labelledby="about-title">
+<!-- ─────────────────────────── Ecosystem ─────────────────────────── -->
+<section class="section ecosystem" id="ecosystem" aria-labelledby="eco-title" style="padding-top:0">
   <div class="container">
-    <p class="tab-label"><span class="tip tip--circle c-flame" aria-hidden="true"></span>About</p>
-    <h2 class="about__statement" id="about-title" data-words>Tipstore’s vision: to become the most trusted digital commerce platform for African creators, educators, coaches, consultants, trainers and digital entrepreneurs.</h2>
-    <p class="about__source">Tipstore vision statement</p>
-    <div class="about__grid">
-      <div><p class="about__label">Mission</p><p>To simplify digital commerce with a secure, scalable and creator-friendly platform where anyone can monetize their expertise through automated digital product sales.</p></div>
-      <div><p class="about__label">The company</p><p><span class="ph-tag">Placeholder</span> Tipsona’s own story, team and values go here.</p></div>
+    <header class="section-head section-head--split">
+      <div style="display:grid;gap:22px">
+        <p class="tab-label"><span class="tip tip--star c-sun" aria-hidden="true"></span>The ecosystem</p>
+        <h2 class="h2" id="eco-title" data-split>Nine products. One ecosystem.</h2>
+      </div>
+      <p class="lede">The Tipsona Creator Business Ecosystem. Each product solves one part of running a creator business, and they work better together.</p>
+    </header>
+    <div class="eco-grid">
+      <a class="eco-card eco-card--page" href="tipstore/" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg></span><span class="eco-card__phase">Phase 1</span></span>
+        <span class="eco-card__name">TipStore</span>
+        <span class="eco-card__layer"><span class="tip tip--arch c-flame" aria-hidden="true"></span>Commerce</span>
+        <span class="eco-card__line">Digital products and creator commerce.</span>
+        <span class="eco-card__go">Visit TipStore<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card eco-card--page" href="tipper/" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg></span><span class="eco-card__phase">Phase 1</span></span>
+        <span class="eco-card__name">Tipper</span>
+        <span class="eco-card__layer"><span class="tip tip--circle c-lilac" aria-hidden="true"></span>Brand work</span>
+        <span class="eco-card__line">UGC creator marketplace connecting brands and creators.</span>
+        <span class="eco-card__go">Visit Tipper<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card" href="ecosystem.html#tipstar" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span><span class="eco-card__phase">Phase 1</span></span>
+        <span class="eco-card__name">TipStar</span>
+        <span class="eco-card__layer"><span class="tip tip--star c-sun" aria-hidden="true"></span>Recurring income</span>
+        <span class="eco-card__line">Memberships, donations and exclusive content.</span>
+        <span class="eco-card__go">Read more<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card eco-card--page" href="tipfix/" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-blush"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span><span class="eco-card__phase">Phase 2</span></span>
+        <span class="eco-card__name">TipFix</span>
+        <span class="eco-card__layer"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Trust and utility</span>
+        <span class="eco-card__line">Problem-solving utility layer for the everyday friction of operating a digital business.</span>
+        <span class="eco-card__go">Visit TipFix<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card" href="ecosystem.html#tiplaunch" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-mint"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg></span><span class="eco-card__phase">Phase 3</span></span>
+        <span class="eco-card__name">TipLaunch</span>
+        <span class="eco-card__layer"><span class="tip tip--pill c-mint" aria-hidden="true"></span>Funding</span>
+        <span class="eco-card__line">Crowdfunding and community-backed capital.</span>
+        <span class="eco-card__go">Read more<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card" href="ecosystem.html#tipmarket" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-compass"/></svg></span><span class="eco-card__phase">Phase 3</span></span>
+        <span class="eco-card__name">TipMarket</span>
+        <span class="eco-card__layer"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Discovery</span>
+        <span class="eco-card__line">Discovery marketplace for creators, products and projects.</span>
+        <span class="eco-card__go">Read more<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card" href="ecosystem.html#tipads" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-megaphone"/></svg></span><span class="eco-card__phase">Phase 4</span></span>
+        <span class="eco-card__name">TipAds</span>
+        <span class="eco-card__layer"><span class="tip tip--tri c-flame" aria-hidden="true"></span>Distribution</span>
+        <span class="eco-card__line">Creator advertising and brand distribution network.</span>
+        <span class="eco-card__go">Read more<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card" href="ecosystem.html#tipai" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span><span class="eco-card__phase">Phase 5</span></span>
+        <span class="eco-card__name">TipAI</span>
+        <span class="eco-card__layer"><span class="tip tip--star c-lilac" aria-hidden="true"></span>Intelligence</span>
+        <span class="eco-card__line">AI operating assistant for creator businesses.</span>
+        <span class="eco-card__go">Read more<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
+      <a class="eco-card" href="ecosystem.html#tipinsights" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span><span class="eco-card__phase">Phase 5</span></span>
+        <span class="eco-card__name">TipInsights</span>
+        <span class="eco-card__layer"><span class="tip tip--square c-sun" aria-hidden="true"></span>Intelligence</span>
+        <span class="eco-card__line">Creator business intelligence and analytics.</span>
+        <span class="eco-card__go">Read more<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ─────────────────────────── Contact CTA ─────────────────────────── -->
+<!-- ─────────────────────────── Flywheel ─────────────────────────── -->
+<section class="section flywheel-sec" id="flywheel" aria-labelledby="fly-title">
+  <div class="container flywheel-sec__grid">
+    <div class="flywheel-sec__copy">
+      <p class="tab-label"><span class="tip tip--pill c-mint" aria-hidden="true"></span>The flywheel</p>
+      <h2 class="h2" id="fly-title" data-split>Every creator makes the network stronger.</h2>
+      <p class="lede">Every creator, brand, campaign, transaction and insight strengthens the ecosystem.</p>
+    </div>
+    <ol class="flywheel" data-flywheel>
+      <li style="--i:0"><span class="flywheel__n">1</span>Creators join</li>
+      <li style="--i:1"><span class="flywheel__n">2</span>They create products and content</li>
+      <li style="--i:2"><span class="flywheel__n">3</span>Audiences discover them</li>
+      <li style="--i:3"><span class="flywheel__n">4</span>Brands hire them</li>
+      <li style="--i:4"><span class="flywheel__n">5</span>Transactions flow through Tipsona</li>
+      <li style="--i:5"><span class="flywheel__n">6</span>Data improves matching and intelligence</li>
+      <li style="--i:6"><span class="flywheel__n">7</span>Creators earn more</li>
+      <li style="--i:7"><span class="flywheel__n">8</span>The network attracts more creators and brands</li>
+      <li class="flywheel__hub" aria-hidden="true"><svg class="i"><use href="#i-loop"/></svg></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Roadmap ─────────────────────────── -->
+<section class="section roadmap-sec on-dark" id="roadmap" aria-labelledby="road-title">
+  <div class="container">
+    <header class="section-head section-head--split">
+      <div style="display:grid;gap:22px">
+        <p class="tab-label"><span class="tip tip--arch c-cream" aria-hidden="true"></span>Roadmap</p>
+        <h2 class="h2" id="road-title" data-split>Built in five phases.</h2>
+      </div>
+      <p class="lede">It starts with commerce, brand work and memberships, then adds trust, liquidity, distribution and intelligence.</p>
+    </header>
+    <ol class="roadmap">
+      <li class="phase" data-reveal>
+        <p class="phase__num">Phase 1</p>
+        <p class="phase__name">Wedge</p>
+        <ul class="phase__products"><li><span class="tip tip--arch c-flame" aria-hidden="true"></span>TipStore</li><li><span class="tip tip--circle c-lilac" aria-hidden="true"></span>Tipper</li><li><span class="tip tip--star c-sun" aria-hidden="true"></span>TipStar</li></ul>
+      </li>
+      <li class="phase" data-reveal>
+        <p class="phase__num">Phase 2</p>
+        <p class="phase__name">Trust and utility</p>
+        <ul class="phase__products"><li><span class="tip tip--diamond c-blush" aria-hidden="true"></span>TipFix</li></ul>
+      </li>
+      <li class="phase" data-reveal>
+        <p class="phase__num">Phase 3</p>
+        <p class="phase__name">Liquidity</p>
+        <ul class="phase__products"><li><span class="tip tip--pill c-mint" aria-hidden="true"></span>TipLaunch</li><li><span class="tip tip--square c-lilac" aria-hidden="true"></span>TipMarket</li></ul>
+      </li>
+      <li class="phase" data-reveal>
+        <p class="phase__num">Phase 4</p>
+        <p class="phase__name">Distribution</p>
+        <ul class="phase__products"><li><span class="tip tip--tri c-flame" aria-hidden="true"></span>TipAds</li></ul>
+      </li>
+      <li class="phase" data-reveal>
+        <p class="phase__num">Phase 5</p>
+        <p class="phase__name">Intelligence</p>
+        <ul class="phase__products"><li><span class="tip tip--star c-lilac" aria-hidden="true"></span>TipAI</li><li><span class="tip tip--square c-sun" aria-hidden="true"></span>TipInsights</li></ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Vision ─────────────────────────── -->
+<section class="section vision" aria-labelledby="vision-title">
+  <div class="container">
+    <p class="tab-label"><span class="tip tip--diamond c-ink" aria-hidden="true"></span>Long-term vision</p>
+    <h2 class="vision__statement" id="vision-title">The system of record and operating layer for African creator businesses.</h2>
+    <ul class="vision__verbs">
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-users"/></svg>Build their identity</li>
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg>Solve operating problems</li>
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-store"/></svg>Sell products</li>
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg>Earn recurring income</li>
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg>Secure funding</li>
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg>Work with brands</li>
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-megaphone"/></svg>Reach audiences</li>
+      <li data-reveal><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>Use intelligence to grow</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────── Closing CTA ─────────────────────────── -->
 <section class="section cta" id="contact" aria-labelledby="cta-title">
   <div class="container">
     <div class="cta__panel cta__panel--hub" data-reveal>
       <span class="tip tip--star c-sun bg-shape" style="--s:clamp(90px,12vw,170px);right:-3%;top:-6%" data-float aria-hidden="true"></span>
       <div class="cta__copy">
-        <h2 class="cta__title" id="cta-title" data-split>Say hello.</h2>
-        <p>Questions about Tipsona or Tipstore? Email us.</p>
-        <div><a class="btn btn--ink" href="mailto:hello@tipsona.com">hello@tipsona.com<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+        <h2 class="cta__title" id="cta-title" data-split>The creator is becoming a business.</h2>
+        <p>Tipsona is building the infrastructure that makes that business possible.</p>
+        <div class="cta__btns">
+          <a class="btn btn--ink" href="tipstore/">Start with TipStore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn btn--cream" href="mailto:hello@tipsona.com">hello@tipsona.com</a>
+        </div>
         <p class="cta__ph"><span class="ph-tag">Placeholder</span> Email address to be confirmed.</p>
       </div>
     </div>
@@ -190,9 +376,9 @@
 <footer class="footer on-dark">
   <div class="container">
     <div class="footer__top">
-      <p class="footer__pitch">Tipstore is a Tipsona product. More products will be listed here.</p>
+      <p class="footer__pitch">One creator identity. One ecosystem. Multiple monetization rails.</p>
       <div class="footer__contact">
-        <a class="footer__cta" href="tipstore/#claim" aria-label="Start selling on Tipstore"><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
+        <a class="footer__cta" href="ecosystem.html" aria-label="Explore the Tipsona ecosystem"><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
         <a class="footer__mail" href="mailto:hello@tipsona.com">hello@tipsona.com</a>
         <div class="footer__social">
           <a href="#" aria-label="Tipsona on Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
@@ -203,16 +389,16 @@
       </div>
     </div>
     <div class="footer__cols">
-      <div><h3><span class="tip tip--arch c-flame" aria-hidden="true"></span>Tipsona</h3><ul><li><a href="">Home</a></li><li><a href="#products">Products</a></li><li><a href="design-system.html">Brand and design</a></li></ul></div>
-      <div><h3><span class="tip tip--square c-lilac" aria-hidden="true"></span>Tipstore</h3><ul><li><a href="tipstore/">Overview</a></li><li><a href="tipstore/#how">How it works</a></li><li><a href="tipstore/#creators">Who it’s for</a></li><li><a href="tipstore/pricing.html">Pricing</a></li></ul></div>
-      <div><h3><span class="tip tip--star c-sun" aria-hidden="true"></span>Help</h3><ul><li><a href="tipstore/#faq">FAQ</a></li><li><a href="#">Help Center</a></li></ul></div>
+      <div><h3><span class="tip tip--arch c-flame" aria-hidden="true"></span>Tipsona</h3><ul><li><a href="./">Home</a></li><li><a href="ecosystem.html">Ecosystem</a></li><li><a href="ecosystem.html#roadmap">Roadmap</a></li><li><a href="design-system.html">Brand and design</a></li></ul></div>
+      <div><h3><span class="tip tip--square c-lilac" aria-hidden="true"></span>Products</h3><ul><li><a href="tipstore/">TipStore</a></li><li><a href="tipper/">Tipper</a></li><li><a href="tipfix/">TipFix</a></li><li><a href="ecosystem.html#products">All products</a></li></ul></div>
+      <div><h3><span class="tip tip--star c-sun" aria-hidden="true"></span>TipStore</h3><ul><li><a href="tipstore/#how">How it works</a></li><li><a href="tipstore/pricing.html">Pricing</a></li><li><a href="tipstore/#faq">FAQ</a></li><li><a href="#">Help Center</a></li></ul></div>
       <div><h3><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Legal</h3><ul><li><a href="#">Terms</a></li><li><a href="#">Privacy</a></li></ul></div>
     </div>
     <div class="footer__word" data-footer-word aria-hidden="true">
-      <span class="sticker sticker--sun sticker--a" data-sticker><span class="tip tip--star c-ink"></span>Instant delivery</span>
-      <span class="sticker sticker--flame sticker--b" data-sticker><span class="tip tip--pill c-cream"></span>Payments by Paystack</span>
+      <span class="sticker sticker--sun sticker--a" data-sticker><span class="tip tip--star c-ink"></span>One creator identity</span>
+      <span class="sticker sticker--flame sticker--b" data-sticker><span class="tip tip--pill c-cream"></span>Nine products, one ecosystem</span>
       <span class="sticker sticker--lilac sticker--c" data-sticker><span class="tip tip--circle c-ink"></span>For African creators</span>
-      <span class="sticker sticker--mint sticker--d" data-sticker><span class="tip tip--arch c-ink"></span>Free plan</span>
+      <span class="sticker sticker--mint sticker--d" data-sticker><span class="tip tip--arch c-ink"></span>Local payment rails</span>
       <svg class="footer__logo" viewBox="0 0 337 84" role="img" aria-label="Tipsona"><use href="#logo"/></svg>
     </div>
     <div class="footer__bottom">

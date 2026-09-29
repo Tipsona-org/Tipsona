@@ -118,6 +118,72 @@ def plans_html():
     return '    <div class="plans">\n' + "\n".join(cards) + "\n    </div>"
 
 
+
+# ── Tipsona ecosystem: facts from the investor pitch document ─────────────
+# (id, name, layer, one-liner, roadmap phase, tip shape, icon, own page)
+PRODUCTS = [
+    ("tipstore", "TipStore", "Commerce", "Digital products and creator commerce.", 1, "tip--arch c-flame", "store", "tipstore/"),
+    ("tipper", "Tipper", "Brand work", "UGC creator marketplace connecting brands and creators.", 1, "tip--circle c-lilac", "briefcase", "tipper/"),
+    ("tipstar", "TipStar", "Recurring income", "Memberships, donations and exclusive content.", 1, "tip--star c-sun", "heart", None),
+    ("tipfix", "TipFix", "Trust and utility", "Problem-solving utility layer for the everyday friction of operating a digital business.", 2, "tip--diamond c-blush", "wrench", "tipfix/"),
+    ("tiplaunch", "TipLaunch", "Funding", "Crowdfunding and community-backed capital.", 3, "tip--pill c-mint", "rocket", None),
+    ("tipmarket", "TipMarket", "Discovery", "Discovery marketplace for creators, products and projects.", 3, "tip--square c-lilac", "compass", None),
+    ("tipads", "TipAds", "Distribution", "Creator advertising and brand distribution network.", 4, "tip--tri c-flame", "megaphone", None),
+    ("tipai", "TipAI", "Intelligence", "AI operating assistant for creator businesses.", 5, "tip--star c-lilac", "spark", None),
+    ("tipinsights", "TipInsights", "Intelligence", "Creator business intelligence and analytics.", 5, "tip--square c-sun", "chart", None),
+]
+PHASES = [(1, "Wedge"), (2, "Trust and utility"), (3, "Liquidity"), (4, "Distribution"), (5, "Intelligence")]
+ACC = {"c-flame": "acc-flame", "c-lilac": "acc-lilac", "c-sun": "acc-sun", "c-blush": "acc-blush", "c-mint": "acc-mint"}
+
+
+def eco_grid(on_ecosystem_page):
+    cards = []
+    for pid, name, layer, line, phase, shape, icon, page in PRODUCTS:
+        if on_ecosystem_page:
+            href, go = f"#{pid}", "Details"
+        elif page:
+            href, go = "{{root}}" + page, f"Visit {name}"
+        else:
+            href, go = "{{root}}ecosystem.html#" + pid, "Read more"
+        acc = ACC[shape.split()[1]]
+        feat = " eco-card--page" if page else ""
+        cards.append(f'''      <a class="eco-card{feat}" href="{href}" data-reveal>
+        <span class="eco-card__top"><span class="icon-tile {acc}"><svg class="i" aria-hidden="true"><use href="#i-{icon}"/></svg></span><span class="eco-card__phase">Phase {phase}</span></span>
+        <span class="eco-card__name">{name}</span>
+        <span class="eco-card__layer"><span class="tip {shape}" aria-hidden="true"></span>{layer}</span>
+        <span class="eco-card__line">{line}</span>
+        <span class="eco-card__go">{go}<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      </a>''')
+    return '    <div class="eco-grid">\n' + "\n".join(cards) + "\n    </div>"
+
+
+def roadmap_html():
+    cols = []
+    for n, label in PHASES:
+        chips = "".join(f'<li><span class="tip {sh}" aria-hidden="true"></span>{nm}</li>'
+                        for _, nm, _, _, ph, sh, _, _ in PRODUCTS if ph == n)
+        cols.append(f'''      <li class="phase" data-reveal>
+        <p class="phase__num">Phase {n}</p>
+        <p class="phase__name">{label}</p>
+        <ul class="phase__products">{chips}</ul>
+      </li>''')
+    return '    <ol class="roadmap">\n' + "\n".join(cols) + "\n    </ol>"
+
+
+# ── Product nav: "links: Label|href; Label|href" in the front matter ───────
+SHAPES = ["tip--square c-lilac", "tip--star c-sun", "tip--circle c-flame", "tip--pill c-mint", "tip--diamond c-blush"]
+
+
+def nav_links(spec):
+    items = [x.split("|") for x in spec.split(";") if x.strip()]
+    bar, menu = [], []
+    for n, (label, href) in enumerate(items):
+        label, href, shape = label.strip(), href.strip(), SHAPES[n % len(SHAPES)]
+        bar.append(f'        <li><a href="{href}"><span class="tip {shape}" aria-hidden="true"></span>{label}</a></li>')
+        menu.append(f'    <li><a class="mm-link" href="{href}">{label} <span class="tip {shape}" aria-hidden="true"></span></a></li>')
+    return "\n".join(bar), "\n".join(menu)
+
+
 # ── Assembly ───────────────────────────────────────────────────────────────
 def front_matter(text):
     m = re.match(r"\s*<!--(.*?)-->\s*", text, re.S)
@@ -139,6 +205,8 @@ def build(page):
     pre = meta.get("preload")
     tokens = {
         "personas": personas_html(),
+        "ecosystem_grid": eco_grid(meta.get("grid") == "anchors"),
+        "roadmap": roadmap_html(),
         "plans": plans_html(),
         "title": meta["title"],
         "description": meta["description"],
@@ -146,10 +214,17 @@ def build(page):
         "preload": f'<link rel="preload" href="{{{{root}}}}assets/img/{pre}" as="image" fetchpriority="high">\n' if pre else "",
         "pricing_current": ' aria-current="page"' if meta.get("current") == "pricing" else "",
     }
+    if "links" in meta:
+        tokens["navlinks"], tokens["menulinks"] = nav_links(meta["links"])
     for k, v in tokens.items():
         html = html.replace("{{" + k + "}}", v)
-    # path tokens last, since the snippets above use them too
-    for k in ("root", "home", "pricing", "hubhome"):
+    # other front-matter values (product name, CTA), then path tokens last,
+    # since the snippets above use them too
+    paths = ("root", "home", "pricing", "hubhome")
+    for k, v in meta.items():
+        if k not in paths:
+            html = html.replace("{{" + k + "}}", v)
+    for k in paths:
         html = html.replace("{{" + k + "}}", meta.get(k, ""))
     left = re.findall(r"\{\{\w+\}\}", html)
     assert not left, f"{page}: unfilled tokens {left}"

@@ -4,12 +4,17 @@ Marketing pages for **Tipsona** and its products. The site is not the product: i
 
 | Page | Built file | Source | What it shows |
 | --- | --- | --- | --- |
-| Tipsona home | `site/index.html` | `src/pages/index.html` | The Tipsona hub: products, about, contact |
-| Tipstore landing | `site/tipstore/index.html` | `src/pages/tipstore/index.html` | Tipstore, the digital commerce platform: how it works, who it's for, features, dashboard, trust, plans, FAQ |
-| Tipstore pricing | `site/tipstore/pricing.html` | `src/pages/tipstore/pricing.html` | Plans, feature comparison, fee example, billing FAQ |
+| Tipsona home | `site/index.html` | `src/pages/index.html` | The operating system for Africa’s creator economy: thesis, problem, the nine products, flywheel, roadmap, vision |
+| Ecosystem | `site/ecosystem.html` | `src/pages/ecosystem.html` | Every product in detail, plus the roadmap |
+| TipStore landing | `site/tipstore/index.html` | `src/pages/tipstore/index.html` | TipStore, the commerce layer: how it works, who it's for, features, dashboard, trust, plans, FAQ |
+| TipStore pricing | `site/tipstore/pricing.html` | `src/pages/tipstore/pricing.html` | Plans, feature comparison, fee example, billing FAQ |
+| Tipper | `site/tipper/index.html` | `src/pages/tipper/index.html` | The UGC marketplace: problems, workflow, trust, pricing |
+| TipFix | `site/tipfix/index.html` | `src/pages/tipfix/index.html` | The proposed utility layer: payouts, legal desk, escrow, small problems |
 | Brand and design system | `site/design-system.html` | `src/pages/design-system.html` | Logo, colour, contrast, type, tip shapes, icons, components, motion and UX rules |
 
-All Tipstore copy comes from the Tipstore PRD. Anything not in the PRD is shown as a visible placeholder.
+TipStore copy comes from the TipStore PRD. Tipsona, Tipper, TipFix and the other products come from the Tipsona investor pitch document (2026). Investor-only material (business model, market size, moat, investment case) is left off the public site. Anything in neither document is shown as a visible placeholder.
+
+The product list, phases and one-liners live in `PRODUCTS` in `scripts/build-pages.py`, so the home and ecosystem grids and the roadmap stay in sync.
 
 ## Build and preview
 
@@ -20,7 +25,7 @@ cd site && python3 -m http.server 4173 # open http://localhost:4173
 
 `build-pages.py` wraps each page in `src/pages` with the shared partials in `src/partials` (head, logo, nav, footer). The persona panels and plan cards are generated from data in the script. Edit `src/`, not the built HTML.
 
-To add a product page, add `src/pages/<product>/index.html` with a front-matter comment (see the Tipstore page), a nav partial if it needs its own, and a card in the products section of `src/pages/index.html`.
+To add a product page, add `src/pages/<product>/index.html` with a front-matter comment (see the TipStore page), a nav partial if it needs its own, and a card in the products section of `src/pages/index.html`.
 
 ## Deploy
 
@@ -39,8 +44,8 @@ See `DESIGN.md` for the design system rules.
 
 ## Placeholders to confirm before launch
 
-- **Tipsona company description and story** on the home page.
-- **Future product slots** on the home page.
+- **Tipper pricing** (20% fee, ₦5,000 SME tier, enterprise from ₦500,000/month) is from the pitch and marked as planned.
+- **Research sources** on the TipFix page are listed as in the pitch; the pitch says they should be validated independently.
 - **Pro and Business prices** (shown as "Price TBC"). The PRD leaves prices and exact fees open.
 - **Fee example** (₦10,000 − ₦500 − ₦150 = ₦9,350) is the PRD's illustrative example.
 - **hello@tipsona.com** contact address.

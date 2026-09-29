@@ -1,0 +1,31 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" data-nav>
+  <div class="nav__bar">
+    <span class="brand">
+      <a class="brand__home" href="{{root}}./" aria-label="Tipsona home"><svg class="logo" viewBox="0 0 337 84" aria-hidden="true"><use href="#logo"/></svg></a>
+      <a class="brand__product" href="#top">{{product}}</a>
+    </span>
+    <nav class="nav__links" aria-label="Main">
+      <ul>
+{{navlinks}}
+      </ul>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--ink btn--sm" href="{{cta_href}}">{{cta}}<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+        <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>
+        <span class="sr-only">Open menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" hidden>
+  <ul>
+{{menulinks}}
+  </ul>
+  <div class="mobile-menu__foot">
+    <a class="btn btn--flame btn--block" href="{{cta_href}}">{{cta}}<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+  </div>
+</div>

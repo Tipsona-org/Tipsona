@@ -7,13 +7,11 @@
     </a>
     <nav class="nav__links" aria-label="Main">
       <ul>
-        <li><a href="{{hubhome}}#products"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Products</a></li>
-        <li><a href="{{hubhome}}#about"><span class="tip tip--circle c-flame" aria-hidden="true"></span>About</a></li>
-        <li><a href="{{hubhome}}#contact"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Contact</a></li>
+{{navlinks}}
       </ul>
     </nav>
     <div class="nav__actions">
-      <a class="btn btn--ink btn--sm" href="{{root}}tipstore/">Explore Tipstore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a class="btn btn--ink btn--sm" href="{{root}}ecosystem.html">Explore the ecosystem<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
         <svg class="i" aria-hidden="true"><use href="#i-menu"/></svg>
         <span class="sr-only">Open menu</span>
@@ -24,11 +22,9 @@
 
 <div class="mobile-menu" id="mobile-menu" hidden>
   <ul>
-    <li><a class="mm-link" href="{{hubhome}}#products">Products <span class="tip tip--square c-lilac" aria-hidden="true"></span></a></li>
-    <li><a class="mm-link" href="{{hubhome}}#about">About <span class="tip tip--circle c-flame" aria-hidden="true"></span></a></li>
-    <li><a class="mm-link" href="{{hubhome}}#contact">Contact <span class="tip tip--diamond c-blush" aria-hidden="true"></span></a></li>
+{{menulinks}}
   </ul>
   <div class="mobile-menu__foot">
-    <a class="btn btn--flame btn--block" href="{{root}}tipstore/">Explore Tipstore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    <a class="btn btn--flame btn--block" href="{{root}}ecosystem.html">Explore the ecosystem<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
   </div>
 </div>
