@@ -10,6 +10,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+SITE = "https://tipsona.netlify.app/"
 SRC = ROOT / "src"
 OUT = ROOT / "site"
 
@@ -140,12 +141,12 @@ ACC = {"c-flame": "acc-flame", "c-lilac": "acc-lilac", "c-sun": "acc-sun", "c-bl
 MINI_UI = {
     "tipstore": """<span class="mini-url"><svg class="i"><use href="#i-lock"/></svg>tipstore.com/yourname</span>
           <span class="mini-row"><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-template"/></svg></span><span class="mini-row__t"><b>Budget Planner</b><small>Template · PDF</small></span><b class="mini-row__p">₦7,500</b></span>
-          <span class="mini-btn">Buy now</span>""",
-    "tipper": """<span class="mini-status"><b>Short-form UGC video</b><span class="pill pill--success pill--dot">Escrow funded</span></span>
+          <span class="mini-btn"><span class="swap-a">Buy now</span><span class="swap-b"><svg class="i"><use href="#i-check"/></svg>Payment verified</span></span>""",
+    "tipper": """<span class="mini-status"><b>Short-form UGC video</b><span class="mini-swap"><span class="swap-a pill pill--success pill--dot">Escrow funded</span><span class="swap-b pill pill--success pill--dot">Paid out</span></span></span>
           <span class="mini-check is-done"><svg class="i"><use href="#i-check"/></svg>Brand funds the campaign</span>
           <span class="mini-check is-done"><svg class="i"><use href="#i-check"/></svg>You apply with a pitch</span>
-          <span class="mini-check"><svg class="i"><use href="#i-check"/></svg>Brand approves, you get paid</span>""",
-    "tipstar": """<span class="mini-row"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-users"/></svg></span><span class="mini-row__t"><b>Membership</b><small>For your fans</small></span><span class="mini-join">Join</span></span>
+          <span class="mini-check mini-check--last"><svg class="i"><use href="#i-check"/></svg>Brand approves, you get paid</span>""",
+    "tipstar": """<span class="mini-row"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-users"/></svg></span><span class="mini-row__t"><b>Membership</b><small>For your fans</small></span><span class="mini-join"><span class="swap-a">Join</span><span class="swap-b">Joined</span></span></span>
           <span class="mini-row"><span class="prod__thumb cover-night"><svg class="i" style="--acc:var(--night-3)"><use href="#i-lock"/></svg></span><span class="mini-row__t"><b>Exclusive content</b><small>Members only</small></span></span>
           <span class="mini-chip"><svg class="i"><use href="#i-heart"/></svg>Send a donation</span>""",
 }
@@ -250,6 +251,10 @@ def build(page):
         "footer_pitch": meta.get("footer_pitch", ""),
         "preload": f'<link rel="preload" href="{{{{root}}}}assets/img/{pre}" as="image" fetchpriority="high">\n' if pre else "",
         "pricing_current": ' aria-current="page"' if meta.get("current") == "pricing" else "",
+        # absolute URLs for link previews (placeholder domain until the real one is chosen)
+        "site": SITE,
+        "canonical": SITE + re.sub(r"(^|/)index\.html$", r"\1", str(page.relative_to(SRC / "pages"))),
+        "robots": '<meta name="robots" content="noindex">\n' if meta.get("robots") == "noindex" else "",
     }
     if "links" in meta:
         tokens["navlinks"], tokens["menulinks"] = nav_links(meta["links"])

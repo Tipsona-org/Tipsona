@@ -142,10 +142,20 @@
       hint.setAttribute('data-state', res.state);
       hint.innerHTML = ICON(res.state === 'ok' ? 'check-circle' : 'x') + '<span>' + res.msg + '</span>';
     }
+    /* Live preview: the hero claim form writes the name straight into the example storefront */
+    var liveName = form.id === 'claim' ? $('[data-live-name]') : null;
+    var liveUrl = liveName && liveName.closest('[data-live-url]');
+    var liveLabel = $('[data-live-label]');
+    var liveDefault = liveName ? liveName.textContent : '';
     input.addEventListener('input', function () {
       var clean = input.value.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
       if (clean !== input.value) input.value = clean;
       render(checkName(clean));
+      if (liveName) {
+        liveName.textContent = clean ? clean.slice(0, 30) : liveDefault;
+        liveUrl.classList.toggle('is-live', !!clean);
+        if (liveLabel) liveLabel.textContent = clean ? 'Your storefront, live preview' : 'Example storefront';
+      }
     });
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -422,12 +432,34 @@
       trustScene(gsap, ST, Split);
       ctaScene(gsap, ST);
       flowScene(gsap);
+      photoReveals(gsap);
       footerScene(gsap, ST);
       floaters(gsap, ST);
       saleLoop(gsap, ST);
       ST.refresh();
     });
     window.addEventListener('load', function () { ST.refresh(); });
+  }
+
+  /* Depth: hero layers drift a few pixels with the pointer (mouse and trackpad only). */
+  function pointerDepth(gsap) {
+    if (reduceMotion || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var hero = $('.hero') || $('.hub-hero');
+    if (!hero || hero.getAttribute('data-depth-on')) return;
+    hero.setAttribute('data-depth-on', '1');
+    var layers = $$('[data-depth]', hero).map(function (el) {
+      return {
+        d: parseFloat(el.getAttribute('data-depth')),
+        x: gsap.quickTo(el, 'x', { duration: 1.2, ease: 'power3.out' }),
+        y: gsap.quickTo(el, 'y', { duration: 1.2, ease: 'power3.out' })
+      };
+    });
+    hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / r.width - 0.5, ny = (e.clientY - r.top) / r.height - 0.5;
+      layers.forEach(function (l) { l.x(nx * l.d); l.y(ny * l.d); });
+    });
+    hero.addEventListener('pointerleave', function () { layers.forEach(function (l) { l.x(0); l.y(0); }); });
   }
 
   function heroIntro(gsap) {
@@ -444,7 +476,10 @@
         tl.fromTo('.hub-hero .avatars img', { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, stagger: 0.08, duration: 0.8, ease: 'back.out(2.2)' }, 0.6)
           .fromTo('.hub-tag', { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, stagger: 0.15, duration: 0.9, ease: 'back.out(2.4)' }, 0.85)
           .fromTo('.hub-bubbles .bubble', { scale: 0 }, { scale: 1, stagger: 0.07, duration: 0.9, ease: 'back.out(2)' }, 0.7)
+          .fromTo('.hero-card__photo', { clipPath: 'inset(100% 0% 0% 0% round 20px)' }, { clipPath: 'inset(0% 0% 0% 0% round 20px)', duration: 1.4, ease: 'expo.inOut' }, 0.35)
+          .fromTo('.hero-card__photo img', { scale: 1.25 }, { scale: 1, duration: 1.9, ease: 'expo.out' }, 0.35)
           .fromTo('.hero-card__chip', { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.16, duration: 0.9, ease: 'back.out(1.8)' }, 1.05);
+        tl.call(function () { pointerDepth(gsap); });
       }
       return;
     }
@@ -462,7 +497,8 @@
       .fromTo('.hero .float-card', { scale: 0.6, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, stagger: 0.16, duration: 0.85, ease: 'back.out(1.9)' }, 1.15)
       .fromTo('.hero .avatars img', { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, stagger: 0.08, duration: 0.8, ease: 'back.out(2.2)' }, 0.75)
       .fromTo('.hero__sticker', { scale: 0, autoAlpha: 0, rotation: -30 }, { scale: 1, autoAlpha: 1, rotation: 0, duration: 0.9, ease: 'back.out(2.4)' }, 1.0)
-      .fromTo('.stage__example', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.4);
+      .fromTo('.stage__example', { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.6 }, 1.4)
+      .call(function () { pointerDepth(gsap); });
   }
 
   function splitHeadings(gsap, Split) {
@@ -718,6 +754,16 @@
     }
     var lock = $('[data-lock]');
     if (lock) gsap.from($$('.tip', lock), { scale: 0, rotation: -60, stagger: 0.12, duration: 0.9, ease: 'back.out(2)', scrollTrigger: { trigger: lock, start: 'top 85%', once: true } });
+  }
+
+  /* Photos share one reveal: a wipe from below while the image settles from a slight zoom. */
+  function photoReveals(gsap) {
+    $$('.thesis__img').forEach(function (el) {
+      var st = { trigger: el, start: 'top 88%', once: true };
+      gsap.fromTo(el, { clipPath: 'inset(100% 0% 0% 0% round 20px)' }, { clipPath: 'inset(0% 0% 0% 0% round 20px)', duration: 1.4, ease: 'expo.inOut', scrollTrigger: st });
+      var img = $('img', el);
+      if (img) gsap.fromTo(img, { scale: 1.22 }, { scale: 1, duration: 1.9, ease: 'expo.out', scrollTrigger: st });
+    });
   }
 
   /* Numbered flows (Tipper, TipFix escrow): the rail fills as you scroll. */

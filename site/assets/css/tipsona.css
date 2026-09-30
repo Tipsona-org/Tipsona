@@ -1801,6 +1801,68 @@ a.brand__product:hover { color: var(--ember); }
   .footer__social { margin-left: auto; }
 }
 
+
+/* ── Page transitions ─────────────────────────────────────────────────────
+   Native cross-document View Transitions: the nav stays put while the next
+   page rises over the old one like a sheet with a rounded top (the file-tab
+   motif). Browsers without support simply navigate as usual. */
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition { navigation: auto; }
+  .nav { view-transition-name: site-nav; }
+  ::view-transition-group(site-nav) { animation-duration: .5s; z-index: 10; }
+  ::view-transition-old(root) { animation: vt-leave .55s cubic-bezier(.65, 0, .35, 1) both; }
+  ::view-transition-new(root) { animation: vt-enter .8s cubic-bezier(.16, 1, .3, 1) both; }
+}
+@keyframes vt-leave { to { opacity: .35; transform: translateY(-3%) scale(.97); } }
+@keyframes vt-enter {
+  from { clip-path: inset(100% 0 0 0 round 56px 56px 0 0); }
+  to { clip-path: inset(0 0 0 0 round 0 0 0 0); }
+}
+
+
+/* ── Live storefront preview (TipStore hero) ─────────────────────────── */
+.store__url { min-width: 0; overflow: hidden; }
+[data-live-name] { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.store__url.is-live { box-shadow: 0 0 0 1.5px var(--flame); color: var(--ink); animation: live-pulse 1.6s var(--ease-out) infinite; }
+@keyframes live-pulse { 0% { box-shadow: 0 0 0 1.5px var(--flame), 0 0 0 0 rgba(255, 93, 2, .45); } 70% { box-shadow: 0 0 0 1.5px var(--flame), 0 0 0 2.4cqw rgba(255, 93, 2, 0); } 100% { box-shadow: 0 0 0 1.5px var(--flame), 0 0 0 0 rgba(255, 93, 2, 0); } }
+
+/* ── Product cards demo themselves on hover or keyboard focus ─────────── */
+.mini-btn, .mini-join, .mini-swap { position: relative; display: inline-grid; overflow: hidden; }
+.mini-btn { display: grid; }
+.mini-btn > span, .mini-join > span, .mini-swap > span { grid-area: 1 / 1; display: inline-flex; align-items: center; justify-content: center; gap: 6px; transition: transform .5s var(--ease-out), opacity .3s; }
+.mini-swap { justify-self: start; }
+.mini-btn .i { width: 15px; height: 15px; stroke-width: 2.6; }
+.swap-b { transform: translateY(110%); opacity: 0; }
+.launch-card:is(:hover, :focus-visible) .swap-a { transform: translateY(-110%); opacity: 0; }
+.launch-card:is(:hover, :focus-visible) .swap-b { transform: none; opacity: 1; }
+.mini-btn { transition: background-color .4s; }
+.launch-card:is(:hover, :focus-visible) .mini-btn { background: var(--success); }
+.mini-join { transition: background-color .4s; }
+.launch-card:is(:hover, :focus-visible) .mini-join { background: var(--success); }
+.mini-check--last .i, .mini-check--last { transition: color .4s, transform .5s var(--ease-spring); }
+.launch-card:is(:hover, :focus-visible) .mini-check--last { color: var(--ink); }
+.launch-card:is(:hover, :focus-visible) .mini-check--last .i { color: var(--success); transform: scale(1.25); }
+.mini-chip .i { transition: transform .5s var(--ease-spring); }
+.launch-card:is(:hover, :focus-visible) .mini-chip .i { transform: scale(1.3); --acc: var(--flame); }
+.launch-card .mini-ui { transition: transform .6s var(--ease-out); }
+.launch-card:is(:hover, :focus-visible) .mini-ui { transform: translateY(-4px) scale(1.02); }
+
+
+/* ── 404 ────────────────────────────────────────────────────────────── */
+.nf { min-height: 88vh; min-height: 88svh; display: flex; align-items: center; padding-bottom: clamp(64px, 8vw, 110px); overflow: clip; }
+.nf > .container { width: 100%; }
+.nf__inner { display: grid; justify-items: center; text-align: center; gap: 22px; }
+.nf__code { display: flex; align-items: center; font-weight: 600; font-size: clamp(7rem, 26vw, 20rem); line-height: .8; letter-spacing: -.07em; color: var(--ink); }
+.nf__zero { display: inline-grid; place-items: center; width: .74em; height: .74em; margin-inline: .04em .06em; }
+.nf__zero .tip { --s: 100%; width: 100%; height: 100%; animation: nf-bob 3.2s var(--ease-inout) infinite alternate; }
+@keyframes nf-bob { to { transform: translateY(-6%) scale(.96); } }
+.nf__title { font-size: clamp(2.4rem, 5.4vw, 4.8rem); line-height: .95; letter-spacing: -.05em; }
+.nf .lede { max-width: 32em; margin-inline: auto; }
+.nf__links { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+.nf__links a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 99px; background: var(--paper); border: 1px solid var(--line); font-weight: 600; font-size: .9375rem; text-decoration: none; color: var(--ink); transition: border-color var(--dur-2), transform var(--dur-2) var(--ease-out); }
+.nf__links a:hover { border-color: var(--ink); transform: translateY(-2px); }
+.nf__links .tip { --s: 10px; }
+
 /* ── Motion gating ────────────────────────────────────────────────────────
    Content is visible by default. The head script adds .motion only when the
    viewer allows motion; JS then animates from hidden states and adds
