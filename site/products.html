@@ -94,7 +94,7 @@
 
 <main id="main">
 
-<section class="page-hero" id="top" aria-labelledby="page-title">
+<section class="page-hero grid-lines" id="top" aria-labelledby="page-title">
   <div class="container" style="display:grid;gap:26px;justify-items:start">
     <p class="tab-label" data-intro><span class="tip tip--star c-sun" aria-hidden="true"></span>Products</p>
     <h1 class="h1" id="page-title">
@@ -107,70 +107,83 @@
 
 <section class="section ecosystem" id="products" aria-label="All products" style="padding-top:0">
   <div class="container">
-    <div class="eco-grid">
-      <a class="eco-card eco-card--page" href="#tipstore" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg></span></span>
-        <span class="eco-card__name">TipStore</span>
-        <span class="eco-card__layer"><span class="tip tip--arch c-flame" aria-hidden="true"></span>Sell</span>
-        <span class="eco-card__line">Sell digital products from your own storefront.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+    <p class="eco-group">Launching first</p>
+    <div class="launch-grid">
+      <a class="launch-card" href="#tipstore" data-reveal>
+        <span class="launch-card__art art-flame" aria-hidden="true"><span class="mini-ui">
+          <span class="mini-url"><svg class="i"><use href="#i-lock"/></svg>tipstore.com/yourname</span>
+          <span class="mini-row"><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-template"/></svg></span><span class="mini-row__t"><b>Budget Planner</b><small>Template · PDF</small></span><b class="mini-row__p">₦7,500</b></span>
+          <span class="mini-btn">Buy now</span>
+        </span></span>
+        <span class="launch-card__body">
+          <span class="launch-card__name"><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg></span>TipStore</span>
+          <span class="eco-card__layer"><span class="tip tip--arch c-flame" aria-hidden="true"></span>Sell</span>
+          <span class="eco-card__line">Sell digital products from your own storefront.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
       </a>
-      <a class="eco-card eco-card--page" href="#tipper" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg></span></span>
-        <span class="eco-card__name">Tipper</span>
-        <span class="eco-card__layer"><span class="tip tip--circle c-lilac" aria-hidden="true"></span>Work with brands</span>
-        <span class="eco-card__line">Get matched with brands for paid UGC work, with escrow-protected payouts.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      <a class="launch-card" href="#tipper" data-reveal>
+        <span class="launch-card__art art-lilac" aria-hidden="true"><span class="mini-ui">
+          <span class="mini-status"><b>Short-form UGC video</b><span class="pill pill--success pill--dot">Escrow funded</span></span>
+          <span class="mini-check is-done"><svg class="i"><use href="#i-check"/></svg>Brand funds the campaign</span>
+          <span class="mini-check is-done"><svg class="i"><use href="#i-check"/></svg>You apply with a pitch</span>
+          <span class="mini-check"><svg class="i"><use href="#i-check"/></svg>Brand approves, you get paid</span>
+        </span></span>
+        <span class="launch-card__body">
+          <span class="launch-card__name"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg></span>Tipper</span>
+          <span class="eco-card__layer"><span class="tip tip--circle c-lilac" aria-hidden="true"></span>Work with brands</span>
+          <span class="eco-card__line">Get matched with brands for paid UGC work, with escrow-protected payouts.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
       </a>
-      <a class="eco-card" href="#tipstar" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span></span>
-        <span class="eco-card__name">TipStar</span>
-        <span class="eco-card__layer"><span class="tip tip--star c-sun" aria-hidden="true"></span>Earn every month</span>
-        <span class="eco-card__line">Memberships, donations and exclusive content for your fans.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+      <a class="launch-card" href="#tipstar" data-reveal>
+        <span class="launch-card__art art-sun" aria-hidden="true"><span class="mini-ui">
+          <span class="mini-row"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-users"/></svg></span><span class="mini-row__t"><b>Membership</b><small>For your fans</small></span><span class="mini-join">Join</span></span>
+          <span class="mini-row"><span class="prod__thumb cover-night"><svg class="i" style="--acc:var(--night-3)"><use href="#i-lock"/></svg></span><span class="mini-row__t"><b>Exclusive content</b><small>Members only</small></span></span>
+          <span class="mini-chip"><svg class="i"><use href="#i-heart"/></svg>Send a donation</span>
+        </span></span>
+        <span class="launch-card__body">
+          <span class="launch-card__name"><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg></span>TipStar</span>
+          <span class="eco-card__layer"><span class="tip tip--star c-sun" aria-hidden="true"></span>Earn every month</span>
+          <span class="eco-card__line">Memberships, donations and exclusive content for your fans.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </span>
       </a>
-      <a class="eco-card eco-card--page" href="#tipfix" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-blush"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span><span class="eco-card__phase">Coming soon</span></span>
-        <span class="eco-card__name">TipFix</span>
-        <span class="eco-card__layer"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Fix problems</span>
-        <span class="eco-card__line">Payouts, contracts, escrow and the small problems of running a digital business.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </a>
-      <a class="eco-card" href="#tiplaunch" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-mint"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg></span><span class="eco-card__phase">Coming soon</span></span>
-        <span class="eco-card__name">TipLaunch</span>
-        <span class="eco-card__layer"><span class="tip tip--pill c-mint" aria-hidden="true"></span>Raise funds</span>
-        <span class="eco-card__line">Crowdfunding and community-backed capital for your projects.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </a>
-      <a class="eco-card" href="#tipmarket" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-compass"/></svg></span><span class="eco-card__phase">Coming soon</span></span>
-        <span class="eco-card__name">TipMarket</span>
-        <span class="eco-card__layer"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Get discovered</span>
-        <span class="eco-card__line">A marketplace where audiences discover creators, products and projects.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </a>
-      <a class="eco-card" href="#tipads" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-megaphone"/></svg></span><span class="eco-card__phase">Coming soon</span></span>
-        <span class="eco-card__name">TipAds</span>
-        <span class="eco-card__layer"><span class="tip tip--tri c-flame" aria-hidden="true"></span>Earn from ads</span>
-        <span class="eco-card__line">Brand distribution through sponsored content, placements and campaigns.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </a>
-      <a class="eco-card" href="#tipai" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span><span class="eco-card__phase">Coming soon</span></span>
-        <span class="eco-card__name">TipAI</span>
-        <span class="eco-card__layer"><span class="tip tip--star c-lilac" aria-hidden="true"></span>Get help</span>
-        <span class="eco-card__line">An AI assistant that understands your Tipsona business and helps you run it.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </a>
-      <a class="eco-card" href="#tipinsights" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span><span class="eco-card__phase">Coming soon</span></span>
-        <span class="eco-card__name">TipInsights</span>
-        <span class="eco-card__layer"><span class="tip tip--square c-sun" aria-hidden="true"></span>See what works</span>
-        <span class="eco-card__line">One picture of your audience, content, sales, memberships and brand deals.</span>
-        <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </a>
+    </div>
+    <div class="soon-panel" data-reveal>
+      <div class="soon-panel__head"><p class="eco-group eco-group--soon">Coming soon</p><p class="soon-panel__note">More ways to earn, on the same account.</p></div>
+      <div class="soon-grid">
+        <a class="soon-card" href="#tipfix">
+          <span class="soon-card__top"><span class="icon-tile acc-blush"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg></span><span class="soon-card__name">TipFix<span class="eco-card__layer"><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Fix problems</span></span></span>
+          <span class="eco-card__line">Payouts, contracts, escrow and the small problems of running a digital business.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="soon-card" href="#tiplaunch">
+          <span class="soon-card__top"><span class="icon-tile acc-mint"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg></span><span class="soon-card__name">TipLaunch<span class="eco-card__layer"><span class="tip tip--pill c-mint" aria-hidden="true"></span>Raise funds</span></span></span>
+          <span class="eco-card__line">Crowdfunding and community-backed capital for your projects.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="soon-card" href="#tipmarket">
+          <span class="soon-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-compass"/></svg></span><span class="soon-card__name">TipMarket<span class="eco-card__layer"><span class="tip tip--square c-lilac" aria-hidden="true"></span>Get discovered</span></span></span>
+          <span class="eco-card__line">A marketplace where audiences discover creators, products and projects.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="soon-card" href="#tipads">
+          <span class="soon-card__top"><span class="icon-tile acc-flame"><svg class="i" aria-hidden="true"><use href="#i-megaphone"/></svg></span><span class="soon-card__name">TipAds<span class="eco-card__layer"><span class="tip tip--tri c-flame" aria-hidden="true"></span>Earn from ads</span></span></span>
+          <span class="eco-card__line">Brand distribution through sponsored content, placements and campaigns.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="soon-card" href="#tipai">
+          <span class="soon-card__top"><span class="icon-tile acc-lilac"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg></span><span class="soon-card__name">TipAI<span class="eco-card__layer"><span class="tip tip--star c-lilac" aria-hidden="true"></span>Get help</span></span></span>
+          <span class="eco-card__line">An AI assistant that understands your Tipsona business and helps you run it.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+        <a class="soon-card" href="#tipinsights">
+          <span class="soon-card__top"><span class="icon-tile acc-sun"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg></span><span class="soon-card__name">TipInsights<span class="eco-card__layer"><span class="tip tip--square c-sun" aria-hidden="true"></span>See what works</span></span></span>
+          <span class="eco-card__line">One picture of your audience, content, sales, memberships and brand deals.</span>
+          <span class="eco-card__go">Details<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -347,17 +360,32 @@
 </main>
 
 <footer class="footer on-dark">
+<div class="ticker ticker--tab ticker--static" role="list" aria-label="What you can do with Tipsona">
+  <div class="ticker__tab">
+    <span role="listitem">Sell digital products</span><span class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></span>
+    <span role="listitem">Work with brands</span><span class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></span>
+    <span role="listitem">Earn from your fans</span><span class="sep sep--wide" aria-hidden="true"><span class="tip tip--star c-flame"></span></span>
+    <span role="listitem" class="wide">Local payments</span><span class="sep sep--wide" aria-hidden="true"><span class="tip tip--star c-flame"></span></span>
+    <span role="listitem" class="wide">One creator identity</span>
+  </div>
+</div>
   <div class="container">
     <div class="footer__top">
-      <p class="footer__pitch">One Tipsona account for your whole creator business.</p>
-      <div class="footer__contact">
+      <div class="footer__brand">
+        <svg class="logo footer__mini-logo" viewBox="0 0 337 84" role="img" aria-label="Tipsona"><use href="#logo"/></svg>
         <a class="footer__cta" href="products.html" aria-label="See all Tipsona products"><svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
-        <a class="footer__mail" href="mailto:hello@tipsona.com">hello@tipsona.com</a>
-        <div class="footer__social">
-          <a href="#" aria-label="Tipsona on Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
-          <a href="#" aria-label="Tipsona on TikTok"><svg class="i" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
-          <a href="#" aria-label="Tipsona on X"><svg class="i" aria-hidden="true"><use href="#i-xsocial"/></svg></a>
-          <a href="#" aria-label="Tipsona on LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+      </div>
+      <div class="footer__talk">
+        <p class="footer__pitch">One Tipsona account for your whole creator business.</p>
+        <div class="footer__contact">
+          <a class="footer__mail" href="mailto:hello@tipsona.com">hello@tipsona.com</a>
+          <span class="footer__faces" aria-hidden="true"><img src="assets/img/av-sade.webp" alt="" width="160" height="160" loading="lazy"><img src="assets/img/av-tobi.webp" alt="" width="160" height="160" loading="lazy"><img src="assets/img/av-zara.webp" alt="" width="160" height="160" loading="lazy"></span>
+          <div class="footer__social">
+            <a href="#" aria-label="Tipsona on Instagram"><svg class="i" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            <a href="#" aria-label="Tipsona on TikTok"><svg class="i" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+            <a href="#" aria-label="Tipsona on X"><svg class="i" aria-hidden="true"><use href="#i-xsocial"/></svg></a>
+            <a href="#" aria-label="Tipsona on LinkedIn"><svg class="i" aria-hidden="true"><use href="#i-linkedin"/></svg></a>
+          </div>
         </div>
       </div>
     </div>

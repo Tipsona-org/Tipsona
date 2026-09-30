@@ -136,26 +136,75 @@ PRODUCTS = [
 ACC = {"c-flame": "acc-flame", "c-lilac": "acc-lilac", "c-sun": "acc-sun", "c-blush": "acc-blush", "c-mint": "acc-mint"}
 
 
+# Small product illustrations for the first-launch cards (decorative, example data)
+MINI_UI = {
+    "tipstore": """<span class="mini-url"><svg class="i"><use href="#i-lock"/></svg>tipstore.com/yourname</span>
+          <span class="mini-row"><span class="prod__thumb cover-sun"><svg class="i" style="--acc:var(--paper)"><use href="#i-template"/></svg></span><span class="mini-row__t"><b>Budget Planner</b><small>Template · PDF</small></span><b class="mini-row__p">₦7,500</b></span>
+          <span class="mini-btn">Buy now</span>""",
+    "tipper": """<span class="mini-status"><b>Short-form UGC video</b><span class="pill pill--success pill--dot">Escrow funded</span></span>
+          <span class="mini-check is-done"><svg class="i"><use href="#i-check"/></svg>Brand funds the campaign</span>
+          <span class="mini-check is-done"><svg class="i"><use href="#i-check"/></svg>You apply with a pitch</span>
+          <span class="mini-check"><svg class="i"><use href="#i-check"/></svg>Brand approves, you get paid</span>""",
+    "tipstar": """<span class="mini-row"><span class="prod__thumb cover-lilac"><svg class="i" style="--acc:var(--paper)"><use href="#i-users"/></svg></span><span class="mini-row__t"><b>Membership</b><small>For your fans</small></span><span class="mini-join">Join</span></span>
+          <span class="mini-row"><span class="prod__thumb cover-night"><svg class="i" style="--acc:var(--night-3)"><use href="#i-lock"/></svg></span><span class="mini-row__t"><b>Exclusive content</b><small>Members only</small></span></span>
+          <span class="mini-chip"><svg class="i"><use href="#i-heart"/></svg>Send a donation</span>""",
+}
+ART = {"tipstore": "art-flame", "tipper": "art-lilac", "tipstar": "art-sun"}
+
+
 def eco_grid(on_products_page):
-    cards = []
-    for pid, name, verb, line, first, shape, icon, page in PRODUCTS:
+    """First-launch products get one look (feature cards with an illustration);
+    everything coming later gets another (compact cards in one panel)."""
+    def link(pid, name, page):
         if on_products_page:
-            href, go = f"#{pid}", "Details"
-        elif page:
-            href, go = "{{root}}" + page, f"Visit {name}"
-        else:
-            href, go = "{{root}}products.html#" + pid, "Learn more"
+            return f"#{pid}", "Details"
+        if page:
+            return "{{root}}" + page, f"Visit {name}"
+        return "{{root}}products.html#" + pid, "Learn more"
+    go_icon = '<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg>'
+    launch, soon = [], []
+    for pid, name, verb, line, first, shape, icon, page in PRODUCTS:
+        href, go = link(pid, name, page)
         acc = ACC[shape.split()[1]]
-        feat = " eco-card--page" if page else ""
-        soon = "" if first else '<span class="eco-card__phase">Coming soon</span>'
-        cards.append(f'''      <a class="eco-card{feat}" href="{href}" data-reveal>
-        <span class="eco-card__top"><span class="icon-tile {acc}"><svg class="i" aria-hidden="true"><use href="#i-{icon}"/></svg></span>{soon}</span>
-        <span class="eco-card__name">{name}</span>
-        <span class="eco-card__layer"><span class="tip {shape}" aria-hidden="true"></span>{verb}</span>
-        <span class="eco-card__line">{line}</span>
-        <span class="eco-card__go">{go}<svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
-      </a>''')
-    return '    <div class="eco-grid">\n' + "\n".join(cards) + "\n    </div>"
+        if first:
+            launch.append(f"""      <a class="launch-card" href="{href}" data-reveal>
+        <span class="launch-card__art {ART[pid]}" aria-hidden="true"><span class="mini-ui">
+          {MINI_UI[pid]}
+        </span></span>
+        <span class="launch-card__body">
+          <span class="launch-card__name"><span class="icon-tile {acc}"><svg class="i" aria-hidden="true"><use href="#i-{icon}"/></svg></span>{name}</span>
+          <span class="eco-card__layer"><span class="tip {shape}" aria-hidden="true"></span>{verb}</span>
+          <span class="eco-card__line">{line}</span>
+          <span class="eco-card__go">{go}{go_icon}</span>
+        </span>
+      </a>""")
+        else:
+            soon.append(f"""        <a class="soon-card" href="{href}">
+          <span class="soon-card__top"><span class="icon-tile {acc}"><svg class="i" aria-hidden="true"><use href="#i-{icon}"/></svg></span><span class="soon-card__name">{name}<span class="eco-card__layer"><span class="tip {shape}" aria-hidden="true"></span>{verb}</span></span></span>
+          <span class="eco-card__line">{line}</span>
+          <span class="eco-card__go">{go}{go_icon}</span>
+        </a>""")
+    return ('    <p class="eco-group">Launching first</p>\n'
+            '    <div class="launch-grid">\n' + "\n".join(launch) + "\n    </div>\n"
+            '    <div class="soon-panel" data-reveal>\n'
+            '      <div class="soon-panel__head"><p class="eco-group eco-group--soon">Coming soon</p><p class="soon-panel__note">More ways to earn, on the same account.</p></div>\n'
+            '      <div class="soon-grid">\n' + "\n".join(soon) + "\n      </div>\n    </div>")
+
+
+def tab_ticker(spec, label):
+    """A ticker that sits in a light tab notched into the dark section below (Plerouse)."""
+    items = [x.strip() for x in spec.split(";") if x.strip()] * 2  # doubled so one list always overflows the tab
+    def lis(hidden):
+        sep = '<li class="sep"{}><span class="tip tip--star c-flame"></span></li>'.format("" if hidden else ' aria-hidden="true"')
+        return "".join(f"<li>{x}</li>{sep}" for x in items)
+    return f"""<section class="ticker ticker--tab" aria-label="{label}">
+  <div class="ticker__tab">
+    <div class="ticker__track" data-marquee>
+      <ul class="ticker__list">{lis(False)}</ul>
+      <ul class="ticker__list" aria-hidden="true">{lis(True)}</ul>
+    </div>
+  </div>
+</section>"""
 
 
 # ── Product nav: "links: Label|href; Label|href" in the front matter ───────
@@ -194,6 +243,7 @@ def build(page):
     tokens = {
         "personas": personas_html(),
         "ecosystem_grid": eco_grid(meta.get("grid") == "anchors"),
+        "tab_ticker": tab_ticker(meta.get("ticker", ""), meta.get("ticker_label", "What Tipsona offers")),
         "plans": plans_html(),
         "title": meta["title"],
         "description": meta["description"],

@@ -437,12 +437,19 @@
     if (!hero) {
       /* Inner pages: reveal the page hero with a simple rise. */
       tl.fromTo('[data-intro]', { y: 26, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.08 }, 0.1);
-      tl.fromTo('.page-hero .ln__in', { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, stagger: 0.09, duration: 1.2, clearProps: 'transform' }, 0.1);
+      tl.fromTo('.page-hero .ln__in', { yPercent: 130, y: 0 }, { yPercent: 0, y: 0, stagger: 0.09, duration: 1.2, clearProps: 'transform' }, 0.1);
       tl.fromTo('.page-hero .hl__bg', { scaleX: 0 }, { scaleX: 1, duration: 0.95, ease: 'expo.inOut' }, 0.55);
+      if ($('.hub-hero')) {
+        /* home hero: avatars, tag chips and product icons pop in; the photo card's chips follow */
+        tl.fromTo('.hub-hero .avatars img', { scale: 0, rotation: -40 }, { scale: 1, rotation: 0, stagger: 0.08, duration: 0.8, ease: 'back.out(2.2)' }, 0.6)
+          .fromTo('.hub-tag', { scale: 0, autoAlpha: 0 }, { scale: 1, autoAlpha: 1, stagger: 0.15, duration: 0.9, ease: 'back.out(2.4)' }, 0.85)
+          .fromTo('.hub-bubbles .bubble', { scale: 0 }, { scale: 1, stagger: 0.07, duration: 0.9, ease: 'back.out(2)' }, 0.7)
+          .fromTo('.hero-card__chip', { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, stagger: 0.16, duration: 0.9, ease: 'back.out(1.8)' }, 1.05);
+      }
       return;
     }
     tl.fromTo('.hero__badge', { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.8 }, 0.1)
-      .fromTo('.hero__title .ln__in', { yPercent: 110, y: 0 }, { yPercent: 0, y: 0, stagger: 0.1, duration: 1.25, clearProps: 'transform' }, 0.15)
+      .fromTo('.hero__title .ln__in', { yPercent: 130, y: 0 }, { yPercent: 0, y: 0, stagger: 0.1, duration: 1.25, clearProps: 'transform' }, 0.15)
       .fromTo('.hl__bg', { scaleX: 0 }, { scaleX: 1, duration: 0.95, ease: 'expo.inOut' }, 0.62)
       .fromTo('.hero__lede', { y: 22, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, 0.55)
       .fromTo('#claim', { y: 22, autoAlpha: 0 }, { y: 0, autoAlpha: 1 }, 0.66)
@@ -465,7 +472,7 @@
         type: 'lines', mask: 'lines', linesClass: 'split-line', autoSplit: true,
         onSplit: function (self) {
           return gsap.from(self.lines, {
-            yPercent: 110, duration: 1.15, ease: 'expo.out', stagger: 0.09,
+            yPercent: 130, duration: 1.15, ease: 'expo.out', stagger: 0.09,
             scrollTrigger: { trigger: el, start: 'top 88%', once: true }
           });
         }
@@ -515,8 +522,9 @@
   }
 
   function marquee(gsap, ST) {
-    var track = $('[data-marquee]');
-    if (!track) return;
+    $$('[data-marquee]').forEach(function (track) { marqueeOne(gsap, ST, track); });
+  }
+  function marqueeOne(gsap, ST, track) {
     var loop = gsap.to(track, { xPercent: -50, duration: 42, ease: 'none', repeat: -1 });
     var settle;
     ST.create({

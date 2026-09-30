@@ -16,3 +16,6 @@ They were resized and converted to WebP for the site. Names used in the page moc
 | av-tobi.webp | Moon Bouy (@jackson345), Lagos | https://unsplash.com/photos/QnTkJ_obEp8 |
 | av-kofi.webp | nana o. (@afroscope) | https://unsplash.com/photos/10fvuGtnoEM |
 | av-musa.webp | khalid Aminu (@khalerdameen) | https://unsplash.com/photos/R0ipcguzRIU |
+| hub-hero.webp | Joshua Oluwagbemiga (@joaccord), Lagos | https://unsplash.com/photos/_RGEctpNFT0 |
+| creator-camera.webp | Ufoma Ojo (@ladyufoma001), Port Harcourt | https://unsplash.com/photos/Z00a21rS1Mo |
+| creator-podcast.webp | Oladimeji Ajegbile (@hellodimeji) | https://unsplash.com/photos/2IJJAIlxsdg |

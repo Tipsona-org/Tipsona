@@ -8,85 +8,94 @@ hubhome:
 nav: hub
 links: Products|#products; Ways to earn|#earn; TipStore|tipstore/; Tipper|tipper/; Contact|#contact
 footer_pitch: Sell, earn and grow your creator business with one Tipsona account.
+ticker: TipStore; Tipper; TipStar; TipFix; TipLaunch; TipMarket; TipAds; TipAI; TipInsights
+preload: hub-hero.webp
 -->
 <main id="main">
 
-<!-- ─────────────────────────── Hero ─────────────────────────── -->
-<section class="page-hero hub-hero" id="top" aria-labelledby="hub-title">
-  <div class="container hub-hero__grid">
-    <div class="hub-hero__copy">
-      <p class="tab-label" data-intro><span class="tip tip--arch c-flame" aria-hidden="true"></span>Tipsona</p>
-      <h1 class="hub-hero__title" id="hub-title">
-        <span class="ln"><span class="ln__in">Your creator</span></span>
-        <span class="ln"><span class="ln__in">business, all in</span></span>
-        <span class="ln"><span class="ln__in"><span class="hl"><span class="hl__bg" aria-hidden="true"></span>one place.</span></span></span>
-      </h1>
-      <p class="lede" data-intro>Tipsona gives African creators the tools to build, monetize, finance, discover and grow a digital business. Sell your products, work with brands and earn from your fans, with one account.</p>
-      <div class="hub-hero__ctas" data-intro>
-        <a class="btn btn--flame" href="tipstore/">Start with TipStore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
-        <a class="btn btn--ghost" href="#products">See all products</a>
+<!-- ─────────────────────────── Hero (Plerouse + Nebula) ─────────────────────────── -->
+<section class="page-hero hub-hero grid-lines" id="top" aria-labelledby="hub-title">
+  <div class="hub-bubbles" aria-hidden="true">
+    <span class="bubble bubble--a" data-float><svg class="i" style="--acc:var(--flame-tint)"><use href="#i-store"/></svg></span>
+    <span class="bubble bubble--b" data-float><svg class="i" style="--acc:var(--lilac)"><use href="#i-briefcase"/></svg></span>
+    <span class="bubble bubble--c" data-float><svg class="i" style="--acc:var(--sun)"><use href="#i-heart"/></svg></span>
+    <span class="bubble bubble--d" data-float><svg class="i" style="--acc:var(--blush)"><use href="#i-wrench"/></svg></span>
+    <span class="bubble bubble--e" data-float><svg class="i" style="--acc:var(--mint)"><use href="#i-rocket"/></svg></span>
+    <span class="bubble bubble--f" data-float><svg class="i" style="--acc:var(--lilac)"><use href="#i-spark"/></svg></span>
+  </div>
+
+  <div class="container hub-hero__inner">
+    <a class="hero__badge" href="#products" data-intro>
+      <span class="pill pill--ink">Tipsona</span>
+      Sell, earn and grow with one account
+      <svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+    </a>
+    <h1 class="hub-hero__title" id="hub-title">
+      <span class="ln"><span class="ln__in">Your creator business,</span></span>
+      <span class="ln"><span class="ln__in">all in <span class="avatars" aria-hidden="true"><img src="assets/img/av-amara.webp" alt="" width="160" height="160"><img src="assets/img/av-kofi.webp" alt="" width="160" height="160"><img src="assets/img/av-zara.webp" alt="" width="160" height="160"></span> <span class="hl"><span class="hl__bg" aria-hidden="true"></span>one place.</span></span></span>
+      <span class="hub-tag hub-tag--a" aria-hidden="true">For African creators</span>
+      <span class="hub-tag hub-tag--b" aria-hidden="true">One account</span>
+    </h1>
+    <p class="lede" data-intro>Tipsona gives African creators the tools to build, monetize, finance, discover and grow a digital business. Sell your products, work with brands and earn from your fans, with one account.</p>
+    <div class="hub-hero__ctas" data-intro>
+      <a class="btn btn--flame" href="tipstore/">Start with TipStore<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a class="btn btn--ghost" href="#products">See all products</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero-card" data-intro>
+      <span class="hero-card__back" aria-hidden="true"></span>
+      <figure class="hero-card__front">
+        <span class="hero-card__photo"><img src="assets/img/hub-hero.webp" width="1200" height="960" alt="A creator in a yellow shirt posing in front of a bright yellow wall" fetchpriority="high"></span>
+        <span class="hero-card__mark" aria-hidden="true"><svg class="logo-mark" viewBox="-4.4 0 83.1 83.1"><use href="#logo-mark"/></svg></span>
+        <figcaption class="hero-card__bar"><span>Your business,<br>in one account.</span><a class="btn btn--blush btn--xs" href="tipstore/">Start selling</a></figcaption>
+      </figure>
+      <div class="float-card hero-card__chip hero-card__chip--a" aria-hidden="true">
+        <span class="icon-tile" style="background:var(--mint);border:0"><svg class="i"><use href="#i-naira"/></svg></span>
+        <span><b>Payment verified</b>TipStore · ₦7,500</span>
       </div>
-    </div>
-
-    <div class="orbit" data-intro role="img" aria-label="The nine Tipsona products arranged in a ring around the Tipsona mark">
-      <div class="orbit__rings" aria-hidden="true"><i></i><i></i></div>
-      <div class="orbit__core" aria-hidden="true"><svg class="logo-mark" viewBox="-4.4 0 83.1 83.1"><use href="#logo-mark"/></svg></div>
-      <ul class="orbit__ring" aria-hidden="true">
-        <li style="--i:0"><span class="orbit__chip"><span class="tip tip--arch c-flame"></span>TipStore</span></li>
-        <li style="--i:1"><span class="orbit__chip"><span class="tip tip--circle c-lilac"></span>Tipper</span></li>
-        <li style="--i:2"><span class="orbit__chip"><span class="tip tip--star c-sun"></span>TipStar</span></li>
-        <li style="--i:3"><span class="orbit__chip"><span class="tip tip--diamond c-blush"></span>TipFix</span></li>
-        <li style="--i:4"><span class="orbit__chip"><span class="tip tip--pill c-mint"></span>TipLaunch</span></li>
-        <li style="--i:5"><span class="orbit__chip"><span class="tip tip--square c-lilac"></span>TipMarket</span></li>
-        <li style="--i:6"><span class="orbit__chip"><span class="tip tip--tri c-flame"></span>TipAds</span></li>
-        <li style="--i:7"><span class="orbit__chip"><span class="tip tip--star c-lilac"></span>TipAI</span></li>
-        <li style="--i:8"><span class="orbit__chip"><span class="tip tip--square c-sun"></span>TipInsights</span></li>
-      </ul>
+      <div class="float-card hero-card__chip hero-card__chip--b" aria-hidden="true">
+        <span class="icon-tile" style="background:var(--lilac);border:0;--acc:var(--paper)"><svg class="i"><use href="#i-lock"/></svg></span>
+        <span><b>Campaign funded</b>Tipper · held in escrow</span>
+      </div>
+      <p class="hero-card__example" aria-hidden="true">Example activity</p>
     </div>
   </div>
 </section>
 
-<!-- ─────────────────────────── Ticker ─────────────────────────── -->
-<section class="ticker" aria-label="The Tipsona products">
-  <div class="ticker__track" data-marquee>
-    <ul class="ticker__list">
-      <li>TipStore</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>Tipper</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>TipStar</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>TipLaunch</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>TipMarket</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>TipAds</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>TipAI</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>TipInsights</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-      <li>TipFix</li><li class="sep" aria-hidden="true"><span class="tip tip--star c-flame"></span></li>
-    </ul>
-    <ul class="ticker__list" aria-hidden="true">
-      <li>TipStore</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>Tipper</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>TipStar</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>TipLaunch</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>TipMarket</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>TipAds</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>TipAI</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>TipInsights</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-      <li>TipFix</li><li class="sep"><span class="tip tip--star c-flame"></span></li>
-    </ul>
-  </div>
-</section>
+<!-- ─────────────────────────── Ticker (a tab notched into the dark section) ─────────────────────────── -->
+{{tab_ticker}}
 
-<!-- ─────────────────────────── Why Tipsona ─────────────────────────── -->
+<!-- ─────────────────────────── Why Tipsona (Plerouse dark editorial) ─────────────────────────── -->
 <section class="section thesis on-dark" aria-labelledby="thesis-title">
   <div class="container">
-    <p class="tab-label"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Why Tipsona</p>
-    <h2 class="thesis__statement" id="thesis-title" data-words>Stop stitching tools together. Run your whole creator business from one account.</h2>
-    <div class="thesis__grid">
-      <p class="lede">Your storefront, memberships, brand deals, payments and insights, connected. Built for African creators, with local payments.</p>
-      <ul class="thesis__list">
-        <li data-reveal><span class="tip tip--circle c-flame" aria-hidden="true"></span>One creator identity across every product.</li>
-        <li data-reveal><span class="tip tip--pill c-mint" aria-hidden="true"></span>Many ways to earn: products, fans and brands.</li>
-        <li data-reveal><span class="tip tip--diamond c-blush" aria-hidden="true"></span>Local payments and payouts, built for Africa.</li>
-        <li data-reveal><span class="tip tip--star c-sun" aria-hidden="true"></span>Insights that show what actually drives your revenue.</li>
-      </ul>
+    <div class="meta-row">
+      <p class="tab-label"><span class="tip tip--circle c-flame" aria-hidden="true"></span>Why Tipsona</p>
+      <p class="meta-row__note">One account for your<br>whole creator business</p>
+    </div>
+    <div class="thesis__layout">
+      <div class="thesis__main">
+        <h2 class="thesis__statement" id="thesis-title" data-words>Stop stitching tools together. Run your whole creator business from one account.</h2>
+        <p class="lede">Your storefront, memberships, brand deals, payments and insights, connected. Built for African creators, with local payments.</p>
+        <ul class="thesis__list">
+          <li data-reveal><span class="thesis__n">01</span>One creator identity across every product.</li>
+          <li data-reveal><span class="thesis__n">02</span>Many ways to earn: products, fans and brands.</li>
+          <li data-reveal><span class="thesis__n">03</span>Local payments and payouts, built for Africa.</li>
+          <li data-reveal><span class="thesis__n">04</span>Insights that show what actually drives your revenue.</li>
+        </ul>
+      </div>
+      <div class="thesis__photos">
+        <figure class="thesis__ph thesis__ph--a" data-reveal>
+          <span class="thesis__img"><img src="assets/img/creator-camera.webp" width="900" height="1125" loading="lazy" alt="A smiling creator holding up a camera with a flash"></span>
+          <figcaption>Creators, educators, coaches</figcaption>
+        </figure>
+        <figure class="thesis__ph thesis__ph--b" data-reveal>
+          <span class="thesis__img"><img src="assets/img/creator-podcast.webp" width="900" height="1125" loading="lazy" alt="A creator in headphones recording at a microphone"></span>
+          <span class="thesis__tag" aria-hidden="true">Local payments</span>
+          <figcaption>Consultants, trainers, entrepreneurs</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -125,21 +134,46 @@ footer_pitch: Sell, earn and grow your creator business with one Tipsona account
   </div>
 </section>
 
-<!-- ─────────────────────────── Ways to earn ─────────────────────────── -->
-<section class="section vision" id="earn" aria-labelledby="earn-title">
+<!-- ─────────────────────────── Ways to earn (Plerouse pink section) ─────────────────────────── -->
+<section class="section earn" id="earn" aria-labelledby="earn-title">
   <div class="container">
-    <p class="tab-label"><span class="tip tip--diamond c-ink" aria-hidden="true"></span>Ways to earn and grow</p>
-    <h2 class="vision__statement" id="earn-title">One account. Every way to grow.</h2>
-    <ul class="vision__verbs">
-      <li data-reveal><a href="tipstore/"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg><span>Sell digital products<small>TipStore</small></span></a></li>
-      <li data-reveal><a href="tipper/"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg><span>Work with brands<small>Tipper</small></span></a></li>
-      <li data-reveal><a href="products.html#tipstar"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg><span>Earn recurring income<small>TipStar</small></span></a></li>
-      <li data-reveal><a href="tipfix/"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg><span>Solve business problems<small>TipFix</small></span></a></li>
-      <li data-reveal><a href="products.html#tiplaunch"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg><span>Raise funds<small>TipLaunch</small></span></a></li>
-      <li data-reveal><a href="products.html#tipmarket"><svg class="i" aria-hidden="true"><use href="#i-compass"/></svg><span>Get discovered<small>TipMarket</small></span></a></li>
-      <li data-reveal><a href="products.html#tipai"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>Get AI help<small>TipAI</small></span></a></li>
-      <li data-reveal><a href="products.html#tipinsights"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg><span>See what works<small>TipInsights</small></span></a></li>
-    </ul>
+    <div class="earn__head">
+      <div class="earn__titles">
+        <p class="tab-label"><span class="tip tip--diamond c-ink" aria-hidden="true"></span>Ways to earn and grow</p>
+        <h2 class="earn__title" id="earn-title">One account.<br>Every way to grow.</h2>
+      </div>
+      <a class="round-link" href="products.html" aria-label="See all Tipsona products"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
+    <div class="earn__body">
+      <div class="earn__side">
+        <div class="avatar-cloud" aria-hidden="true">
+          <img class="ac1" src="assets/img/av-sade.webp" alt="" width="160" height="160">
+          <img class="ac2" src="assets/img/av-tobi.webp" alt="" width="160" height="160">
+          <img class="ac3" src="assets/img/av-musa.webp" alt="" width="160" height="160">
+          <img class="ac4" src="assets/img/av-amara.webp" alt="" width="160" height="160">
+          <span class="avatar-cloud__chip">One creator identity</span>
+        </div>
+        <p class="earn__stat"><span data-count="9">9</span></p>
+        <p class="earn__cap">products, one Tipsona account</p>
+      </div>
+      <div class="account-card" data-reveal>
+        <div class="account-card__top">
+          <svg class="logo" viewBox="0 0 337 84" aria-hidden="true"><use href="#logo"/></svg>
+          <span class="account-card__who"><span class="pill account-card__pill">Your account</span><img src="assets/img/av-zara.webp" alt="" width="160" height="160"></span>
+        </div>
+        <p class="account-card__label">Ways to earn and grow</p>
+        <ul class="account-card__list">
+          <li><a href="tipstore/"><svg class="i" aria-hidden="true"><use href="#i-store"/></svg><span>Sell digital products<small>TipStore</small></span></a></li>
+          <li><a href="tipper/"><svg class="i" aria-hidden="true"><use href="#i-briefcase"/></svg><span>Work with brands<small>Tipper</small></span></a></li>
+          <li><a href="products.html#tipstar"><svg class="i" aria-hidden="true"><use href="#i-heart"/></svg><span>Earn recurring income<small>TipStar</small></span></a></li>
+          <li><a href="tipfix/"><svg class="i" aria-hidden="true"><use href="#i-wrench"/></svg><span>Solve business problems<small>TipFix · soon</small></span></a></li>
+          <li><a href="products.html#tiplaunch"><svg class="i" aria-hidden="true"><use href="#i-rocket"/></svg><span>Raise funds<small>TipLaunch · soon</small></span></a></li>
+          <li><a href="products.html#tipmarket"><svg class="i" aria-hidden="true"><use href="#i-compass"/></svg><span>Get discovered<small>TipMarket · soon</small></span></a></li>
+          <li><a href="products.html#tipai"><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg><span>Get AI help<small>TipAI · soon</small></span></a></li>
+          <li><a href="products.html#tipinsights"><svg class="i" aria-hidden="true"><use href="#i-chart"/></svg><span>See what works<small>TipInsights · soon</small></span></a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
