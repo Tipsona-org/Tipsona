@@ -309,6 +309,24 @@
   }
 
   /* ── Small utilities ────────────────────────────────────────────── */
+  /* Design-system page: list every icon in the sprite, and play the motion demos. */
+  function initDesignSystem() {
+    var grid = $('[data-icon-grid]');
+    if (grid) {
+      grid.innerHTML = $$('symbol[id^="i-"]').map(function (s) {
+        return '<div class="ds-icon"><svg class="i" aria-hidden="true"><use href="#' + s.id + '"/></svg><span>' + s.id.slice(2) + '</span></div>';
+      }).join('');
+    }
+    $$('[data-motion-demos] button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var ball = $('.ball', b), track = $('.track', b), ease = b.getAttribute('data-ease');
+        if (!window.gsap || !ball || !track) return;
+        var dur = ease.indexOf('power2') === 0 ? 1.6 : (ease.indexOf('back') === 0 ? 0.8 : 1.1);
+        window.gsap.fromTo(ball, { x: 0 }, { x: track.offsetWidth - 44, duration: dur, ease: ease });
+      });
+    });
+  }
+
   function initCopy() {
     $$('[data-copy]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -640,7 +658,9 @@
     var packet = $('[data-packet]');
     if (packet) {
       var wire = packet.parentElement;
-      var tw = gsap.fromTo(packet, { x: 0, scale: 0.6 }, { x: function () { return wire.offsetWidth; }, scale: 1, duration: 1.6, ease: 'power2.inOut', repeat: -1, repeatDelay: 0.5, paused: true, invalidateOnRefresh: true });
+      var tw = gsap.fromTo(packet, { x: 0, scale: 0.6 }, { x: function () { return wire.offsetWidth; }, scale: 1, duration: 1.6, ease: 'power2.inOut', repeat: -1, repeatDelay: 0.5, paused: true });
+      /* the wire's width changes with the layout: re-measure on refresh */
+      ST.addEventListener('refresh', function () { tw.invalidate(); });
       ST.create({ trigger: wire, start: 'top bottom', end: 'bottom top', onToggle: function (self) { if (self.isActive) tw.play(); else tw.pause(); } });
     }
 
@@ -762,6 +782,7 @@
     initBilling();
     initFaq();
     initCopy();
+    initDesignSystem();
     initCountdown();
     initStickers();
     if (!reduceMotion) initMotion();
