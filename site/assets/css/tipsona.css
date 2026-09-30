@@ -1247,6 +1247,10 @@ ul[role="list"], ol[role="list"], .plain { list-style: none; padding: 0; }
 a.brand__product { text-decoration: none; padding-block: 10px; }
 .brand__home:hover .logo { opacity: .8; }
 a.brand__product:hover { color: var(--ember); }
+/* TipStore product logo (traced from the brand file, always flame) and its "by Tipsona" home link */
+.logo--tipstore { aspect-ratio: 927 / 254; }
+.brand__by { font-size: var(--step--1); font-weight: 500; color: var(--muted); letter-spacing: 0; }
+a.brand__by:hover { color: var(--ink); }
 .btn--xs { min-height: 40px; padding: 0 16px; font-size: .9375rem; }
 
 /* Centred hero */
@@ -1879,6 +1883,55 @@ a.brand__product:hover { color: var(--ember); }
 .nf__links a:hover { border-color: var(--ink); transform: translateY(-2px); }
 .nf__links .tip { --s: 10px; }
 
+
+/* ── Home: why not other tools (deck: competitive positioning) ───────────────
+   A typographic comparison list: each row names an option, its limit, and a
+   one-phrase verdict. The Tipsona row is the single dark card. */
+.vs { list-style: none; padding: 0; display: grid; }
+.vs__row {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 6px 18px; align-items: start;
+  padding: 26px 0; border-top: 1px solid var(--line);
+}
+.vs__icon { grid-row: span 2; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; background: var(--paper); border: 1px solid var(--line); color: var(--muted); }
+.vs__icon .i { width: 24px; height: 24px; }
+.vs__name { font-size: var(--t-h4); font-weight: 600; line-height: 1.2; letter-spacing: -.012em; }
+.vs__line { color: var(--ink-2); max-width: 46ch; }
+.vs__tag { grid-column: 2; justify-self: start; margin-top: 8px; font-family: var(--font-mono); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.vs__row--us {
+  margin-top: 18px; padding: clamp(24px, 3vw, 36px); border: 0; border-radius: var(--r-xl);
+  background: var(--night); color: var(--cream);
+}
+.vs__row--us .vs__icon { background: var(--flame); border-color: transparent; }
+.vs__row--us .vs__icon { color: #FFFFFF; }
+.vs-head { display: grid; gap: 22px; }
+.vs-head .h2 { max-width: none; }
+.vs__row--us .vs__name .logo { height: 30px; }
+.vs__row--us .vs__line { color: var(--night-muted); }
+.vs__tag--us { color: var(--sun); }
+@media (min-width: 900px) {
+  .vs__row { grid-template-columns: 48px minmax(0, 16rem) minmax(0, 1fr) 12rem; align-items: center; gap: 28px; }
+  .vs__icon { grid-row: auto; }
+  .vs__tag { grid-column: auto; justify-self: end; margin: 0; text-align: right; }
+}
+
+/* ── Home: community programs (deck: go-to-market, creator programs) ────── */
+.community { background: var(--night); color: var(--cream); }
+.community .lede { color: var(--night-muted); }
+.comm { list-style: none; padding: 0; display: grid; gap: 16px; }
+@media (min-width: 800px) { .comm { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.comm__card {
+  display: grid; gap: 14px; align-content: start; padding: clamp(24px, 2.4vw, 32px);
+  border-radius: var(--r-l); background: var(--night-2); border: 1px solid var(--night-line);
+}
+.comm__card .icon-tile { background: rgba(255, 246, 236, .06); border-color: var(--night-line); color: var(--cream); margin-bottom: 8px; }
+.comm__card h3 { font-size: var(--t-h4); font-weight: 600; line-height: 1.2; letter-spacing: -.012em; }
+.comm__card p { color: var(--night-muted); }
+.comm__pill { justify-self: start; margin-top: 6px; background: rgba(255, 246, 236, .08); color: var(--cream); }
+.comm__ph { margin-top: 28px; color: var(--night-muted); font-size: var(--t-small); }
+.comm__ph .ph-tag { color: var(--night-muted); margin-right: 8px; }
+
+/* Ways to earn: the vision line under the title */
+.earn__lede { font-size: var(--t-lede); line-height: 1.5; color: var(--ink-2); max-width: 34em; text-wrap: pretty; }
 
 /* ── Typography system ────────────────────────────────────────────────────
    1. One family, DM Sans, with its sibling DM Mono for labels and data.

@@ -33,6 +33,7 @@ The live reference is `site/design-system.html` (source: `src/pages/design-syste
 - Never use flame as a text colour on light backgrounds (2.9:1). Use ember for orange words.
 - Text on flame is white and large: 19px bold (18.66px) or 24px and up. Small text never sits on flame; use ink or cream surfaces instead.
 - The logo is always flame (white only when it sits on a flame surface).
+- Product logos start with the Tipsona "T" mark. The TipStore logo (`site/assets/img/tipstore-logo.svg`, traced from the brand file and set in flame) leads the TipStore menu and opens the TipStore home; the "by Tipsona" link beside it opens the Tipsona home.
 - Status is never colour alone: pills pair colour, a dot and a word.
 
 ## Type
