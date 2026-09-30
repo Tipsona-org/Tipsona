@@ -36,7 +36,7 @@ Netlify publishes the `site/` folder (see `netlify.toml`). No build command runs
 - `site/assets/css/tipsona.css`: design tokens at the top (`:root`), then components and sections.
 - `site/assets/js/icons.js`: the custom icon sprite (`<svg class="i"><use href="#i-store"/></svg>`).
 - `site/assets/js/tipsona.js`: interactions (menu, username check, tabs, FAQ) and motion (GSAP + ScrollTrigger + SplitText, Lenis smooth scrolling). Pages work without JavaScript, and motion is off for people who prefer reduced motion.
-- `site/assets/fonts/`: self-hosted, subsetted Inter Tight and Fragment Mono (both include ₦ and ₵).
+- `site/assets/fonts/`: self-hosted, subsetted DM Sans (variable, with italic) and DM Mono, plus two tiny fallback files for the ₦ and ₵ signs.
 - `site/assets/vendor/`: pinned GSAP 3.15.0 and Lenis 1.3.26.
 - `site/assets/img/`: WebP photos from Unsplash (see `CREDITS.md`).
 

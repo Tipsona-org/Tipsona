@@ -19,7 +19,7 @@
 <link rel="canonical" href="https://tipsona.netlify.app/design-system.html">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 <!-- @fonts -->
-<link rel="preload" href="assets/fonts/inter-tight-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
 <!-- /@fonts -->
 <link rel="stylesheet" href="assets/css/tipsona.css">
 <script>
@@ -143,18 +143,18 @@
 <section class="ds-section" id="ds-type" aria-labelledby="ds-type-t">
   <div class="container">
     <h2 class="h3" id="ds-type-t">Type</h2>
-    <p class="lede" style="margin-top:14px">Inter Tight for headlines and reading, a tight neo-grotesk in the spirit of the inspiration sites, and Fragment Mono for labels and money. Both include the Naira (₦) and Cedi (₵) signs, so prices never fall back to a system font.</p>
+    <p class="lede" style="margin-top:14px">DM Sans for everything you read, and its sibling DM Mono for labels and data. DM Sans is a low-contrast geometric sans with optical sizing: small text gets sturdier letters and more space, big headlines get finer, tighter ones. It has a true italic, which we use as the second voice in headlines.</p>
     <div style="margin-top:28px">
-<div class="ds-type-row"><code>Hero · Inter Tight 600<br>clamp(48px, 9.6vw, 152px)<br>line-height .9 · tracking −5.5%</code><p style="font-family:var(--font-display);font-weight:600;font-size:clamp(2.6rem,7vw,6rem);line-height:.9;letter-spacing:-.055em">Know something?</p></div>
-<div class="ds-type-row"><code>H2 · Inter Tight 500<br>clamp(38px, 5.4vw, 80px)<br>line-height .98 · tracking −4%</code><p class="h2">One home for your business.</p></div>
-<div class="ds-type-row"><code>H3 · Inter Tight 500<br>clamp(26px, 2.6vw, 38px)</code><p class="h3">Customers pay. Files arrive.</p></div>
-<div class="ds-type-row"><code>H4 · Inter Tight 600<br>clamp(19px, 1.5vw, 22px)</code><p class="h4">Checkout in one step</p></div>
-<div class="ds-type-row"><code>Lede · Inter Tight 400<br>clamp(17px, 1.25vw, 20px) · 1.55</code><p class="lede">TipStore gives you a storefront for your e-books, courses, templates and presets.</p></div>
-<div class="ds-type-row"><code>Body · Inter Tight 400<br>16px · 1.6 · max 65ch</code><p style="max-width:60ch">Buyers get instant access, an email with their access link and a copy in their library. You never send a file by hand.</p></div>
-<div class="ds-type-row"><code>Label · Fragment Mono<br>12px · uppercase · tracking 8%</code><p><span class="tab-label"><span class="tip tip--star c-sun" aria-hidden="true"></span>How it works</span></p></div>
-<div class="ds-type-row"><code>Data · Fragment Mono<br>13px · tabular figures</code><p class="mono" style="font-size:1rem">Order #TPS-24817 · ₦7,500.00 · GH₵ 450.00</p></div>
+<div class="ds-type-row"><code>Hero · DM Sans 600<br>step 7 · 50 → 136px<br>leading .9 · tracking −3%</code><p style="font-family:var(--font-display);font-weight:600;font-size:clamp(2.6rem,7vw,6rem);line-height:.9;letter-spacing:-.03em">Know something?</p></div>
+<div class="ds-type-row"><code>H2 · DM Sans 500 + italic<br>step 5 · 38 → 72px<br>leading .98 · tracking −2.4%</code><p class="h2">One home for <em>your business.</em></p></div>
+<div class="ds-type-row"><code>H3 · DM Sans 500<br>step 3 · 26 → 38px · leading 1.08</code><p class="h3">Customers pay. Files arrive.</p></div>
+<div class="ds-type-row"><code>H4 · DM Sans 600<br>step 2 · 22 → 28px · leading 1.22</code><p class="h4">Checkout in one step</p></div>
+<div class="ds-type-row"><code>Lede · DM Sans 400<br>step 1 · 18 → 22px · leading 1.55</code><p class="lede">TipStore gives you a storefront for your e-books, courses, templates and presets.</p></div>
+<div class="ds-type-row"><code>Body · DM Sans 400<br>step 0 · 16 → 18px · leading 1.6 · max 62ch</code><p style="max-width:60ch">Buyers get instant access, an email with their access link and a copy in their library. You never send a file by hand.</p></div>
+<div class="ds-type-row"><code>Label · DM Mono 400<br>step −2 · 12 → 13px · uppercase · +8%</code><p><span class="tab-label"><span class="tip tip--star c-sun" aria-hidden="true"></span>How it works</span></p></div>
+<div class="ds-type-row"><code>Data · DM Mono 400<br>fixed-width figures</code><p class="mono" style="font-size:1rem">Order #TPS-24817 · ₦7,500.00 · GH₵ 450.00</p></div>
 </div>
-    <div style="margin-top:36px"><ul class="ds-rules"><li><b>One loud thing per screen</b><p>Each section has one display headline and at most one flame element. Everything around it stays quiet.</p></li><li><b>Every section opens with a file tab</b><p>A mono tab label names the section, then the headline, then one short lede. The tab carries a tip shape that matches the topic.</p></li><li><b>Size, then weight, then colour</b><p>Hierarchy comes from the type scale first. Colour is the last resort, not the first.</p></li><li><b>Numbers are content</b><p>Prices, balances and order IDs use Inter Tight or Fragment Mono with tabular figures, so they line up and read like receipts.</p></li></ul></div>
+    <div style="margin-top:36px"><ul class="ds-rules"><li><b>One loud thing per section</b><p>A mono tab label names the section, then one headline, then one short lede. At most one flame element; everything around it stays quiet.</p></li><li><b>Size, then weight, then colour</b><p>Hierarchy comes from the type scale first. Colour is the last resort, not the first.</p></li><li><b>One scale, no in-betweens</b><p>Eleven fluid steps, from 12px labels to 176px display. The ratio is about 1.2 on phones and 1.33 on desktop, so contrast grows with the screen.</p></li><li><b>Tracking and leading follow size</b><p>The bigger the type, the tighter the letters and lines: −3% and .9 for heroes, normal spacing and 1.6 for body text.</p></li><li><b>Emphasis is a change of voice</b><p>Each headline has one italic phrase: the payoff. It changes the voice, not the colour. The orange highlight is kept for the single key phrase of a hero.</p></li><li><b>Break lines by meaning</b><p>Headlines break where you would pause when reading aloud, and sizes are set so those breaks hold on every screen. Short phrases never split.</p></li><li><b>A comfortable measure</b><p>Reading text stays under about 62 characters a line. Centred text is balanced, so no line is left hanging.</p></li><li><b>Numbers are content</b><p>Prices, balances and order IDs use DM Mono, so figures line up and read like receipts. DM Sans has no Naira (₦) or Cedi (₵) sign, so those two come from matching fallback fonts, loaded only when a page shows them.</p></li></ul></div>
   </div>
 </section>
 

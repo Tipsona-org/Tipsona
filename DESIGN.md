@@ -37,15 +37,32 @@ The live reference is `site/design-system.html` (source: `src/pages/design-syste
 
 ## Type
 
-| Role | Font | Size |
-| --- | --- | --- |
-| Hero | Inter Tight 600 | clamp(48px, 9.4vw, 148px), line-height .9, tracking −5.5% |
-| H2 | Inter Tight 500 | clamp(38px, 5.4vw, 80px), line-height .98 |
-| H3 / H4 | Inter Tight 500 / 600 | clamp(26px, 2.6vw, 38px) / clamp(19px, 1.5vw, 22px) |
-| Lede / body | Inter Tight 400 | clamp(17px, 1.25vw, 20px) / 16px, line-height 1.55–1.6 |
-| Labels, data | Fragment Mono 400 | 12px uppercase +8% tracking / 13px |
+DM Sans for everything you read, DM Mono for labels and data. DM Sans is a variable, low-contrast geometric sans with optical sizing (small text gets sturdier letters, big text gets finer, tighter ones) and a true italic.
 
-Inter Tight is a tight neo-grotesk in the spirit of the inspiration sites. Both fonts include the Naira (₦) and Cedi (₵) signs, so prices never fall back to a system font.
+Sizes come only from an 11-step fluid scale (`--step--2` to `--step-8`, 12px to 176px). It scales smoothly between 360px and 1440px screens, with a ratio of about 1.2 on phones and 1.33 on desktop.
+
+| Role | Font | Step | Size | Leading · tracking |
+| --- | --- | --- | --- | --- |
+| Hero | DM Sans 600 | 7 | 50 → 136px | .9 · −3% |
+| H2 | DM Sans 500 | 5 | 38 → 72px | .98 · −2.4% |
+| H3 | DM Sans 500 | 3 | 26 → 38px | 1.08 · −1.8% |
+| H4 | DM Sans 600 | 2 | 22 → 28px | 1.22 · −1.2% |
+| Lede | DM Sans 400 | 1 | 18 → 22px | 1.55 |
+| Body | DM Sans 400 | 0 | 16 → 18px | 1.6, max 62ch |
+| Label | DM Mono 400 | −2 | 12 → 13px | uppercase, +8% |
+| Data | DM Mono 400 | — | 13–16px | fixed-width figures |
+
+Rules:
+
+1. **One scale, no in-betweens.** Every size is a `--step-*` token.
+2. **Tracking and leading follow size.** Bigger type gets tighter letters and lines.
+3. **Emphasis is a change of voice.** Each headline has one italic phrase, the payoff. The orange highlight is kept for the single key phrase of a hero.
+4. **Break lines by meaning.** Headlines break where you would pause reading aloud. Hero sizes are fitted to their column (product heroes use container units, the TipStore hero fits "Know something?" to the phone width), so the designed breaks hold on every screen. Short phrases are joined with a non-breaking space.
+5. **A comfortable measure.** Reading text stays under about 62 characters a line. Centred text uses `text-wrap: balance`; paragraphs use `text-wrap: pretty`.
+6. **Interface text never wraps.** Nav items, buttons, pills and badges stay on one line.
+7. **Numbers are content.** Prices and IDs use DM Mono so figures line up.
+
+DM Sans has no Naira (₦) or Cedi (₵) sign. Two tiny fallback files fill those glyphs under the same family names (Plus Jakarta Sans for DM Sans, Fragment Mono for DM Mono), using `unicode-range`, so browsers download them only on pages that show a price.
 
 ## Tip shapes
 
