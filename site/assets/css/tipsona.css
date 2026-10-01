@@ -1934,6 +1934,50 @@ a.brand__by:hover { color: var(--ink); }
 /* Ways to earn: the vision line under the title */
 .earn__lede { font-size: var(--t-lede); line-height: 1.5; color: var(--ink-2); max-width: 34em; text-wrap: pretty; }
 
+/* ── Waitlist page (Netlify Forms) ───────────────────────────────────────── */
+.wl__grid { display: grid; gap: clamp(40px, 6vw, 80px); align-items: start; }
+@media (min-width: 1000px) { .wl__grid { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); } .wl__copy { position: sticky; top: 120px; } }
+.wl__copy { display: grid; gap: 26px; justify-items: start; }
+.wl .h1 { font-size: var(--step-6); line-height: .92; }
+.wl__perks { list-style: none; padding: 0; display: grid; gap: 14px; font-weight: 600; color: var(--ink-2); }
+.wl__perks li { display: flex; align-items: center; gap: 12px; }
+.wl__perks .i { width: 22px; height: 22px; color: var(--ember); flex: none; }
+.wl__card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-xl); padding: clamp(22px, 3.4vw, 44px); box-shadow: var(--shadow-2); }
+.wl__form { display: grid; gap: 22px; }
+.wl__row { display: grid; gap: 22px; }
+@media (min-width: 640px) { .wl__row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.wl__field { display: grid; gap: 8px; min-width: 0; border: 0; padding: 0; margin: 0; }
+.wl__field > label, .wl__field > legend { font-weight: 600; font-size: var(--t-small); color: var(--ink); padding: 0; }
+.wl__opt { font-weight: 500; color: var(--muted); margin-left: 6px; }
+.wl__field input:not([type="checkbox"]), .wl__field select, .wl__prefixed {
+  width: 100%; min-height: 52px; padding: 12px 16px; border-radius: 14px;
+  border: 1.5px solid var(--line-strong); background: var(--canvas); color: var(--ink); font: inherit;
+  transition: border-color var(--dur-1), box-shadow var(--dur-1);
+}
+.wl__field select { appearance: none; padding-right: 44px; background-image: linear-gradient(45deg, transparent 50%, var(--ink-2) 50%), linear-gradient(135deg, var(--ink-2) 50%, transparent 50%); background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+.wl__field input:focus, .wl__field select:focus, .wl__prefixed:focus-within { outline: none; border-color: var(--ink); box-shadow: 0 0 0 4px rgba(255, 93, 2, .18); }
+.wl__field input[aria-invalid="true"] { border-color: var(--danger); }
+.wl__prefixed { display: flex; align-items: center; gap: 2px; padding-block: 0; font-family: var(--font-mono); }
+.wl__prefixed span { color: var(--muted); flex: none; }
+.wl__prefixed input { border: 0 !important; box-shadow: none !important; background: transparent !important; padding: 12px 0 !important; min-height: 48px !important; font-family: var(--font-mono); }
+.wl__hint, .wl__note { font-size: var(--t-small); color: var(--muted); }
+.wl__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.wl__chip { position: relative; cursor: pointer; }
+.wl__chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
+.wl__chip span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: var(--r-pill); border: 1.5px solid var(--line-strong); background: var(--canvas); font-weight: 600; font-size: var(--t-small); transition: background-color var(--dur-1), border-color var(--dur-1), color var(--dur-1); }
+.wl__chip span::before { content: ""; width: 0; height: 2px; transition: width var(--dur-2) var(--ease-out), margin var(--dur-2) var(--ease-out); }
+.wl__chip:hover span { border-color: var(--ink); }
+.wl__chip input:checked + span { background: var(--ink); border-color: var(--ink); color: var(--canvas); }
+.wl__chip input:checked + span::before { width: 10px; height: 6px; margin-right: 8px; border: solid currentColor; border-width: 0 0 2px 2px; transform: rotate(-45deg) translateY(-2px); }
+.wl__chip input:focus-visible + span { outline: 2px solid var(--ember); outline-offset: 2px; }
+.wl__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.wl__error { padding: 12px 16px; border-radius: 14px; background: var(--danger-bg); color: var(--danger); font-weight: 600; font-size: var(--t-small); }
+.wl__note .ph-tag { margin-left: 4px; }
+.wl__done { display: grid; gap: 16px; justify-items: start; outline: 0; }
+.wl__done-icon { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--flame); color: #FFFFFF; }
+.wl__done-icon .i { width: 30px; height: 30px; }
+.wl__done p { color: var(--ink-2); }
+
 /* ── Typography system ────────────────────────────────────────────────────
    1. One family, DM Sans, with its sibling DM Mono for labels and data.
    2. Sizes only from the fluid scale (--step-*). Nothing in between.

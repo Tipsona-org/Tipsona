@@ -1,0 +1,107 @@
+<!--
+title: Join the waitlist · Tipsona
+description: Join the Tipsona waitlist. Hear first when TipStore opens, tell us the username you want, and pick the products you want news about.
+root:
+home: tipstore/
+pricing: tipstore/pricing.html
+hubhome:
+nav: hub
+links: Home|./; All products|products.html; TipStore|tipstore/; Tipper|tipper/
+footer_pitch: Sell, earn and grow your creator&nbsp;business with one Tipsona account.
+-->
+<main id="main">
+
+<section class="page-hero grid-lines wl" id="top" aria-labelledby="wl-title">
+  <div class="container wl__grid">
+    <div class="wl__copy">
+      <p class="tab-label" data-intro><span class="tip tip--circle c-flame" aria-hidden="true"></span>Waitlist</p>
+      <h1 class="h1" id="wl-title">
+        <span class="ln"><span class="ln__in">Be first</span></span>
+        <span class="ln"><span class="ln__in"><span class="hl"><span class="hl__bg" aria-hidden="true"></span>in line.</span></span></span>
+      </h1>
+      <p class="lede" data-intro>Tipsona is opening soon, starting with TipStore. Join the waitlist and we’ll email you when it’s your turn.</p>
+      <ul class="wl__perks" data-intro>
+        <li><svg class="i" aria-hidden="true"><use href="#i-bell"/></svg>Hear first when TipStore opens</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-store"/></svg>Tell us the storefront username you want</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-spark"/></svg>Pick the products you want news about</li>
+      </ul>
+    </div>
+
+    <div class="wl__card" data-intro>
+      <h2 class="sr-only">Waitlist form</h2>
+      <form class="wl__form" name="waitlist" method="POST" action="/waitlist.html?joined=1" data-netlify="true" netlify-honeypot="company" data-waitlist novalidate>
+        <input type="hidden" name="form-name" value="waitlist">
+        <input type="hidden" name="products" value="">
+        <p class="wl__hp" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="wl__row">
+          <div class="wl__field">
+            <label for="wl-name">Full name</label>
+            <input id="wl-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="wl__field">
+            <label for="wl-email">Email</label>
+            <input id="wl-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+          </div>
+        </div>
+
+        <div class="wl__row">
+          <div class="wl__field">
+            <label for="wl-country">Country</label>
+            <select id="wl-country" name="country" autocomplete="country-name">
+              <option value="">Choose one</option>
+              <option>Nigeria</option><option>Ghana</option><option>Kenya</option><option>South Africa</option><option>Other</option>
+            </select>
+          </div>
+          <div class="wl__field">
+            <label for="wl-role">What best describes you?</label>
+            <select id="wl-role" name="role">
+              <option value="">Choose one</option>
+              <option>Content creator</option><option>UGC creator</option><option>Educator</option><option>Coach</option><option>Consultant</option><option>Trainer</option><option>Digital entrepreneur</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="wl__field wl__products">
+          <legend>Products you want news about</legend>
+          <div class="wl__chips">
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipStore"><span>TipStore</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="Tipper"><span>Tipper</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipStar"><span>TipStar</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipFix"><span>TipFix</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipLaunch"><span>TipLaunch</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipMarket"><span>TipMarket</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipAds"><span>TipAds</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipAI"><span>TipAI</span></label>
+            <label class="wl__chip"><input type="checkbox" name="product" value="TipInsights"><span>TipInsights</span></label>
+          </div>
+        </fieldset>
+
+        <div class="wl__field">
+          <label for="wl-username">TipStore username you’d like <span class="wl__opt">Optional</span></label>
+          <div class="wl__prefixed">
+            <span aria-hidden="true">tipstore.com/</span>
+            <input id="wl-username" name="username" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="30" placeholder="yourname" aria-describedby="wl-username-hint">
+          </div>
+          <p class="wl__hint" id="wl-username-hint">Lowercase letters and numbers, 3 to 30 characters. Availability is confirmed when you sign up.</p>
+        </div>
+
+        <p class="wl__error" data-wl-error role="alert" hidden></p>
+        <button class="btn btn--flame btn--block" type="submit">Join the waitlist<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+        <p class="wl__note">We’ll only use your details to tell you about Tipsona. <span class="ph-tag">Placeholder</span> Link to the privacy policy once it’s ready.</p>
+      </form>
+
+      <div class="wl__done" data-wl-done tabindex="-1" hidden>
+        <span class="wl__done-icon" aria-hidden="true"><svg class="i"><use href="#i-check"/></svg></span>
+        <h2 class="h3">You’re on the list.</h2>
+        <p>We’ll email you when Tipsona opens. Until then, have a look around.</p>
+        <div class="hub-hero__ctas">
+          <a class="btn btn--ink" href="products.html">See all products<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn btn--ghost" href="./">Back to home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>

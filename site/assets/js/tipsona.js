@@ -172,8 +172,53 @@
         return;
       }
       button.innerHTML = 'Looks good' + ICON('check');
+      var to = form.getAttribute('data-waitlist-url');
+      if (to) { setTimeout(function () { location.href = to + '?product=tipstore&username=' + encodeURIComponent(v); }, 450); return; }
       toast('tipstore.com/' + v + ' fits the rules. Availability is confirmed when you sign up.');
       setTimeout(function () { button.innerHTML = buttonHTML; }, 3200);
+    });
+  }
+
+  /* ── Waitlist form (Netlify Forms) ──────────────────────────────── */
+  /* Prefills from the link (?product=tipstore&username=ada), checks the two
+     required fields, then posts to Netlify in the background and shows the
+     thank-you state. Without JS the form still posts and Netlify redirects
+     back with ?joined=1. */
+  function initWaitlist() {
+    var form = $('[data-waitlist]');
+    if (!form) return;
+    var done = $('[data-wl-done]');
+    var err = $('[data-wl-error]', form);
+    var params = new URLSearchParams(location.search);
+    function showDone() { form.hidden = true; done.hidden = false; done.focus({ preventScroll: true }); }
+    if (params.get('joined')) { showDone(); return; }
+    var want = (params.get('product') || '').toLowerCase();
+    $$('input[name="product"]', form).forEach(function (c) { if (c.value.toLowerCase() === want) c.checked = true; });
+    var user = $('#wl-username', form);
+    var u = (params.get('username') || '').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 30);
+    if (u) user.value = u;
+    user.addEventListener('input', function () { var c = user.value.toLowerCase().replace(/[^a-z0-9]/g, ''); if (c !== user.value) user.value = c; });
+    function fail(msg, field) {
+      err.textContent = msg; err.hidden = false;
+      if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      err.hidden = true;
+      $$('[aria-invalid]', form).forEach(function (f) { f.removeAttribute('aria-invalid'); });
+      var name = $('#wl-name', form), email = $('#wl-email', form);
+      if (!name.value.trim()) return fail('Please add your name.', name);
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) return fail('Please add a valid email address.', email);
+      if (user.value && user.value.length < 3) return fail('Usernames need at least 3 characters, or leave it empty.', user);
+      $('input[name="products"]', form).value = $$('input[name="product"]:checked', form).map(function (c) { return c.value; }).join(', ');
+      var data = new URLSearchParams();
+      new FormData(form).forEach(function (v, k) { if (k !== 'product') data.append(k, v); });
+      var btn = $('button[type="submit"]', form), label = btn.innerHTML;
+      btn.disabled = true; btn.textContent = 'Joining…';
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); showDone(); })
+        .catch(function () { fail('Something went wrong. Please try again in a moment.'); })
+        .then(function () { btn.disabled = false; btn.innerHTML = label; });
     });
   }
 
@@ -831,6 +876,7 @@
     initNav();
     initMenu();
     $$('[data-claim]').forEach(initClaim);
+    initWaitlist();
     initPersonas();
     initThemer();
     initBilling();
