@@ -1,5 +1,5 @@
 // Waitlist sign-ups: checks the Cloudflare Turnstile pass, then files the
-// sign-up in Netlify Forms ("waitlist-verified"). Bots without a valid pass
+// sign-up in Netlify Forms ("waitlist-75b78b61"). Bots without a valid pass
 // never reach the form list.
 const FIELDS = ['name', 'email', 'country', 'role', 'products', 'username'];
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,7 +33,7 @@ export default async (req) => {
   const email = String(form.get('email') || '').trim();
   if (!name || !EMAIL.test(email)) return reply(false, 400, 'Please add your name and a valid email address.');
 
-  const body = new URLSearchParams({ 'form-name': 'waitlist-verified' });
+  const body = new URLSearchParams({ 'form-name': 'waitlist-75b78b61' });
   for (const f of FIELDS) body.append(f, String(form.get(f) || '').trim().slice(0, 300));
   const saved = await fetch(`${origin}/`, {
     method: 'POST',
