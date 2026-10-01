@@ -179,11 +179,11 @@
     });
   }
 
-  /* ── Waitlist form (Netlify Forms) ──────────────────────────────── */
-  /* Prefills from the link (?product=tipstore&username=ada), checks the two
-     required fields, then posts to Netlify in the background and shows the
-     thank-you state. Without JS the form still posts and Netlify redirects
-     back with ?joined=1. */
+  /* ── Waitlist form ──────────────────────────────────────────────── */
+  /* Prefills from the link (?product=tipstore&username=ada) and checks the
+     required fields. Cloudflare Turnstile runs invisibly (a checkbox only
+     appears if something looks off); the sign-up goes to /api/waitlist,
+     which verifies the Turnstile pass before saving it in Netlify Forms. */
   function initWaitlist() {
     var form = $('[data-waitlist]');
     if (!form) return;
@@ -198,6 +198,25 @@
     var u = (params.get('username') || '').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 30);
     if (u) user.value = u;
     user.addEventListener('input', function () { var c = user.value.toLowerCase().replace(/[^a-z0-9]/g, ''); if (c !== user.value) user.value = c; });
+
+    /* Turnstile: render once the Cloudflare script arrives; keep the latest pass */
+    var box = $('[data-turnstile]', form), widget = null, token = '', waiters = [];
+    function gotToken(t) { token = t; waiters.splice(0).forEach(function (w) { w(t); }); }
+    window.tipsonaTurnstile = function () {
+      if (!box || !window.turnstile) return;
+      widget = window.turnstile.render(box, {
+        sitekey: box.getAttribute('data-sitekey'), theme: 'light', size: 'flexible', appearance: 'interaction-only',
+        callback: gotToken,
+        'expired-callback': function () { token = ''; },
+        'error-callback': function () { token = ''; }
+      });
+    };
+    if (window.turnstile) window.tipsonaTurnstile();
+    function waitForToken(ms) {
+      if (token) return Promise.resolve(token);
+      return new Promise(function (res) { waiters.push(res); setTimeout(function () { res(token); }, ms); });
+    }
+
     function fail(msg, field) {
       err.textContent = msg; err.hidden = false;
       if (field) { field.setAttribute('aria-invalid', 'true'); field.focus(); }
@@ -211,14 +230,19 @@
       if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) return fail('Please add a valid email address.', email);
       if (user.value && user.value.length < 3) return fail('Usernames need at least 3 characters, or leave it empty.', user);
       $('input[name="products"]', form).value = $$('input[name="product"]:checked', form).map(function (c) { return c.value; }).join(', ');
-      var data = new URLSearchParams();
-      new FormData(form).forEach(function (v, k) { if (k !== 'product') data.append(k, v); });
       var btn = $('button[type="submit"]', form), label = btn.innerHTML;
       btn.disabled = true; btn.textContent = 'Joining…';
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data.toString() })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); showDone(); })
-        .catch(function () { fail('Something went wrong. Please try again in a moment.'); })
-        .then(function () { btn.disabled = false; btn.innerHTML = label; });
+      waitForToken(10000).then(function (t) {
+        if (!t) throw new Error('Please complete the security check above, then try again.');
+        var data = new URLSearchParams();
+        new FormData(form).forEach(function (v, k) { if (k !== 'product') data.append(k, v); });
+        data.set('cf-turnstile-response', t);
+        return fetch(form.getAttribute('action'), { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' }, body: data.toString() })
+          .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.ok) throw new Error(j.error || 'Something went wrong. Please try again in a moment.'); }); });
+      }).then(showDone, function (e2) {
+        fail(e2.message || 'Something went wrong. Please try again in a moment.');
+        token = ''; if (widget !== null && window.turnstile) window.turnstile.reset(widget); /* a pass works only once */
+      }).then(function () { btn.disabled = false; btn.innerHTML = label; });
     });
   }
 

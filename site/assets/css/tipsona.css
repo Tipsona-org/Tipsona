@@ -1971,6 +1971,7 @@ a.brand__by:hover { color: var(--ink); }
 .wl__chip input:checked + span::before { width: 10px; height: 6px; margin-right: 8px; border: solid currentColor; border-width: 0 0 2px 2px; transform: rotate(-45deg) translateY(-2px); }
 .wl__chip input:focus-visible + span { outline: 2px solid var(--ember); outline-offset: 2px; }
 .wl__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.wl__captcha:empty { display: none; }
 .wl__error { padding: 12px 16px; border-radius: 14px; background: var(--danger-bg); color: var(--danger); font-weight: 600; font-size: var(--t-small); }
 .wl__note .ph-tag { margin-left: 4px; }
 .wl__done { display: grid; gap: 16px; justify-items: start; outline: 0; }

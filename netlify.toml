@@ -2,6 +2,10 @@
 [build]
   publish = "site"
 
+# Waitlist sign-ups are checked by a small function (Cloudflare Turnstile).
+[functions]
+  directory = "netlify/functions"
+
 [[headers]]
   for = "/*"
   [headers.values]
@@ -35,3 +39,9 @@
   from = "/ecosystem.html"
   to = "/products.html"
   status = 301
+
+# The form definition file is for Netlify only.
+[[headers]]
+  for = "/forms/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"

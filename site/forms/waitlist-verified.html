@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Waitlist form definition</title></head>
+<body>
+<!-- Not a page for people. Netlify reads this at deploy time to register the
+     form that verified waitlist sign-ups are saved into (see
+     netlify/functions/waitlist.mjs). The public form is on /waitlist.html. -->
+<form name="waitlist-verified" data-netlify="true" hidden>
+  <input name="name"><input name="email" type="email"><input name="country"><input name="role">
+  <input name="products"><input name="username">
+</form>
+</body>
+</html>

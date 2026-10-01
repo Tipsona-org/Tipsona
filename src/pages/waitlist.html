@@ -29,8 +29,7 @@ footer_pitch: Sell, earn and grow your creator&nbsp;business with one Tipsona ac
 
     <div class="wl__card" data-intro>
       <h2 class="sr-only">Waitlist form</h2>
-      <form class="wl__form" name="waitlist" method="POST" action="/waitlist.html?joined=1" data-netlify="true" netlify-honeypot="company" data-waitlist novalidate>
-        <input type="hidden" name="form-name" value="waitlist">
+      <form class="wl__form" name="waitlist" method="POST" action="/api/waitlist" data-waitlist novalidate>
         <input type="hidden" name="products" value="">
         <p class="wl__hp" aria-hidden="true"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
 
@@ -86,6 +85,7 @@ footer_pitch: Sell, earn and grow your creator&nbsp;business with one Tipsona ac
           <p class="wl__hint" id="wl-username-hint">Lowercase letters and numbers, 3 to 30 characters. Availability is confirmed when you sign up.</p>
         </div>
 
+        <div class="wl__captcha" data-turnstile data-sitekey="0x4AAAAAAFLhKW3kgffIMnt7"></div>
         <p class="wl__error" data-wl-error role="alert" hidden></p>
         <button class="btn btn--flame btn--block" type="submit">Join the waitlist<svg class="i i-go" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
         <p class="wl__note">We’ll only use your details to tell you about Tipsona. <span class="ph-tag">Placeholder</span> Link to the privacy policy once it’s ready.</p>
@@ -105,3 +105,4 @@ footer_pitch: Sell, earn and grow your creator&nbsp;business with one Tipsona ac
 </section>
 
 </main>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=tipsonaTurnstile" async defer></script>
