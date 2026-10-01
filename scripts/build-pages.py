@@ -128,7 +128,7 @@ PRODUCTS = [
     ("tipper", "Tipper", "Work with brands", "Get matched with brands for paid UGC work, with escrow-protected payouts.", True, "tip--circle c-lilac", "briefcase", "tipper/"),
     ("tipstar", "TipStar", "Earn every month", "Memberships, donations and exclusive content for your fans.", True, "tip--star c-sun", "heart", None),
     ("tipfix", "TipFix", "Fix problems", "Payouts, contracts, escrow and the small problems of running a digital business.", False, "tip--diamond c-blush", "wrench", "tipfix/"),
-    ("tiplaunch", "TipLaunch", "Raise funds", "Crowdfunding and community-backed capital for your projects.", False, "tip--pill c-mint", "rocket", None),
+    ("tiplaunch", "TipLaunch", "Raise funds", "Community-backed capital for your projects.", False, "tip--pill c-mint", "rocket", None),
     ("tipmarket", "TipMarket", "Get discovered", "A marketplace where audiences discover creators, products and projects.", False, "tip--square c-lilac", "compass", None),
     ("tipads", "TipAds", "Earn from ads", "Brand distribution through sponsored content, placements and campaigns.", False, "tip--tri c-flame", "megaphone", None),
     ("tipai", "TipAI", "Get help", "An AI assistant that understands your Tipsona business and helps you run it.", False, "tip--star c-lilac", "spark", None),
