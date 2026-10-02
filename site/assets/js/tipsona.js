@@ -190,7 +190,7 @@
     var done = $('[data-wl-done]');
     var err = $('[data-wl-error]', form);
     var params = new URLSearchParams(location.search);
-    function showDone() { form.hidden = true; done.hidden = false; done.focus({ preventScroll: true }); }
+    function showDone() { form.hidden = true; done.hidden = false; done.focus({ preventScroll: true }); refreshLater(); } /* the page gets shorter: re-measure scroll animations */
     if (params.get('joined')) { showDone(); return; }
     var want = (params.get('product') || '').toLowerCase();
     $$('input[name="product"]', form).forEach(function (c) { if (c.value.toLowerCase() === want) c.checked = true; });
@@ -852,8 +852,8 @@
   function footerScene(gsap, ST) {
     var w = $('[data-footer-word]');
     if (!w) return;
-    gsap.from($('.footer__logo', w), { yPercent: 70, duration: 1.5, ease: 'expo.out', scrollTrigger: { trigger: w, start: 'top 95%', once: true } });
-    gsap.from($$('[data-sticker]', w), { scale: 0, rotation: -40, stagger: 0.12, duration: 1, ease: 'back.out(2.2)', delay: 0.35, scrollTrigger: { trigger: w, start: 'top 90%', once: true } });
+    gsap.from($('.footer__logo', w), { yPercent: 70, duration: 1.5, ease: 'expo.out', scrollTrigger: { trigger: w, start: 'clamp(top 95%)', once: true } });
+    gsap.from($$('[data-sticker]', w), { scale: 0, rotation: -40, stagger: 0.12, duration: 1, ease: 'back.out(2.2)', delay: 0.35, scrollTrigger: { trigger: w, start: 'clamp(top 90%)', once: true } });
   }
 
   function floaters(gsap, ST) {
@@ -901,6 +901,15 @@
     initMenu();
     $$('[data-claim]').forEach(initClaim);
     initWaitlist();
+    /* Any change in page height (a form swapping to its thank-you card, a font
+       loading late) re-measures the scroll animations, so none get stuck. */
+    if (window.ResizeObserver) {
+      var lastH = 0;
+      new ResizeObserver(function () {
+        var h = document.documentElement.scrollHeight;
+        if (Math.abs(h - lastH) > 40) { lastH = h; refreshLater(); }
+      }).observe(document.body);
+    }
     initPersonas();
     initThemer();
     initBilling();
