@@ -1808,6 +1808,7 @@ a.brand__by:hover { color: var(--ink); }
 .footer__mini-logo { width: auto; }
 .footer__mini-logo { height: 30px; }
 .footer__talk { display: grid; gap: 36px; align-content: space-between; }
+.footer__address { font-style: normal; color: var(--night-muted); font-size: var(--step--1); line-height: 1.6; }
 .footer__pitch { font-weight: 500; max-width: 24ch; }
 .footer__contact { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; justify-items: stretch; }
 .footer__faces { display: flex; }

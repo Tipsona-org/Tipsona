@@ -47,6 +47,6 @@ See `DESIGN.md` for the design system rules.
 - **"Coming soon" labels** assume TipStore, Tipper and TipStar launch first, as in the pitch's roadmap.
 - **Pro and Business prices** (shown as "Price TBC"). The PRD leaves prices and exact fees open.
 - **Fee example** (₦10,000 − ₦500 − ₦150 = ₦9,350) is the PRD's illustrative example.
-- **hello@tipsona.com** contact address.
+- **info@tipsona.co** contact address; office: 97, Adeola Odeku Street, 2nd Floor Union Bank Building, Victoria Island, Lagos State.
 - **Example storefronts, people, products and figures** in mockups are fictional and labelled as examples.
 - **Links** to Log in, Help Center, Terms, Privacy and social profiles point to `#`.
