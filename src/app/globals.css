@@ -1,0 +1,91 @@
+/*
+  Tailwind without Preflight, so the site's own base styles stay exactly as
+  they were. The hand-written stylesheet sits in the components layer, which
+  lets any Tailwind utility override it on an element.
+*/
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "../styles/tipsona.css" layer(components);
+@import "../styles/view-transitions.css";
+
+/*
+  Class names the stylesheet already uses that Tailwind would otherwise turn
+  into utilities (and, being in a later layer, let them win). Keep this list
+  in sync if the stylesheet gains another one.
+*/
+@source not inline("container");
+@source not inline("ring");
+@source not inline("sr-only");
+
+/*
+  The design tokens live once, on :root in tipsona.css. These map them to
+  Tailwind names, so bg-flame, text-ember, text-step-3, rounded-lg and so on
+  use the brand values.
+*/
+@theme inline {
+  --font-sans: var(--font-body);
+
+  --color-flame: var(--flame);
+  --color-flame-deep: var(--flame-deep);
+  --color-ember: var(--ember);
+  --color-flame-tint: var(--flame-tint);
+  --color-flame-wash: var(--flame-wash);
+
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-canvas: var(--canvas);
+  --color-paper: var(--paper);
+  --color-sand: var(--sand);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-night-3: var(--night-3);
+  --color-night-line: var(--night-line);
+  --color-night-muted: var(--night-muted);
+  --color-cream: var(--cream);
+
+  --color-sun: var(--sun);
+  --color-lilac: var(--lilac);
+  --color-blush: var(--blush);
+  --color-mint: var(--mint);
+  --color-sun-tint: var(--sun-tint);
+  --color-lilac-tint: var(--lilac-tint);
+  --color-blush-tint: var(--blush-tint);
+  --color-mint-tint: var(--mint-tint);
+
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+
+  --text-step--2: var(--step--2);
+  --text-step--1: var(--step--1);
+  --text-step-0: var(--step-0);
+  --text-step-1: var(--step-1);
+  --text-step-2: var(--step-2);
+  --text-step-3: var(--step-3);
+  --text-step-4: var(--step-4);
+  --text-step-5: var(--step-5);
+  --text-step-6: var(--step-6);
+  --text-step-7: var(--step-7);
+  --text-step-8: var(--step-8);
+
+  --radius-xs: var(--r-xs);
+  --radius-sm: var(--r-s);
+  --radius-md: var(--r-m);
+  --radius-lg: var(--r-l);
+  --radius-xl: var(--r-xl);
+
+  --shadow-sm: var(--shadow-1);
+  --shadow-md: var(--shadow-2);
+  --shadow-lg: var(--shadow-3);
+
+  --container-site: var(--maxw);
+}
