@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/layout/footer";
 import { NavHub } from "@/components/layout/nav-hub";
 import { JsonLd } from "@/components/seo/json-ld";
+import { TURNSTILE_SITE_KEY } from "@/config/site";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbs } from "@/lib/structured-data";
 
@@ -191,7 +192,7 @@ export default function WaitlistPage() {
                 <div
                   className="wl__captcha"
                   data-turnstile=""
-                  data-sitekey="0x4AAAAAAFLhKW3kgffIMnt7"
+                  data-sitekey={TURNSTILE_SITE_KEY}
                 />
                 <p className="wl__error" data-wl-error="" role="alert" hidden />{" "}
                 <button className="btn btn--flame btn--block" type="submit">

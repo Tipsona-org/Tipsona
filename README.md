@@ -44,7 +44,8 @@ Vercel detects Next.js and needs no settings beyond these environment variables 
 
 | Variable | What it's for |
 | --- | --- |
-| `TURNSTILE_SECRET` | Cloudflare Turnstile secret for the waitlist (the site key is in `src/app/waitlist/page.tsx`) |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key for the waitlist. Built into the page, so redeploy after changing it. Without it, Cloudflare's always-pass test key is used |
+| `TURNSTILE_SECRET` | The secret that pairs with that site key. Previews and local development use the test pair (see `.env.example`) |
 | `RESEND_API_KEY` | Waitlist sign-ups are saved as Resend contacts |
 | `RESEND_WAITLIST_SEGMENT_ID` | Optional: the Resend segment sign-ups join |
 | `NEXT_PUBLIC_SITE_URL` | Optional: the canonical domain. Without it, Vercel's production domain is used |
