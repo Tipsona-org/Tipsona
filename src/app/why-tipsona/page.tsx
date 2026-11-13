@@ -1,3 +1,4 @@
+import { preload } from "react-dom";
 import type { Metadata } from "next";
 
 import { Footer } from "@/components/layout/footer";
@@ -15,36 +16,67 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function WhyTipsonaPage() {
+  preload("/assets/img/video-creators.webp", { as: "image", fetchPriority: "high" });
+
   return (
     <>
       <NavHub home="/" current="/why-tipsona/" />
       <main id="main">
-        <section className="page-hero grid-lines" id="top" aria-labelledby="page-title">
-          <div
-            className="container"
-            style={{ display: "grid", gap: "26px", justifyItems: "start" }}
-          >
-            <p className="tab-label" data-intro="">
-              <span className="tip tip--circle c-flame" aria-hidden="true" />
-              Why Tipsona
-            </p>
-            <h1 className="h1" id="page-title">
-              <span className="ln">
-                <span className="ln__in">Built for</span>
-              </span>{" "}
-              <span className="ln">
-                <span className="ln__in">
-                  <span className="hl">
-                    <span className="hl__bg" aria-hidden="true" />
-                    African creators.
+        <section className="page-hero grid-lines prod-hero" id="top" aria-labelledby="page-title">
+          <div className="container prod-hero__grid">
+            <div className="prod-hero__copy">
+              <p className="tab-label" data-intro="">
+                <span className="tip tip--circle c-flame" aria-hidden="true" />
+                Why Tipsona
+              </p>
+              <h1 className="h1" id="page-title">
+                <span className="ln">
+                  <span className="ln__in">Built for</span>
+                </span>{" "}
+                <span className="ln">
+                  <span className="ln__in">
+                    <span className="hl">
+                      <span className="hl__bg" aria-hidden="true" />
+                      African creators.
+                    </span>
                   </span>
                 </span>
-              </span>
-            </h1>
-            <p className="lede" data-intro="">
-              The everyday problems of running a creator business, and how Tipsona compares with
-              the tools creators use today.
-            </p>
+              </h1>
+              <p className="lede" data-intro="">
+                The everyday problems of running a creator business, and how Tipsona compares with
+                the tools creators use today.
+              </p>
+            </div>
+            <div className="prod-hero__art why-hero__art" data-intro="">
+              <div className="photo-duo">
+                <figure>
+                  <span className="arch-photo" data-photo="">
+                    <img
+                      src="/assets/img/video-creators.webp"
+                      width="900"
+                      height="1125"
+                      alt="Two creators reviewing a take on their camera"
+                      fetchPriority="high"
+                    />
+                  </span>{" "}
+                  <figcaption>UGC and video creators</figcaption>
+                </figure>
+                <figure>
+                  <span className="arch-photo" data-photo="">
+                    <img
+                      src="/assets/img/educator.webp"
+                      width="900"
+                      height="1125"
+                      alt="A smiling educator in front of a whiteboard covered in notes"
+                    />
+                  </span>{" "}
+                  <span className="photo-tag" data-float="">
+                    Local payments
+                  </span>{" "}
+                  <figcaption>Educators and coaches</figcaption>
+                </figure>
+              </div>
+            </div>
           </div>
         </section>
         {/* ─────────────────────────── Problem ─────────────────────────── */}{" "}
@@ -64,7 +96,8 @@ export default function WhyTipsonaPage() {
                 Tipsona was built around the problems creators run into every day.
               </p>
             </header>
-            <ol className="numbered">
+            <div className="why-problems">
+              <ol className="numbered">
               <li data-reveal="">
                 <span className="numbered__n">01</span>
                 <span className="icon-tile acc-lilac">
@@ -113,7 +146,26 @@ export default function WhyTipsonaPage() {
                 </span>
                 <p>Your data is scattered, so it’s hard to see what actually makes you money.</p>
               </li>
-            </ol>
+              </ol>
+              <figure className="why-problems__ph" data-reveal="">
+                <span
+                  className="tip tip--diamond c-blush why-problems__shape"
+                  style={{ "--s": "clamp(40px,5vw,64px)" }}
+                  data-float=""
+                  aria-hidden="true"
+                />{" "}
+                <span className="arch-photo" data-photo="">
+                  <img
+                    src="/assets/img/entrepreneur.webp"
+                    width="900"
+                    height="1125"
+                    loading="lazy"
+                    alt="A digital entrepreneur working through her day at a laptop"
+                  />
+                </span>{" "}
+                <figcaption>Consultants, trainers, digital entrepreneurs</figcaption>
+              </figure>
+            </div>
           </div>
         </section>{" "}
         {/* ─────────────────────────── Why not other tools ─────────────────────────── */}{" "}
