@@ -109,7 +109,7 @@ export function marquee(scope: Scope) {
 
 /* Photos share one reveal: a wipe from below while the image settles from a slight zoom. */
 export function photoReveals() {
-  $$(".thesis__img").forEach((el) => {
+  $$(".thesis__img, [data-photo]").forEach((el) => {
     const st = { trigger: el, start: "top 88%", once: true };
     gsap.fromTo(
       el,
