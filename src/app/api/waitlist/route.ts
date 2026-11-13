@@ -1,10 +1,14 @@
 // Waitlist sign-ups: checks the Cloudflare Turnstile pass, then saves the person
 // as a Resend contact (in the waitlist segment), so launch news can go out as a
-// broadcast. Bots without a valid pass never reach the list.
+// broadcast, and sends a welcome email. Bots without a valid pass never reach
+// the list.
 //
 // Resend only accepts contact properties that already exist: create country,
 // role, products and username (all text) under Audience > Properties first.
-import type { NextRequest } from "next/server";
+import { after, type NextRequest } from "next/server";
+
+import { CONTACT_EMAIL } from "@/config/site";
+import { welcomeEmail } from "@/lib/waitlist-email";
 
 const PROPERTIES = ["country", "role", "products", "username"];
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -78,11 +82,53 @@ export async function POST(req: NextRequest) {
     properties
   });
   if (!saved) return reply(false, 502, "Something went wrong. Please try again in a moment.");
+
+  // Only on a first sign-up: joining twice updates the answers, not the inbox.
+  // Sent after the response, so the email never slows down or fails a sign-up.
+  if (saved === "new") {
+    after(() =>
+      sendWelcome(apiKey, email, {
+        firstName: first,
+        products: properties.products,
+        username: properties.username
+      })
+    );
+  }
   return reply(true, 200);
 }
 
-/** Adds the contact, or updates their answers if they signed up before. */
-async function saveContact(apiKey: string, contact: Contact) {
+/**
+ * The welcome email. Needs MAIL_FROM on a domain verified in Resend
+ * ("Tipsona <hello@tipsona.co>"); without it no email is sent, so sign-ups
+ * keep working before the domain is set up.
+ */
+async function sendWelcome(apiKey: string, to: string, details: Parameters<typeof welcomeEmail>[0]) {
+  const from = process.env.MAIL_FROM;
+  if (!from) return;
+
+  const { subject, html, text } = welcomeEmail(details);
+  const sent = await fetch(`${RESEND}/emails`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+      // Two quick submits must not send two emails.
+      "Idempotency-Key": `waitlist-welcome/${to}`
+    },
+    body: JSON.stringify({ from, to, reply_to: CONTACT_EMAIL, subject, html, text })
+  }).catch(() => null);
+
+  if (!sent?.ok) {
+    const { message = "" }: { message?: string } = (await sent?.json().catch(() => ({}))) ?? {};
+    console.error(`Resend did not send the waitlist welcome email (${sent?.status ?? "no response"}): ${message}`);
+  }
+}
+
+/**
+ * Adds the contact ("new"), or updates their answers if they signed up before
+ * ("updated"). Null when Resend refused both.
+ */
+async function saveContact(apiKey: string, contact: Contact): Promise<"new" | "updated" | null> {
   const headers = { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" };
   const segment = process.env.RESEND_WAITLIST_SEGMENT_ID;
 
@@ -91,13 +137,13 @@ async function saveContact(apiKey: string, contact: Contact) {
     headers,
     body: JSON.stringify({ ...contact, ...(segment && { segments: [{ id: segment }] }) })
   }).catch(() => null);
-  if (!created) return false;
-  if (created.ok) return true;
+  if (!created) return null;
+  if (created.ok) return "new";
 
   const { message = "" }: { message?: string } = await created.json().catch(() => ({}));
   if (created.status !== 409 && !/exist/i.test(message)) {
     console.error(`Resend refused the waitlist contact (${created.status}): ${message}`);
-    return false;
+    return null;
   }
   const { email, ...answers } = contact;
   const updated = await fetch(`${RESEND}/contacts/${encodeURIComponent(email)}`, {
@@ -105,5 +151,5 @@ async function saveContact(apiKey: string, contact: Contact) {
     headers,
     body: JSON.stringify(answers)
   }).catch(() => null);
-  return Boolean(updated?.ok);
+  return updated?.ok ? "updated" : null;
 }
