@@ -48,6 +48,7 @@ Vercel detects Next.js and needs no settings beyond these environment variables 
 | `TURNSTILE_SECRET` | The secret that pairs with that site key. Previews and local development use the test pair (see `.env.example`) |
 | `RESEND_API_KEY` | Waitlist sign-ups are saved as Resend contacts |
 | `RESEND_WAITLIST_SEGMENT_ID` | Optional: the Resend segment sign-ups join |
+| `MAIL_FROM` | Sender of the welcome email new sign-ups get, e.g. `Tipsona <hello@tipsona.co>`. The domain must be verified in Resend. Empty means no welcome email |
 | `NEXT_PUBLIC_SITE_URL` | Optional: the canonical domain. Without it, Vercel's production domain is used |
 
 Before the first sign-up, create these contact properties in Resend (Audience > Properties, type text): `country`, `role`, `products`, `username`. Resend rejects contacts with properties it doesn't know. At launch, send the news as a Resend broadcast to the waitlist segment.
