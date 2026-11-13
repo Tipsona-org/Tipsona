@@ -1495,6 +1495,35 @@ a.brand__by:hover { color: var(--ink); }
 .prod-hero__copy { display: grid; gap: 26px; justify-items: start; }
 .prod-hero .h1 { max-width: none; font-size: var(--step-6); line-height: .92; }
 .prod-hero__art { position: relative; justify-self: center; width: min(100%, 460px); }
+/* Why Tipsona page: the hero photo pair and the problems photo */
+.arch-photo {
+  display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--sand);
+  border-radius: 50% 50% 24px 24px / 36% 36% 24px 24px;
+}
+.arch-photo img { width: 100%; height: 100%; object-fit: cover; }
+.photo-tag {
+  position: absolute; z-index: 2; left: -14px; top: 10%; rotate: -5deg; white-space: nowrap;
+  padding: 7px 14px; border-radius: 99px; background: var(--blush); color: var(--ink);
+  font-weight: 700; font-size: .875rem; box-shadow: var(--shadow-2);
+}
+.photo-duo { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 1.6vw, 20px); align-items: start; }
+.photo-duo figure { position: relative; }
+.photo-duo figure + figure { margin-top: clamp(36px, 5vw, 72px); }
+.photo-duo figcaption, .why-problems__ph figcaption {
+  margin-top: 12px; font-family: var(--font-mono); font-size: var(--t-label);
+  line-height: 1.5; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.why-hero__art { width: min(100%, 540px); }
+.why-problems { display: grid; gap: clamp(32px, 4.5vw, 64px); align-items: start; }
+.why-problems__ph { position: relative; max-width: 440px; }
+/* The diamond stays inside the page on phones: nothing scrolls sideways */
+.why-problems__shape { position: absolute; z-index: 2; right: 0; top: -26px; }
+@media (min-width: 1000px) {
+  .why-problems { grid-template-columns: 1.15fr .85fr; }
+  .why-problems__ph { position: sticky; top: 110px; justify-self: end; width: 100%; }
+  .why-problems__shape { right: -5%; }
+}
+
 .campaign { box-shadow: var(--shadow-3); rotate: 2deg; }
 .campaign .tl-row { color: var(--muted); }
 .campaign .tl-row .dot { background: var(--sand); color: var(--muted); }
