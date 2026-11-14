@@ -1495,6 +1495,29 @@ a.brand__by:hover { color: var(--ink); }
 .prod-hero__copy { display: grid; gap: 26px; justify-items: start; }
 .prod-hero .h1 { max-width: none; font-size: var(--step-6); line-height: .92; }
 .prod-hero__art { position: relative; justify-self: center; width: min(100%, 460px); }
+/* Terms and Privacy: a readable document with its contents beside it */
+.legal { padding-top: clamp(24px, 3vw, 40px); }
+.legal__updated { font-family: var(--font-mono); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.legal__grid { display: grid; gap: clamp(32px, 5vw, 72px); align-items: start; }
+.legal__toc > p { margin-bottom: 14px; font-family: var(--font-mono); font-size: var(--t-label); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.legal__toc ol { list-style: none; padding: 0; display: grid; gap: 10px; border-left: 1px solid var(--line); padding-left: 16px; }
+.legal__toc a { color: var(--ink-2); text-decoration: none; font-size: .9375rem; line-height: 1.35; }
+.legal__toc a:hover { color: var(--ember); text-decoration: underline; }
+.legal__doc { max-width: 68ch; }
+.legal__doc > section + section { margin-top: clamp(40px, 4.5vw, 60px); }
+.legal__doc h2 { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; font-size: var(--step-2); font-weight: 600; letter-spacing: -.014em; line-height: 1.22; scroll-margin-top: 110px; }
+.legal__n { font-family: var(--font-mono); font-size: var(--t-label); font-weight: 400; letter-spacing: .08em; color: var(--muted); }
+.legal__doc h3 { margin: 22px 0 8px; font-size: 1.0625rem; font-weight: 600; }
+.legal__doc p, .legal__doc li { color: var(--ink-2); line-height: 1.65; }
+.legal__doc p + p, .legal__doc p + ul, .legal__doc ul + p { margin-top: 12px; }
+.legal__doc ul { padding-left: 1.2em; display: grid; gap: 8px; }
+.legal__doc a { color: var(--ember); }
+.legal__doc strong { color: var(--ink); font-weight: 600; }
+@media (min-width: 1000px) {
+  .legal__grid { grid-template-columns: 240px minmax(0, 1fr); }
+  .legal__toc { position: sticky; top: 110px; }
+}
+
 /* Why Tipsona page: the hero photo pair and the problems photo */
 .arch-photo {
   display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--sand);
@@ -1703,13 +1726,6 @@ a.brand__by:hover { color: var(--ink); }
 .ticker--tab .ticker__list { gap: clamp(16px, 2vw, 28px); padding-right: clamp(16px, 2vw, 28px); }
 .ticker--tab .ticker__list li { font-family: var(--font-body); font-weight: 500; font-size: var(--step-1); letter-spacing: -.012em; }
 .ticker--tab .ticker__list .tip { --s: 12px; }
-/* static version above the footer */
-.ticker--static .ticker__tab { display: flex; justify-content: center; align-items: center; gap: clamp(12px, 1.8vw, 26px); padding-inline: 24px; font-weight: 500; font-size: clamp(.875rem, 1.2vw, 1.125rem); letter-spacing: -.01em; white-space: nowrap; }
-.ticker--static .ticker__tab::before, .ticker--static .ticker__tab::after { content: none; }
-.ticker--static .sep { display: inline-grid; place-items: center; }
-.ticker--static .tip { --s: 11px; }
-@media (max-width: 900px) { .ticker--static .wide, .ticker--static .sep--wide { display: none; } }
-@media (max-width: 560px) { .ticker--static span:nth-child(4), .ticker--static span:nth-child(5) { display: none; } .ticker--static .ticker__tab { font-size: .8125rem; gap: 10px; padding-inline: 12px; } }
 /* the strip is the first thing inside the footer: its top half matches the page, its bottom half the footer */
 .footer { padding-top: 0; margin-top: 0; }
 .footer > .container { padding-top: clamp(64px, 8vw, 112px); }

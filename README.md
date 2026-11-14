@@ -88,4 +88,6 @@ See `DESIGN.md` for the design system rules.
 - **Fee example** (₦10,000 − ₦500 − ₦150 = ₦9,350) is the PRD's illustrative example.
 - **info@tipsona.co** contact address (`CONTACT_EMAIL` in `src/config/site.ts`); office: 97, Adeola Odeku Street, 2nd Floor Union Bank Building, Victoria Island, Lagos State.
 - **Example storefronts, people, products and figures** in mockups are fictional and labelled as examples.
-- **Links** to Help Center, Terms, Privacy and social profiles point to `#`. When the social profiles are real, also add them as `sameAs` in `organization()` (`src/lib/structured-data.ts`). Log in points to `#` until TipStore opens: set `APP_LOGIN_URL` in `src/config/site.ts`.
+- **Legal pages.** `/terms/` and `/privacy/` cover this site and the waitlist. `/tipstore/terms/` and `/tipstore/privacy/` cover TipStore itself (selling, buying, payouts, identity checks); the app's sign-up form links to them. All four show the registered company name and RC number as a placeholder and should be reviewed by a lawyer before launch. Tipper and the other products need their own before they open.
+- **Social profiles** live in `src/content/social.ts`, which feeds the footer links and the Organization structured data.
+- **Links** to the Help Center point to `#`. Log in points to `#` until TipStore opens: set `APP_LOGIN_URL` in `src/config/site.ts`.

@@ -2,6 +2,7 @@
 // shows; search engines ignore (or penalise) structured data that doesn't.
 import { CONTACT_EMAIL, SITE_URL } from "@/config/site";
 import type { Qa } from "@/content/faq";
+import { SOCIAL } from "@/content/social";
 
 export type Thing = Record<string, unknown>;
 
@@ -31,8 +32,8 @@ export function organization(): Thing {
       addressLocality: "Victoria Island",
       addressRegion: "Lagos",
       addressCountry: "NG"
-    }
-    // sameAs: add the Instagram, TikTok, X and LinkedIn profiles once the footer links are real
+    },
+    sameAs: SOCIAL.map((profile) => profile.url)
   };
 }
 
