@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/layout/footer";
 import { NavHub } from "@/components/layout/nav-hub";
@@ -13,6 +14,9 @@ export const metadata: Metadata = pageMetadata({
 });
 
 export default function DesignSystemPage() {
+  // Internal reference for the team: on previews and locally, never on the live site.
+  if (process.env.VERCEL_ENV === "production") notFound();
+
   return (
     <>
       <NavHub home="/" />

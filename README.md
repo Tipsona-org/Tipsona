@@ -13,7 +13,7 @@ Marketing pages for **Tipsona** and its products. The site is not the product: i
 | Tipper | `/tipper/` | `src/app/tipper/page.tsx` | Paid UGC brand work for creators: why, workflow, trust |
 | TipFix | `/tipfix/` | `src/app/tipfix/page.tsx` | Coming soon: payouts, legal desk, escrow, small problems |
 | Waitlist | `/waitlist/` | `src/app/waitlist/page.tsx` | Waitlist sign-up, prefilled from `?product=` and `?username=` |
-| Brand and design system | `/design-system/` | `src/app/design-system/page.tsx` | Logo, colour, contrast, type, tip shapes, icons, components, motion and UX rules (not in search results) |
+| Brand and design system | `/design-system/` | `src/app/design-system/page.tsx` | Logo, colour, contrast, type, tip shapes, icons, components, motion and UX rules. Team only: shows on previews and locally, and is a 404 on the live site |
 
 TipStore copy comes from the TipStore PRD. Tipsona, Tipper, TipFix and the other products come from the Tipsona investor pitch document (2026). The site is for creators, so investor material (flywheel, roadmap, business model, market size, moat, research sources, brand-side pricing) is left off. Products outside the first launch wave (TipStore, Tipper, TipStar) are labelled "Coming soon". Anything in neither document is shown as a visible placeholder.
 
@@ -82,12 +82,16 @@ See `DESIGN.md` for the design system rules.
 
 ## Placeholders to confirm before launch
 
+Nothing below shows as a placeholder on the site itself; the public copy says "Coming soon" or "will be announced" instead. This list is where the open items are tracked.
+
+- **Registered company name and RC number**: add them to all four legal pages, which currently say only "Tipsona".
+
 - **"Coming soon" labels** assume TipStore, Tipper and TipStar launch first, as in the pitch's roadmap.
-- **Community programs**: details, dates and how to join are still to be confirmed.
-- **Pro and Business prices** (shown as "Price TBC"). The PRD leaves prices and exact fees open.
+- **Community programs**: details, dates and how to join (the page says they will be announced soon).
+- **Pro and Business prices** (shown as "Coming soon"). The PRD leaves prices and exact fees open.
 - **Fee example** (₦10,000 − ₦500 − ₦150 = ₦9,350) is the PRD's illustrative example.
 - **info@tipsona.co** contact address (`CONTACT_EMAIL` in `src/config/site.ts`); office: 97, Adeola Odeku Street, 2nd Floor Union Bank Building, Victoria Island, Lagos State.
 - **Example storefronts, people, products and figures** in mockups are fictional and labelled as examples.
-- **Legal pages.** `/terms/` and `/privacy/` cover this site and the waitlist. `/tipstore/terms/` and `/tipstore/privacy/` cover TipStore itself (selling, buying, payouts, identity checks); the app's sign-up form links to them. All four show the registered company name and RC number as a placeholder and should be reviewed by a lawyer before launch. Tipper and the other products need their own before they open.
+- **Legal pages.** `/terms/` and `/privacy/` cover this site and the waitlist. `/tipstore/terms/` and `/tipstore/privacy/` cover TipStore itself (selling, buying, payouts, identity checks); the app's sign-up form links to them. All four should be reviewed by a lawyer before launch. Tipper and the other products need their own before they open.
 - **Social profiles** live in `src/content/social.ts`, which feeds the footer links and the Organization structured data.
-- **Links** to the Help Center point to `#`. Log in points to `#` until TipStore opens: set `APP_LOGIN_URL` in `src/config/site.ts`.
+- **Log in** points to `#` until TipStore opens, and shows a "Coming soon" note: set `APP_LOGIN_URL` in `src/config/site.ts`. The footer has no Help Center link until there is a public one.

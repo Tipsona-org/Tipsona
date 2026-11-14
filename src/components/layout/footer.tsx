@@ -157,9 +157,6 @@ export function Footer({ pitch }: FooterProps) {
                 <li>
                   <a href="/tipstore/#faq">FAQ</a>
                 </li>
-                <li>
-                  <a href="#">Help Center</a>
-                </li>
               </ul>
             </div>
             <div>

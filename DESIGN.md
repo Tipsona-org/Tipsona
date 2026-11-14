@@ -1,6 +1,6 @@
 # Tipsona design system
 
-The live reference is the `/design-system/` page (source: `src/app/design-system/page.tsx`). This file is the short version for anyone writing code.
+The full reference is the `/design-system/` page (source: `src/app/design-system/page.tsx`). It is for the team, so it shows only on preview deployments and locally; the live site returns a 404 for it. This file is the short version for anyone writing code.
 
 The tokens below are also Tailwind utilities (mapped in `src/app/globals.css`): `bg-flame`, `text-ember`, `border-line`, `text-step-3`, `rounded-lg` (24px), `shadow-md` and so on.
 

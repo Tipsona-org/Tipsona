@@ -27,8 +27,7 @@ const SECTIONS: LegalSection[] = [
       <>
         <p>
           TipStore lets creators sell digital products from their own storefront, and lets anyone
-          buy them. It is provided by Tipsona (<span className="ph-tag">Placeholder</span>{" "}
-          registered company name and RC number), 97, Adeola Odeku Street, 2nd Floor Union Bank
+          buy them. It is provided by Tipsona, 97, Adeola Odeku Street, 2nd Floor Union Bank
           Building, Victoria Island, Lagos State, Nigeria.
         </p>
         <p>
@@ -97,7 +96,7 @@ const SECTIONS: LegalSection[] = [
           <li>sexually explicit material, or content that promotes violence or hatred;</li>
           <li>malware, or files made to harm a buyer’s device;</li>
           <li>schemes that promise guaranteed income, or other products designed to mislead;</li>
-          <li>anything our payment provider, Paystack, doesn’t allow.</li>
+          <li>anything our payment processor doesn’t allow; we’ll tell you if this affects a product.</li>
         </ul>
         <p>
           We may remove a product that breaks these rules. Serious or repeated breaches can close
@@ -246,15 +245,16 @@ const SECTIONS: LegalSection[] = [
       <ul>
         <li>
           When you buy, you’re buying from the seller, not from Tipsona. Tipsona runs the store and
-          the checkout, and collects your payment on the seller’s behalf through Paystack. The
-          seller is responsible for the product.
+          the checkout, and collects your payment on the seller’s behalf through our payment
+          processor. The seller is responsible for the product.
         </li>
         <li>
           You pay the price shown at checkout. You can buy as a guest with just your email address;
           your purchase is then linked to that address.
         </li>
         <li>
-          Paystack handles your card or bank details. We never see your full card number.
+          Our payment processor handles your card or bank details. We never see your full card
+          number.
         </li>
         <li>
           You get access as soon as your payment is confirmed. We email you a confirmation with

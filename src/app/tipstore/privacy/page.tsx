@@ -24,8 +24,7 @@ const SECTIONS: LegalSection[] = [
     body: (
       <>
         <p>
-          TipStore is provided by Tipsona (<span className="ph-tag">Placeholder</span> registered
-          company name and RC number), 97, Adeola Odeku Street, 2nd Floor Union Bank Building,
+          TipStore is provided by Tipsona, 97, Adeola Odeku Street, 2nd Floor Union Bank Building,
           Victoria Island, Lagos State, Nigeria. We decide how the personal data described here is
           used, which makes us its controller under the Nigeria Data Protection Act 2023.
         </p>
@@ -72,7 +71,8 @@ const SECTIONS: LegalSection[] = [
           </li>
           <li>
             A summary of how you paid, such as “Visa •••• 4081” or the bank you paid from, and the
-            payment reference. Paystack handles your full card details; we never receive them.
+            payment reference. Our payment processor handles your full card details; we never
+            receive them.
           </li>
           <li>
             When you download a file: the time, your IP address, your browser, your type of device
@@ -162,33 +162,25 @@ const SECTIONS: LegalSection[] = [
     title: "Who we share it with",
     body: (
       <>
-        <p>Only the companies that run parts of TipStore for us, and only for that work:</p>
+        <p>Only with service providers that run parts of TipStore for us, and only for that work:</p>
         <ul>
           <li>
-            <strong>Paystack</strong> processes payments and checks the account name on sellers’
-            payout accounts.
+            a payment processor, which takes payments and checks the account name on sellers’
+            payout accounts;
           </li>
           <li>
-            <strong>Cloudflare</strong> stores product files, images and identity documents. Paid
-            files and identity documents are kept in private storage.
+            a storage provider, which keeps product files, images and identity documents (paid
+            files and identity documents are kept in private storage);
           </li>
-          <li>
-            <strong>Supabase</strong> hosts our database.
-          </li>
-          <li>
-            <strong>Vercel</strong> and our other hosting providers run the app and its servers.
-          </li>
-          <li>
-            <strong>Resend</strong> sends our emails.
-          </li>
-          <li>
-            <strong>Zoho</strong> runs our company mailbox, where emails you send us arrive.
-          </li>
+          <li>hosting providers, which run the app, its servers and our database;</li>
+          <li>an email provider, which sends our emails;</li>
+          <li>an email hosting provider, which runs the mailbox where your emails to us arrive.</li>
         </ul>
         <p>
           We also share information with our professional advisers, such as lawyers and
           accountants, when we need their help, and with the police, regulators or courts when the
           law requires it, including to prevent financial crime. We don’t sell your personal data.
+          If you’d like the names of our current providers, write to {MAIL}.
         </p>
       </>
     )
