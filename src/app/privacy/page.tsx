@@ -24,8 +24,7 @@ const SECTIONS: LegalSection[] = [
     body: (
       <>
         <p>
-          Tipsona (<span className="ph-tag">Placeholder</span> registered company name and RC
-          number) runs tipsona.co. Our office is at 97, Adeola Odeku Street, 2nd Floor Union Bank
+          Tipsona runs tipsona.co. Our office is at 97, Adeola Odeku Street, 2nd Floor Union Bank
           Building, Victoria Island, Lagos State, Nigeria.
         </p>
         <p>
@@ -60,24 +59,20 @@ const SECTIONS: LegalSection[] = [
         </p>
         <h3>When you open the waitlist page</h3>
         <p>
-          Cloudflare Turnstile checks that you are a person, not a bot. To do that, Cloudflare
-          receives your IP address, your browser’s user agent and technical details of your
-          connection. We never see these signals; we only learn whether the check passed.
-          Cloudflare explains what it collects in its{" "}
-          <a href="https://www.cloudflare.com/turnstile-privacy-policy/" rel="noopener noreferrer">
-            Turnstile privacy notice
-          </a>
-          .
+          A security check confirms that you are a person, not a bot. It is run by a security
+          provider, which receives your IP address, your browser’s user agent and technical details
+          of your connection. We never see these details; we only learn whether the check passed.
+          The provider also uses them to improve how it detects bots.
         </p>
         <h3>When you visit any page</h3>
         <p>
-          Our host, Vercel, processes your IP address, browser details and the pages you request,
-          to deliver the site and protect it from abuse.
+          Our hosting provider processes your IP address, browser details and the pages you
+          request, to deliver the site and protect it from abuse.
         </p>
         <h3>When you email us</h3>
         <p>Your email address and what you write.</p>
         <h3>When we email you</h3>
-        <p>Resend, which sends our emails, records whether each email was delivered.</p>
+        <p>Our email provider records whether each email was delivered.</p>
         <h3>What we don’t do</h3>
         <p>
           The site sets no cookies of its own and uses no analytics or advertising trackers. We
@@ -121,25 +116,19 @@ const SECTIONS: LegalSection[] = [
     body: (
       <>
         <p>
-          Only the companies that run parts of the site for us, and only so they can do that work:
+          Only with service providers that run parts of the site for us, and only so they can do
+          that work:
         </p>
         <ul>
-          <li>
-            <strong>Resend</strong> sends our emails and holds the waitlist contact list.
-          </li>
-          <li>
-            <strong>Cloudflare</strong> runs the security check on the waitlist page.
-          </li>
-          <li>
-            <strong>Vercel</strong> hosts the site.
-          </li>
-          <li>
-            <strong>Zoho</strong> runs our company mailbox, where emails you send us arrive.
-          </li>
+          <li>an email provider, which sends our emails and keeps the waitlist list;</li>
+          <li>a security provider, which runs the bot check on the waitlist page;</li>
+          <li>a hosting provider, which serves the site;</li>
+          <li>an email hosting provider, which runs the mailbox where your emails to us arrive.</li>
         </ul>
         <p>
           We will also share information if the law requires it, for example with a court or a
-          regulator. We share it with no one else.
+          regulator. We share it with no one else. If you’d like the names of our current
+          providers, write to {MAIL}.
         </p>
       </>
     )
@@ -169,8 +158,8 @@ const SECTIONS: LegalSection[] = [
           <strong>Emails you send us:</strong> as long as we need them to deal with what you asked.
         </li>
         <li>
-          <strong>Hosting and security logs:</strong> for the short time Vercel and Cloudflare keep
-          them.
+          <strong>Hosting and security logs:</strong> for the short time our hosting and security
+          providers keep them.
         </li>
       </ul>
     )

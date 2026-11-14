@@ -10,7 +10,7 @@ export function initAnchors(scope: Scope) {
     const id = a.getAttribute("href")!;
     if (id === "#") {
       e.preventDefault();
-      toast("This is a design preview. That page goes live with the product.");
+      toast("Coming soon. This opens when TipStore launches.");
       return;
     }
     const target = document.querySelector(id);

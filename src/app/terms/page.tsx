@@ -25,8 +25,7 @@ const SECTIONS: LegalSection[] = [
       <>
         <p>
           These terms cover your use of tipsona.co, including its product pages and the waitlist.
-          The site is run by Tipsona (<span className="ph-tag">Placeholder</span> registered
-          company name and RC number), 97, Adeola Odeku Street, 2nd Floor Union Bank Building,
+          The site is run by Tipsona, 97, Adeola Odeku Street, 2nd Floor Union Bank Building,
           Victoria Island, Lagos State, Nigeria.
         </p>
         <p>
@@ -78,7 +77,7 @@ const SECTIONS: LegalSection[] = [
         </p>
         <p>
           The storefronts, people, products and figures in our mockups are examples. Prices shown as
-          “Price TBC” are not set yet, and the fee example on the pricing page is an illustration.
+          “Coming soon” are not set yet, and the fee example on the pricing page is an illustration.
           None of it is an offer.
         </p>
       </>

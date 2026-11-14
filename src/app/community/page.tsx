@@ -91,8 +91,7 @@ export default function CommunityPage() {
               </li>
             </ul>
             <p className="comm__ph">
-              <span className="ph-tag">Placeholder</span> Program details, dates and how to join are
-              still to be confirmed.
+              Program details, dates and how to join will be announced soon.
             </p>
           </div>
         </section>{" "}

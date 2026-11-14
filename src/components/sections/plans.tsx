@@ -33,8 +33,7 @@ export function Plans({ ctaHref }: { ctaHref: string }) {
               </p>
             ) : (
               <p className="plan__price">
-                <span className="plan__amt plan__amt--tbc">Price TBC</span>
-                <span className="ph-tag">Placeholder</span>
+                <span className="plan__amt plan__amt--tbc">Coming soon</span>
               </p>
             )}
             <p className="plan__note">{p.note}</p>

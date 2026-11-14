@@ -58,8 +58,7 @@ export default function TipStorePricingPage() {
           <div className="container">
             <Plans ctaHref="/tipstore/#claim" />
             <p className="ph-note">
-              <span className="ph-tag">Placeholder</span>Pro and Business prices haven’t been
-              announced yet.
+              Pro and Business prices will be announced before launch.
             </p>
           </div>
         </section>
