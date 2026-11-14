@@ -1,3 +1,8 @@
+import { Fragment } from "react";
+
+import { TabTicker } from "@/components/sections/tab-ticker";
+import { SOCIAL } from "@/content/social";
+
 type FooterProps = {
   /** One line above the address, written for the page it closes */
   pitch: string;
@@ -7,35 +12,16 @@ export function Footer({ pitch }: FooterProps) {
   return (
     <>
       <footer className="footer on-dark">
-        <div
-          className="ticker ticker--tab ticker--static"
-          role="list"
-          aria-label="What you can do with Tipsona"
-        >
-          <div className="ticker__tab">
-            <span role="listitem">Sell digital products</span>
-            <span className="sep" aria-hidden="true">
-              <span className="tip tip--star c-flame" />
-            </span>{" "}
-            <span role="listitem">Work with brands</span>
-            <span className="sep" aria-hidden="true">
-              <span className="tip tip--star c-flame" />
-            </span>{" "}
-            <span role="listitem">Earn from your fans</span>
-            <span className="sep sep--wide" aria-hidden="true">
-              <span className="tip tip--star c-flame" />
-            </span>{" "}
-            <span role="listitem" className="wide">
-              Local payments
-            </span>
-            <span className="sep sep--wide" aria-hidden="true">
-              <span className="tip tip--star c-flame" />
-            </span>{" "}
-            <span role="listitem" className="wide">
-              One creator identity
-            </span>
-          </div>
-        </div>
+        <TabTicker
+          label="What you can do with Tipsona"
+          items={[
+            "Sell digital products",
+            "Work with brands",
+            "Earn from your fans",
+            "Local payments",
+            "One creator identity"
+          ]}
+        />
         <div className="container">
           <div className="footer__top">
             <div className="footer__brand">
@@ -90,26 +76,21 @@ export function Footer({ pitch }: FooterProps) {
                   />
                 </span>{" "}
                 <div className="footer__social">
-                  <a href="#" aria-label="Tipsona on Instagram">
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-instagram" />
-                    </svg>
-                  </a>{" "}
-                  <a href="#" aria-label="Tipsona on TikTok">
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-tiktok" />
-                    </svg>
-                  </a>{" "}
-                  <a href="#" aria-label="Tipsona on X">
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-xsocial" />
-                    </svg>
-                  </a>{" "}
-                  <a href="#" aria-label="Tipsona on LinkedIn">
-                    <svg className="i" aria-hidden="true">
-                      <use href="#i-linkedin" />
-                    </svg>
-                  </a>
+                  {SOCIAL.map(({ name, icon, url }, n) => (
+                    <Fragment key={name}>
+                      {n > 0 && " "}
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Tipsona on ${name}`}
+                      >
+                        <svg className="i" aria-hidden="true">
+                          <use href={`#i-${icon}`} />
+                        </svg>
+                      </a>
+                    </Fragment>
+                  ))}
                 </div>
               </div>
             </div>
@@ -188,10 +169,16 @@ export function Footer({ pitch }: FooterProps) {
               </h3>
               <ul>
                 <li>
-                  <a href="#">Terms</a>
+                  <a href="/terms/">Terms of Use</a>
                 </li>
                 <li>
-                  <a href="#">Privacy</a>
+                  <a href="/privacy/">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="/tipstore/terms/">TipStore terms</a>
+                </li>
+                <li>
+                  <a href="/tipstore/privacy/">TipStore privacy</a>
                 </li>
               </ul>
             </div>
@@ -220,8 +207,8 @@ export function Footer({ pitch }: FooterProps) {
           <div className="footer__bottom">
             <span>© 2026 Tipsona</span>{" "}
             <nav aria-label="Legal">
-              <a href="#">Terms</a>
-              <a href="#">Privacy</a>
+              <a href="/terms/">Terms</a>
+              <a href="/privacy/">Privacy</a>
             </nav>
           </div>
         </div>

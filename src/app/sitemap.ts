@@ -10,9 +10,13 @@ const PAGES = [
   "/community/",
   "/tipstore/",
   "/tipstore/pricing/",
+  "/tipstore/terms/",
+  "/tipstore/privacy/",
   "/tipper/",
   "/tipfix/",
-  "/waitlist/"
+  "/waitlist/",
+  "/terms/",
+  "/privacy/"
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

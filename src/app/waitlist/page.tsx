@@ -202,9 +202,8 @@ export default function WaitlistPage() {
                   </svg>
                 </button>{" "}
                 <p className="wl__note">
-                  We’ll only use your details to tell you about Tipsona.{" "}
-                  <span className="ph-tag">Placeholder</span> Link to the privacy policy once it’s
-                  ready.
+                  We’ll use your details to tell you about Tipsona, as our{" "}
+                  <a href="/privacy/">Privacy Policy</a> explains.
                 </p>
               </form>
               <div className="wl__done" data-wl-done="" tabIndex={-1} hidden>
