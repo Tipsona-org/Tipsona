@@ -107,7 +107,7 @@ export default function TipStorePage() {
                 <svg className="i" aria-hidden="true">
                   <use href="#i-check" />
                 </svg>
-                Payments by Paystack
+                Secure local payments
               </li>
               <li>
                 <svg className="i" aria-hidden="true">
@@ -420,7 +420,7 @@ export default function TipStorePage() {
                   </span>{" "}
                   <div>
                     <b>Budget Planner</b>
-                    <span>Guest checkout · Paystack</span>
+                    <span>Guest checkout</span>
                   </div>{" "}
                   <span className="price">₦7,500</span>
                 </div>
@@ -432,7 +432,7 @@ export default function TipStorePage() {
                       </svg>
                     </span>
                     <span>
-                      Payment verified <small>· Paystack</small>
+                      Payment verified <small>· ₦7,500</small>
                     </span>
                   </li>
                   <li className="tl-row">
@@ -943,8 +943,8 @@ export default function TipStorePage() {
                 </span>{" "}
                 <h3>Checkout in one step</h3>
                 <p>
-                  Guest checkout needs only a name and email. Payments are processed through
-                  Paystack.
+                  Guest checkout needs only a name and email, and every payment is verified
+                  before access is given.
                 </p>
                 <div className="tile__ui">
                   <div className="checkout-ui" aria-hidden="true">
@@ -1791,20 +1791,6 @@ export default function TipStorePage() {
                 <p>Withdrawals need a verified identity (KYC) and a verified payout account.</p>
               </li>
             </ul>
-            <p className="trust__meta" aria-hidden="true">
-              <span>
-                <span className="tip tip--diamond c-ink" style={{ "--s": "9px" }} />
-                Payments by Paystack
-              </span>
-              <span>
-                <span className="tip tip--diamond c-ink" style={{ "--s": "9px" }} />
-                HTTPS / TLS 1.3
-              </span>
-              <span>
-                <span className="tip tip--diamond c-ink" style={{ "--s": "9px" }} />
-                Encrypted data at rest
-              </span>
-            </p>
           </div>
         </section>{" "}
         {/* ─────────────────────────── Pricing ─────────────────────────── */}{" "}

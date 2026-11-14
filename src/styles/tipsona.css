@@ -991,8 +991,6 @@ ul[role="list"], ol[role="list"], .plain { list-style: none; padding: 0; }
 .trust__grid .icon-tile { background: var(--paper); border: 0; }
 .trust__grid h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; letter-spacing: -.015em; }
 .trust__grid p { font-size: .9375rem; color: var(--ink-2); }
-.trust__meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
-.trust__meta span { display: inline-flex; align-items: center; gap: 8px; }
 
 /* ── Pricing ──────────────────────────────────────────────────────────── */
 .billing { display: inline-flex; align-items: center; gap: 4px; padding: 5px; border-radius: 16px; background: var(--paper); border: 1px solid var(--line); box-shadow: var(--shadow-1); }
@@ -1373,7 +1371,7 @@ a.brand__by:hover { color: var(--ink); }
   .trust__inner { display: grid; grid-template-columns: 1fr auto; column-gap: 48px; align-items: end; }
   .trust__lock { grid-column: 2; grid-row: 1; width: clamp(140px, 17vw, 240px); margin: 0; }
   .trust__statement { grid-column: 1; grid-row: 1; }
-  .trust__grid, .trust__meta { grid-column: 1 / -1; }
+  .trust__grid { grid-column: 1 / -1; }
 }
 
 .ph-note { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 28px; font-size: .875rem; color: var(--muted); }
@@ -1957,7 +1955,6 @@ a.brand__by:hover { color: var(--ink); }
 .comm__card p { color: var(--night-muted); }
 .comm__pill { justify-self: start; margin-top: 6px; background: rgba(255, 246, 236, .08); color: var(--cream); }
 .comm__ph { margin-top: 28px; color: var(--night-muted); font-size: var(--t-small); }
-.comm__ph .ph-tag { color: var(--night-muted); margin-right: 8px; }
 
 /* Ways to earn: the vision line under the title */
 .earn__lede { font-size: var(--t-lede); line-height: 1.5; color: var(--ink-2); max-width: 34em; text-wrap: pretty; }

@@ -5,7 +5,7 @@ export type Plan = {
   shape: string;
   tagline: string;
   suits: string;
-  /** null shows "Price TBC" with a placeholder tag */
+  /** null shows "Coming soon" until the price is announced */
   price: string | null;
   per: string;
   note: string;

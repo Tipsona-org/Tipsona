@@ -13,7 +13,7 @@ export const TIPSTORE_FAQ: Qa[] = [
   },
   {
     q: "How do I get paid?",
-    a: "Payments are processed by Paystack and added to your balance. Once your identity (KYC) and payout account are verified, you can request a withdrawal from your dashboard."
+    a: "Payments are verified and added to your balance. Once your identity (KYC) and payout account are verified, you can request a withdrawal from your dashboard."
   },
   {
     q: "Do I need a website?",
