@@ -8,6 +8,7 @@ Marketing pages for **Tipsona** and its products. The site is not the product: i
 | Products | `/products/` | `src/app/products/page.tsx` | Every product in detail |
 | Why Tipsona | `/why-tipsona/` | `src/app/why-tipsona/page.tsx` | The problems creators run into, and how Tipsona compares with other tools |
 | Community | `/community/` | `src/app/community/page.tsx` | Coming soon: campus ambassadors, UGC Creative Academy, communities, content studio |
+| Blog | `/blog/`, `/blog/<post>/` | `src/app/blog/`, posts in `src/content/blog/` | Guides, stories and product news, written in the editor at `/admin/` (see [Blog](#blog)) |
 | TipStore landing | `/tipstore/` | `src/app/tipstore/page.tsx` | TipStore, the commerce layer: how it works, who it's for, features, dashboard, trust, plans, FAQ |
 | TipStore pricing | `/tipstore/pricing/` | `src/app/tipstore/pricing/page.tsx` | Plans, feature comparison, fee example, billing FAQ |
 | Tipper | `/tipper/` | `src/app/tipper/page.tsx` | Paid UGC brand work for creators: why, workflow, trust |
@@ -54,6 +55,31 @@ Vercel detects Next.js and needs no settings beyond these environment variables 
 Before the first sign-up, create these contact properties in Resend (Audience > Properties, type text): `country`, `role`, `products`, `username`. Resend rejects contacts with properties it doesn't know. At launch, send the news as a Resend broadcast to the waitlist segment.
 
 The old `.html` addresses redirect to the new routes (`/products.html` to `/products/` and so on, in `next.config.ts`).
+
+## Blog
+
+Posts live at `/blog/` and are written in an editor at `/admin/` ([Decap CMS](https://decapcms.org)), not in the admin portal. Each post is a Markdown file in `src/content/blog/`; images go to `public/assets/blog/`. Pages, the sitemap and the RSS feed (`/blog/rss.xml`) are built from those files, so a published post goes live with the next deploy.
+
+**Writing a post.** Open `https://<your domain>/admin/`, sign in with GitHub and choose **New Blog post**. Posts move through **Drafts → In review → Ready**; nothing reaches the site until someone presses **Publish**, which merges the post into `master` and Vercel redeploys. The newest post marked **Featured** leads the blog page. Use "Heading 2" for sections: posts with three or more get a contents list.
+
+**Images in a post** are optional, as many as you like. In the post body press **+** and choose:
+- **Image**: one picture, full width, with a description (for people who can't see it, and for image search) and an optional caption underneath.
+- **Image gallery**: 2 to 4 pictures side by side, each with a description, and one optional caption. On phones, three images become one wide on top with two below.
+
+Name image files without spaces (`launch-photo.jpg`, not `launch photo.jpg`), and keep them around 1600 px wide and under about 300 KB so pages stay fast.
+
+**Who can edit.** Anyone with write access to the `Tipsona-org/Tipsona` repo on GitHub. Add people to the repo (or an org team with write access) to give them the editor.
+
+**Setup, once.** Sign-in needs a GitHub OAuth App:
+1. GitHub → the `Tipsona-org` organisation → **Settings → Developer settings → OAuth Apps → New OAuth App**.
+2. Homepage URL: `https://tipsona.co`. Authorization callback URL: `https://tipsona.co/api/decap/callback/` (use the domain the site is actually live on).
+3. Generate a client secret, then in Vercel add `DECAP_GITHUB_CLIENT_ID` and `DECAP_GITHUB_CLIENT_SECRET` (Production) and redeploy.
+
+The editor only signs in on the domain in that callback URL. If `master` has branch protection that requires pull request reviews, **Publish** can't merge; allow it for the people who publish, or review the post's pull request on GitHub instead.
+
+**Locally**, without GitHub: run `npx decap-server` in one terminal and `npm run dev` in another, then open `http://localhost:3000/admin/`. Changes are written straight to your files.
+
+**How it's built.** `public/admin/index.html` loads a pinned Decap release (with an integrity hash) and `public/admin/config.yml` describes the fields. `src/app/api/decap/` holds the GitHub sign-in. `src/lib/blog.ts` reads the posts and turns Markdown into HTML; raw HTML in a post is dropped, so a post can't carry scripts. Categories (and their tip shapes) are in `src/content/blog-categories.ts`, kept in step with the options in `config.yml`.
 
 ## Search (SEO)
 

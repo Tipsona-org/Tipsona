@@ -291,3 +291,43 @@ export function initStickers(scope: Scope) {
     scope.on(el, "pointercancel", stop);
   });
 }
+
+/* ── Blog: copy a post's link ───────────────────────────────────── */
+export function initShareCopy(scope: Scope) {
+  $$("[data-share-copy]").forEach((b) => {
+    const label = $("span", b)!;
+    scope.on(b, "click", () => {
+      const url = b.getAttribute("data-share-copy")!;
+      const done = (ok: boolean) => {
+        label.textContent = ok ? "Link copied" : "Copy link";
+        toast(ok ? "Link copied" : "Copy the link from the address bar.");
+        window.setTimeout(() => {
+          label.textContent = "Copy link";
+        }, 2200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(
+          () => done(true),
+          () => done(false)
+        );
+      } else done(false);
+    });
+  });
+}
+
+/* ── Blog: filter the post grid by category ─────────────────────── */
+export function initBlogFilter(scope: Scope) {
+  const buttons = $$<HTMLButtonElement>("[data-blog-filter]");
+  if (!buttons.length) return;
+  const cards = $$<HTMLElement>(".blog-grid [data-category]");
+  buttons.forEach((b) => {
+    scope.on(b, "click", () => {
+      const pick = b.getAttribute("data-blog-filter");
+      buttons.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      cards.forEach((card) => {
+        card.hidden = Boolean(pick) && card.getAttribute("data-category") !== pick;
+      });
+      refreshLater(); /* the grid changed height: re-measure scroll animations */
+    });
+  });
+}

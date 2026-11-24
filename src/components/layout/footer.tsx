@@ -115,6 +115,9 @@ export function Footer({ pitch }: FooterProps) {
                   <a href="/community/">Community</a>
                 </li>
                 <li>
+                  <a href="/blog/">Blog</a>
+                </li>
+                <li>
                   <a href="/waitlist/">Join the waitlist</a>
                 </li>
                 <li>

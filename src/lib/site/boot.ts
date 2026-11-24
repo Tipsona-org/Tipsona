@@ -8,11 +8,13 @@ import { initAnchors, initMenu, initNav } from "./navigation";
 import { $$, clearTimers, type ContextSafe, refreshLater, type Scope, site } from "./shared";
 import {
   initBilling,
+  initBlogFilter,
   initCopy,
   initCountdown,
   initDesignSystem,
   initFaq,
   initPersonas,
+  initShareCopy,
   initStickers,
   initThemer
 } from "./widgets";
@@ -48,6 +50,8 @@ export function boot(scope: Scope, contextSafe: ContextSafe) {
   initBilling(scope);
   initFaq(scope);
   initCopy(scope);
+  initShareCopy(scope);
+  initBlogFilter(scope);
   initDesignSystem(scope, contextSafe);
   initCountdown(scope);
   initStickers(scope);
