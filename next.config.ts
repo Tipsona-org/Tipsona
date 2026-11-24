@@ -19,6 +19,11 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  // The blog editor (Decap CMS) is a static page in public/admin/.
+  async rewrites() {
+    return [{ source: "/admin/", destination: "/admin/index.html" }];
+  },
+
   async headers() {
     return [
       {
@@ -37,6 +42,14 @@ const nextConfig: NextConfig = {
       {
         source: "/assets/img/:path*",
         headers: [{ key: "Cache-Control", value: "public, max-age=2592000" }]
+      },
+      // The editor is for the team: never in search results, never cached stale.
+      {
+        source: "/admin/:path*",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Cache-Control", value: "no-cache" }
+        ]
       }
     ];
   }

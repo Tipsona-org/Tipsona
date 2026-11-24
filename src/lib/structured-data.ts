@@ -85,6 +85,65 @@ export function productApp({ name, description, path, free }: App): Thing {
   };
 }
 
+type BlogEntry = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  author: string;
+  cover: string | null;
+};
+
+const TEAM = "The Tipsona team";
+const postUrl = (slug: string) => url(`/blog/${slug}/`);
+
+/**
+ * The company spelled out, not just referenced: a post page doesn't carry the
+ * home page's Organization node, and article checks want the name and logo here.
+ */
+const ORG_FULL = {
+  "@type": "Organization",
+  ...ORG,
+  name: "Tipsona",
+  url: url("/"),
+  logo: { "@type": "ImageObject", url: url("/assets/img/icon-512.png"), width: 512, height: 512 }
+};
+
+/** One blog post. Posts signed by the team are credited to the company. */
+export function blogPosting(post: BlogEntry): Thing {
+  return {
+    "@type": "BlogPosting",
+    "@id": postUrl(post.slug) + "#post",
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: post.author === TEAM ? ORG_FULL : { "@type": "Person", name: post.author },
+    publisher: ORG_FULL,
+    mainEntityOfPage: postUrl(post.slug),
+    inLanguage: "en",
+    // Every article needs an image: the cover, or the site's share card.
+    image: url(post.cover ?? "/assets/img/og.png")
+  };
+}
+
+/** The blog itself, listing its posts. */
+export function blog(posts: BlogEntry[]): Thing {
+  return {
+    "@type": "Blog",
+    "@id": url("/blog/#blog"),
+    name: "Tipsona blog",
+    url: url("/blog/"),
+    publisher: ORG,
+    blogPost: posts.map((post) => ({
+      "@type": "BlogPosting",
+      headline: post.title,
+      url: postUrl(post.slug),
+      datePublished: post.date
+    }))
+  };
+}
+
 export function faqPage(path: string, items: Qa[]): Thing {
   return {
     "@type": "FAQPage",

@@ -6,7 +6,8 @@ const HUB_LINKS: NavLink[] = [
   { label: "Why Tipsona", href: "/why-tipsona/" },
   { label: "TipStore", href: "/tipstore/" },
   { label: "Tipper", href: "/tipper/" },
-  { label: "Community", href: "/community/" }
+  { label: "Community", href: "/community/" },
+  { label: "Blog", href: "/blog/" }
 ];
 
 type NavHubProps = {
