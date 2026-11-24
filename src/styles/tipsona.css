@@ -1593,6 +1593,9 @@ a.brand__by:hover { color: var(--ink); }
 /* Images the editor adds: one with an optional caption, or a gallery of 2 to 4 */
 .post-body figure { margin: 2em 0; }
 .post-body figure img { display: block; width: 100%; height: auto; border-radius: var(--r-m); }
+/* A single image fits on screen: a tall (portrait) photo is shown whole and
+   centred instead of running past the bottom of the window */
+.post-body .post-figure img { width: auto; max-width: 100%; max-height: min(80vh, 720px); margin-inline: auto; }
 /* An image inside a sentence stays text-sized */
 .post-body p img, .post-body li img { display: inline-block; width: auto; height: 1.4em; margin: 0 .1em; vertical-align: -.3em; border-radius: 4px; }
 .post-body figcaption { margin-top: 12px; font-size: .9375rem; line-height: 1.5; color: var(--muted); text-align: center; text-wrap: balance; }
