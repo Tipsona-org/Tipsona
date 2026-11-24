@@ -1,0 +1,118 @@
+# The blog editor at /admin (Decap CMS).
+#
+# Editors sign in with GitHub. Anyone with write access to the repo can edit.
+# Posts are Markdown files in src/content/blog; images go to
+# public/assets/blog. With the editorial workflow, every post is a pull
+# request until someone presses Publish, which merges it into master and the
+# site redeploys with it.
+#
+# Locally: run `npx decap-server` next to `npm run dev`, then open
+# http://localhost:3000/admin/ to write posts straight to your files.
+
+backend:
+  name: github
+  repo: Tipsona-org/Tipsona
+  branch: master
+  # base_url is set in index.html (this site's own address); sign-in goes
+  # through src/app/api/decap/.
+  auth_endpoint: api/decap/auth/
+  # The repo is public. If it becomes private, change this to "repo".
+  auth_scope: public_repo
+  commit_messages:
+    create: "content(blog): add “{{slug}}”"
+    update: "content(blog): update “{{slug}}”"
+    delete: "content(blog): delete “{{slug}}”"
+    uploadMedia: "content(blog): upload “{{path}}”"
+    deleteMedia: "content(blog): delete “{{path}}”"
+
+local_backend: true
+publish_mode: editorial_workflow
+
+# Post addresses are plain lowercase letters, numbers and hyphens ("Café
+# guide" becomes /blog/cafe-guide/), which is also what the site accepts.
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+site_url: https://tipsona.co
+display_url: https://tipsona.co
+logo_url: /assets/img/icon-192.png
+
+media_folder: public/assets/blog
+public_folder: /assets/blog
+
+collections:
+  - name: blog
+    label: Blog posts
+    label_singular: Blog post
+    description: >-
+      Posts for tipsona.co/blog. The newest post marked Featured leads the blog
+      page; the rest follow, newest first.
+    folder: src/content/blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    preview_path: "blog/{{slug}}/"
+    sortable_fields: [date, title, category]
+    summary: "{{title}}  ·  {{category}}  ·  {{date}}"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: Under about 60 characters, so search results show all of it.
+      - label: Summary
+        name: description
+        widget: text
+        hint: >-
+          One or two sentences, under 160 characters. Shown on the blog page, in
+          search results and when the post is shared.
+        pattern: ["^[\\s\\S]{20,160}$", "Write between 20 and 160 characters, so search results show all of it."]
+      - label: Publish date
+        name: date
+        widget: datetime
+        format: YYYY-MM-DD
+        date_format: D MMMM YYYY
+        time_format: false
+        picker_utc: true
+      - label: Category
+        name: category
+        widget: select
+        # Keep in step with src/content/blog-categories.ts
+        options: [Creator business, Guides, Product news, Stories]
+      - label: Author
+        name: author
+        widget: string
+        default: The Tipsona team
+      - label: Cover image
+        name: cover
+        widget: image
+        required: false
+        hint: >-
+          Landscape, at least 1600 by 1000 pixels, JPG or WebP. Without one, the
+          post gets a cover in its category's colour.
+      - label: Cover image description
+        name: coverAlt
+        widget: string
+        required: false
+        hint: >-
+          What the image shows, for people who can't see it and for image search.
+          Without it, the post title is used.
+      - label: Feature on the blog page
+        name: featured
+        widget: boolean
+        default: false
+        hint: The newest featured post is shown large at the top of the blog page.
+      - label: Post
+        name: body
+        widget: markdown
+        buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list, code]
+        # Registered in index.html: one image with an optional caption, or a
+        # gallery of 2 to 4 side by side. Both are optional.
+        editor_components: [figure, gallery]
+        hint: >-
+          Use "Heading 2" for sections; posts with three or more get a contents
+          list. To add pictures, press + and choose Image (with an optional
+          caption) or Image gallery (2 to 4 side by side). Raw HTML isn't shown
+          on the site.

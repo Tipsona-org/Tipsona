@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Tipsona blog editor</title>
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <!-- Decap CMS: the blog editor. Posts are saved as Markdown in
+         src/content/blog through GitHub; see public/admin/config.yml. -->
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script
+      src="https://unpkg.com/decap-cms@3.17.3/dist/decap-cms.js"
+      integrity="sha384-RWRzuHfiZSWCt3nEvG7B0v3cMgM1C2UuJmgBSL92GQh4uXmNSkbcthql/mNBqvjr"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Images inside a post. Both write plain Markdown, which the site turns
+      // into figures (see figureFor in src/lib/blog.ts).
+      var clean = function (s) {
+        // Text that can't break the Markdown around it
+        return String(s || "").replace(/[\[\]\n"]/g, " ").replace(/\s+/g, " ").trim();
+      };
+      var esc = function (s) {
+        return String(s || "").replace(/[&<>"]/g, function (c) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+        });
+      };
+      var assetUrl = function (getAsset, path) {
+        try {
+          return String(getAsset(path));
+        } catch (e) {
+          return path;
+        }
+      };
+
+      // One image, with an optional caption under it
+      CMS.registerEditorComponent({
+        id: "figure",
+        label: "Image",
+        fields: [
+          { name: "image", label: "Image", widget: "image" },
+          {
+            name: "alt",
+            label: "Description",
+            widget: "string",
+            hint: "What the image shows, for people who can't see it and for image search."
+          },
+          { name: "caption", label: "Caption", widget: "string", required: false, hint: "Optional. Shown under the image." }
+        ],
+        pattern: /^!\[([^\]\n]*)\]\(([^\s)]+)(?: "([^"\n]*)")?\)$/m,
+        fromBlock: function (m) {
+          return { alt: m[1], image: m[2], caption: m[3] || "" };
+        },
+        toBlock: function (d) {
+          var caption = clean(d.caption);
+          return "![" + clean(d.alt) + "](" + (d.image || "") + (caption ? ' "' + caption + '"' : "") + ")";
+        },
+        toPreview: function (d, getAsset) {
+          return (
+            '<figure style="margin:1.5em 0"><img src="' + esc(assetUrl(getAsset, d.image)) + '" alt="' + esc(d.alt) +
+            '" style="width:100%;border-radius:12px"/>' +
+            (d.caption ? '<figcaption style="text-align:center;color:#6B6158">' + esc(d.caption) + "</figcaption>" : "") +
+            "</figure>"
+          );
+        }
+      });
+
+      // Two to four images side by side, with one optional caption
+      var galleryFields = [];
+      [1, 2, 3, 4].forEach(function (n) {
+        var optional = n > 2;
+        galleryFields.push({ name: "image" + n, label: "Image " + n + (optional ? " (optional)" : ""), widget: "image", required: !optional });
+        galleryFields.push({ name: "alt" + n, label: "Image " + n + " description", widget: "string", required: !optional });
+      });
+      galleryFields.push({ name: "caption", label: "Caption", widget: "string", required: false, hint: "Optional. Shown under the images." });
+
+      CMS.registerEditorComponent({
+        id: "gallery",
+        label: "Image gallery",
+        fields: galleryFields,
+        pattern: /^:::gallery([^\n]*)\n([\s\S]*?)\n:::$/m,
+        fromBlock: function (m) {
+          var data = { caption: m[1].trim() };
+          var re = /!\[([^\]\n]*)\]\(([^\s)]+)\)/g;
+          var n = 0;
+          var x;
+          while ((x = re.exec(m[2])) && n < 4) {
+            n += 1;
+            data["image" + n] = x[2];
+            data["alt" + n] = x[1];
+          }
+          return data;
+        },
+        toBlock: function (d) {
+          var lines = [];
+          for (var n = 1; n <= 4; n++) {
+            if (d["image" + n]) lines.push("![" + clean(d["alt" + n]) + "](" + d["image" + n] + ")");
+          }
+          var caption = clean(d.caption);
+          return ":::gallery" + (caption ? " " + caption : "") + "\n" + lines.join("\n") + "\n:::";
+        },
+        toPreview: function (d, getAsset) {
+          var imgs = [];
+          for (var n = 1; n <= 4; n++) {
+            if (d["image" + n]) {
+              imgs.push(
+                '<img src="' + esc(assetUrl(getAsset, d["image" + n])) + '" alt="' + esc(d["alt" + n]) +
+                  '" style="width:100%;aspect-ratio:1;object-fit:cover;border-radius:8px"/>'
+              );
+            }
+          }
+          var cols = imgs.length === 3 ? 3 : Math.min(imgs.length, 2) || 1;
+          return (
+            '<figure style="margin:1.5em 0"><div style="display:grid;gap:8px;grid-template-columns:repeat(' + cols + ',1fr)">' +
+            imgs.join("") + "</div>" +
+            (d.caption ? '<figcaption style="text-align:center;color:#6B6158">' + esc(d.caption) + "</figcaption>" : "") +
+            "</figure>"
+          );
+        }
+      });
+
+      // GitHub sign-in goes through this site's own /api/decap/ routes, on
+      // whichever domain the editor is opened. Everything else is config.yml.
+      CMS.init({ config: { backend: { base_url: window.location.origin } } });
+    </script>
+  </body>
+</html>
